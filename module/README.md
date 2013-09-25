@@ -3,6 +3,9 @@
 Release 2.1-r2
 
 
+**Download the package [here](https://github.com/livewires/python/releases)**
+
+
 # INTRODUCTION #
 
 This is the LiveWires package, release 2.1 revision 2. It consists of a
