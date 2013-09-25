@@ -1,0 +1,223 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: J-jargon.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{J}{Jargon}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+%-----------------------------------------------------------------------------
+Computing is full of funny words, and of ordinary words used in
+funny ways. We've tried not to use too much jargon in these
+sheets, but we haven't always succeeded. So this sheet tries
+to give brief descriptions of what some funny words mean. If
+you run across something you don't understand, it's worth
+taking a quick look at this sheet.
+
+Some of this jargon is general programming jargon. Some is specific
+to Python.
+
+Lots of these entries refer to other entries, so if you see a word
+in here that you don't understand you should look it up!
+
+\section{The jargon}
+
+\newcommand{\entry}[2]{\vrule width0pt height 12pt\>\emph{#1}\>\parbox[t]{5in}{#2\strut}\\}
+\newcommand{\Aentry}[3]{\textbf{\vrule width0pt height 16pt\relax#1}\>\emph{#2}\>\parbox[t]{5in}{#3\strut}\\}
+
+\begin{tabbing}
+\qquad\=\textbf{A}\ \ \=\emph{global variable}\ \ \=\+\kill
+\Aentry{A}{argument}{An object passed into a function when you
+                     call it. It appears inside the function
+                     as a local variable.}
+\entry{association}{A piece of information that says
+                    ``If you're given $X$, give back $Y$''.
+                    A dictionary is made up of associations.}
+\entry{attribute}{An object that's part of an instance of a class.
+                  A little bit like a variable; a little bit like
+                  the value in a dictionary association.}
+\Aentry{B}{body}{The code inside a loop, or function, or
+                 other complicated thing. So a ``function body''
+                 is what gets obeyed when you call a function,
+                 and a ``loop body'' is what gets obeyed each
+                 time around a loop.}
+\Aentry{C}{call}{To ``call'' a function is to use it.
+                 Calling a function is a bit like copying out its
+                 definition and doing that.}
+\entry{class}{Classes are kinds of object. (In the real world,
+              things like ``computer'' and ``woman'' and ``book''
+              are classes.)}
+\entry{character}{A letter, digit or other symbol. A string
+                  is made up of a sequence of characters.}
+\entry{code}{The stuff that programs are made of.
+             A ``piece of code'' is a portion of a program.}
+\entry{comment}{A piece of a program that doesn't do anything,
+                but is just there for people to read. Usually
+                the purpose of a comment is to explain what the
+                code around it is doing.}
+\entry{condition}{Something that might be true or false,
+                  like |1>2|.}
+\entry{conditional}{Something that depends on a condition,
+                    like an |if| statement.}
+\Aentry{D}{definition}{A bit of code that tells the computer
+                       what something is: what value a variable
+                       has, or what a function ought to do, or
+                       all about a class.}
+\entry{dictionary}{A Python object a bit like a dictionary,
+                   an address book or an encyclopaedia.
+                   A dictionary is made up of associations.}
+\Aentry{E}{element}{An item in a sequence.}
+\entry{exception}{An unusual situation in which something has
+                  gone wrong, or a Python object describing
+                  such a situation. A pretentious way of
+                  saying ``error''.}
+\entry{expression}{A calculation that produces a value.
+                   The simplest expressions are things like
+                   constants (|123|, |'eek'|) and variables
+                   (|my\_name|). They can get much more complicated:
+                   |17*a[a.index(func(99))]>93 and a/(b+c)==2| .}
+\Aentry{F}{for loop}{A loop whose body gets obeyed once for
+                             each item in a sequence.}
+\entry{function}{A set of instructions with a name.
+                 You can make the computer obey all the
+                 instructions by saying the name of the
+                 function.}
+\Aentry{G}{global variable}{A variable that exists everywhere
+                            in your program, not just inside one
+                            function.}
+\entry{graphics}{Pictures drawn by a computer.}
+\Aentry{I}{immutable}{Not allowed to be changed.}
+\entry{import}{To make the things inside a module available
+               for use.}
+\entry{instance}{An object described by a class. In the real world,
+                 computers and women and books are instances of the
+                 classes ``computer'', ``woman'' and ``book''.}
+\entry{iteration}{A single trip through a loop body.
+                  When the loop is obeyed, it will usually
+                  go through several iterations.}
+\Aentry{K}{key}{One half of an association in a dictionary:
+                the half you can look things up by. If you say
+                |dict['zog']123|, then the key is |'zog'|.}
+\Aentry{L}{list}{An object made up of some number of other objects,
+                         in order. You can get at them by number.}
+\entry{local variable}{A variable that exists only inside
+                                   a particular function, not affecting
+                                   anything outside the function.}
+\entry{loop}{A piece of your program that might get obeyed
+                         over and over again.}
+\Aentry{M}{module}{A bunch of objects with names that you can
+                           ``import'' into your program.}
+\Aentry{O}{object}{Any piece of information Python can work with,
+                           like a number or string or list.}
+\Aentry{R}{read}{To get information into a program. For instance,
+                         if you ask the person sitting in front of the
+                         computer to type something in, that's ``reading''.}
+\entry{return}{What a function does when it's finished.
+                           If it ``returns a value'', then the function
+                           call can be used in an expression.}
+\Aentry{S}{sequence}{A list or string or tuple. (Actually there are
+                     other kinds of sequence, but you don't need to
+                     worry about those.)}
+\entry{string}{A sequence of characters, usually forming a piece of text.}
+\entry{subclass}{A class, all of whose instances are also instances
+                 of another class. In the real world, ``Apple Macintosh''
+                 is a subclass of ``computer'', which is a subclass of
+                 ``electronic device'', which is a subclass of ``thing''.}
+\Aentry{T}{tuple}{A particular kind of sequence, written like
+                  this: |(1,2,3)| . Unlike lists, tuples are
+                  immutable.}
+\Aentry{V}{value}{An object. The result of a calculation,
+                  or of a function call, or of referring
+                  to a variable. Also: one half of an association
+                  in a dictionary: the half you're looking for when 
+                  you do a lookup. If you say |dict['zog']=123|, then
+                  the value is |123|.}
+\entry{variable}{A name for an object.
+                 After saying |x=6|, |x| is a name for the
+                 object usually known as |6|, and using |x|
+                 will usually do the same as using |6| would.
+                 |x| is called a ``variable'' because you can
+                 change what object it names.}
+\end{tabbing}
+%-----------------------------------------------------------------------------
+\end{document}

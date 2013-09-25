@@ -1,0 +1,216 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: C-conds.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{C}{Conditions and conditionals}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+``Conditions'' are things that can be true or false. For instance,
+the expression |x<3| which is true if |x| is the name of a number
+less than 3 and false otherwise.
+
+``Conditionals'' are things that depend on conditions. The most
+important kind of conditional in Python is the |if| statement,
+which lets you do one thing or another depending on whether a
+condition is true.
+
+This sheet tells you about conditions and conditionals.
+
+\section{Conditions}
+
+Try typing these things in. I haven't shown the answers, because
+you'll learn better if you try them.
+
+\begin{interaction}
+>>> \T{1 < 2}   \C{1 is less then 2, so this condition is true}
+[CENSORED]
+>>> \T{1 > 2}   \C{1 is not greater than 2, so this condition is false}
+[CENSORED]
+\end{interaction}
+
+As you'll have seen, Python likes to use \emph{numbers} to
+represent the ``truth value'' of conditions. 0 means ``false'',
+and 1 means ``true''. In fact, any non-zero number means ``true''.
+
+You can actually use other things as truth values. I don't
+recommend this, though; it's just likely to be confusing.
+
+\section{Comparisons}
+
+Most conditions are comparisons of one object with another.
+Here's a brief list of ways to compare things in Python.
+
+\begin{tabular}{ll}
+|a <  b| & True if |a| is less than |b| \\
+|a <= b| & True if |a| is less than or equal to |b| \\
+|a >  b| & True if |a| is greater than |b| \\
+|a >= b| & True if |a| is greater than or equal to|b| \\
+|a == b| & True if |a| is equal to |b| \\
+|a <> b| & True if |a| is not equal to |b|
+\end{tabular}
+
+It's pretty obvious what these things mean when |a| and |b|
+are numbers. But they make sense for other sorts of objects,
+too. For instance, strings are compared in something rather
+like alphabetical order. In fact, you can compare \emph{any}
+two objects, though many of the possible comparisons are
+Very Silly. For instance, it turns out that Python thinks
+that 3 is less than |'silly'|.
+
+When you're testing whether two things are unequal, you can
+use |!=| instead of |<>| if you prefer.
+
+Be careful, by the way, to notice the difference between |=|
+and |==|. You use |=| for setting a variable (i.e., giving
+a name to an object), and |==| for testing whether two things
+are equal.
+
+\subsection{Combining comparisons}
+
+You can say things like |1 < x < 2|, meaning ``1 is less than |x|, and
+|x| is less than 2''.
+
+\section{Other conditions}
+
+Here are some other useful conditions.
+
+\begin{tabular}{ll}
+|0| & Always false \\
+|1| & Always true \\
+|x in y| & True if |x| is equal to some element of |y| \\
+|x not in y| & True if |x| is not equal to any element of |y|
+\end{tabular}
+
+For |in| and |not in|, |y| should be a sequence: that is, a
+list or a tuple or a string,
+
+\section{Combining conditions}
+
+You can join conditions together using the words |and|, |or| and
+|not|. So, for instance, |x<3 and y>6| is a condition.
+
+\section{The `if' statement}
+
+So, now we know about conditions. One very important thing
+we can do with them is to use them in an |if| statement.
+This is pretty straightforward:
+
+\begin{program}
+if x < 3:
+  print 'x is less than 3. I'm setting it to 3.'
+  x = 3
+\end{program}
+
+Often, you want to do one thing if a condition is true and
+another thing if the condition is false. To do this, use the
+magic word |else|:
+
+\begin{program}
+if x<3:
+  print 'x is less than 3.'
+else:
+  print 'x is not less than 3.'
+\end{program}
+
+And, less often, you want to test a whole bunch of conditions
+and do something according to the first one that comes out true.
+For this, you need the strange word |elif|, which is short for
+``else if'':
+
+\begin{program}
+if x<3:
+  print 'x is less than 3'
+elif x<4:
+  print 'x is not less than 3, but it's less than 4.'
+else:
+  print "x isn't even less than 4."
+\end{program}
+
+\section{Other uses of conditions}
+
+Conditions are also used in |while| loops: to learn about
+those, see Sheet~L (\emph{Loops}).
+%-----------------------------------------------------------------------------
+\end{document}

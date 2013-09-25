@@ -1,0 +1,178 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: D-dicts.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{D}{Dictionaries and tuples}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+%-----------------------------------------------------------------------------
+The worksheets that make up most of this course don't cover everything.
+Two important things they don't cover are ``dictionaries'' and ``tuples''.
+This sheet tells you a little about those.
+
+\section{Dictionaries}
+
+The easiest way to explain what a dictionary is is to give an
+example. So here is one.
+
+\begin{interaction}
+>>> \T{dict = \{\}}       \C{An empty dictionary.}
+>>> \T{dict[1] = 'boo!'}  \C{Add a piece of information to it.}
+>>> \T{dict['ouch'] = 99} \C{And another.}
+>>> \T{dict}              \C{Lets's see what's in there.}
+{'ouch': 99, 1: 'boo!'}   \C{Two ``associations''.}
+>>> \T{dict['ouch']}      \C{What's associated with |'ouch'| ?}
+99                        \C{This is.}
+\end{interaction}
+
+So, a dictionary is a little like a list, except that while an
+array has entries labelled by numbers (|a[0]|, |a[1]|, etc), the
+entries in a dictionary can be labelled by things other than
+numbers. (Most usefully, they can be labelled by numbers and
+by strings.)
+
+It's sometimes helpful to think of a dictionary as being made up
+of ``associations''. An association is a piece of information
+like ``|'ouch'| is associated with |99|''. So the dictionary we
+built above contains two associations.
+
+You might use a dictionary to hold an address list, with each
+association pairing a person's name up with their address.
+Or it might hold information about all the players in a
+multi-player game, or about all the computers connected
+to a network.
+
+The two parts of an association are sometimes called the \emph{key}
+and the \emph{value}: you find the value by looking up the key. So
+in the dictionary we made above, the keys are |1| and |'ouch'|,
+and the corresponding values are |'boo!'| and |99|.
+
+As we've seen, you use dictionaries in the same sort of way
+as you use lists: if |d| is a dictionary then |d[k]| is the
+value associated with the key |k|.
+
+To change an association in a dictionary, just say something
+like |dict['ouch'] = 1000|. To remove an association entirely,
+say |del dict['ouch']|. (|del| is short for ``delete''.)
+
+To test whether a dictionary has any association with key |k|,
+do something like this:
+
+\begin{interaction}
+>>> \T{dict = \{'a': 123, 'b': 987\}} \C{Set up a dictionary}
+>>> \T{dict.has_key('a')}             \C{Any association for |'a'| ?}
+1                                     \C{Yes.}
+>>> \T{dict.has_key('z')}             \C{Any association for |'z'| ?}
+0                                     \C{Nope.}
+\end{interaction}
+
+\subsection{Keys}
+
+Not all objects are allowed as keys for dictionaries. We've
+already seen that numbers and strings are OK. Unfortunately,
+lists aren't. However, there's a data type very similar to
+the list that you \emph{can} use: the ``tuple''. Tuples are
+the other subject of this sheet\dots
+
+\section{Tuples}
+
+A tuple is like a list. There are only two differences you need
+to care about:
+\begin{enumerate}
+\item Tuples are ``immutable''. In other words, once you've got a tuple
+      you aren't allowed to change its contents. If |x| is a list then
+      you can say |x[1]=99|; if it's a tuple, you can't.
+\item Tuples are written a little differently: instead of
+      |[1,2,3,4]| you say |(1,2,3,4)|.
+\end{enumerate}
+
+You can use a tuple almost anywhere where you'd use a list.
+For instance, you can say |for x in (1,2,3,4):| instead of
+|for x in [1,2,3,4]| (see Sheet~L (\emph{Loops}) if you don't
+know what that's about). 
+
+If for some reason you want a tuple containing only one object,
+you can't write it as |(x)| (can you think why?). Instead, you
+say |(x,)|. Weird, I'm afraid \dots
+\end{document}

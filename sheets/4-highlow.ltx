@@ -1,0 +1,334 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: 4-highlow.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{4}{Higher! Lower!}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%--------------------------------------------------------------------------
+\section{Introduction}
+In this sheet, we'll write a simple guessing game: the computer
+(or, another player)
+picks a number, and you have to guess it. You get told after each
+guess whether the guess was too high or too low.
+%--------------------------------------------------------------------------
+\section{What you need to know}
+To do this sheet, you need to know:
+\begin{itemize}
+\item
+  How to edit and run a Python program: see Sheet~R (\emph{Running Python})
+\item
+  The basic bits of Python, from sheets 1 and 2
+\end{itemize}
+%--------------------------------------------------------------------------
+\section{Planning it out}
+A typical game might go something like this:
+
+\begin{interaction}
+OK, I've thought of a number between 1 and 1000.
+
+Make a guess: \T{200}
+That's too low.
+
+Make a guess: \T{500}
+That's too high.
+
+Make a guess: \T{345}
+That's too high.
+
+Make a guess: \T{300}
+That was my number. Well done!
+
+You took 4 guesses.
+Would you like another game? \T{no}
+OK. Bye!
+\end{interaction}
+
+So, the program needs to do the following things.
+
+\begin{itemize}
+\item Choose a number somehow, and tell the player that it's done so.
+\item Repeatedly:
+      \begin{itemize}
+      \item
+        Ask the player for a number
+      \item
+        Report on whether it's too high, too low or just right
+      \end{itemize}
+      (Do this until the player guesses the answer.)
+\item Keep track of the number of guesses the player made.
+\item Finally, report on the player's performance and offer the
+      chance of another game.
+\item If they want another game, start over again.
+\end{itemize}
+%--------------------------------------------------------------------------
+\section{Easy stuff}
+The first thing on that list, you already know how to do from Sheet~2.
+So: write a program that chooses a random number between 1 and 1000,
+puts it in a variable, and displays a message saying that it's done so.
+(Don't forget to say |from livewires import *| at the start!)
+
+Another thing that you should already know how to do is asking the
+player for a number and saying whether their number is too high, too
+low, or just right. You've already done something very like this
+for Sheet~2. You'll need to use |if|.
+
+So: add some lines to your program so that after picking a number
+and telling you it's picked a number, it asks you for a guess and
+tells you how you did.
+%--------------------------------------------------------------------------
+\section{Over and over and over again, again}
+In Sheet 2, there was a section called ``Over and over and over again'',
+about ``|for| loops''. Those are very useful when you know in advance
+how many times you want to do something, but much less useful when you
+don't know at the start when you'll want to end. That's our problem
+here: we don't know how many guesses the player will make before
+guessing the right answer.
+
+For this sort of problem, Python has another kind of loop. It's called
+a ``|while| loop'', because (1) it begins with the word |while|
+and (2) it tells the computer to ``do so-and-so \emph{while} such-and-such
+is true''.
+
+Here's a simple example. Try it.
+
+\begin{program}
+x=1
+while x<100:
+  print 'x is', x
+  x = x+6
+\end{program}
+
+You can probably guess what this will do. What do you think will happen
+if you change the first line to ``|x=101|'', so that the condition tested
+by the |while| is untrue right at the start? Make a guess, and then try
+doing it. Was your guess right?
+
+\emph{Challenge}: Write a program that repeatedly asks you to enter
+a number, and keeps doing this until you enter the number 1234.
+You may need to know that to say ``|x| is not equal to |y|'' in
+Python, you write ``|x <> y|''.
+%--------------------------------------------------------------------------
+\section{Lots of guesses}
+So, now we know how to do something over and over using a |while| loop.
+How can we use this to make our program keep asking for guesses until
+the player guesses correctly?
+
+You might at first think it should go something like this:
+
+\begin{program}
+blah blah blah \C{Choose a number}
+while guess <> number:
+  blah blah    \C{Ask for a guess}
+  blah blah    \C{Say whether it was right or wrong}
+\end{program}
+
+If you try writing your program this way and running it, you'll
+see that there's a problem. The variable |guess| (as I've called it
+above), that's supposed to be a name for the last number the player
+guessed, hasn't been set up when the machine first looks at the
+|while|. It only gets a value later on.
+
+There are a couple of different ways to get around this. I think
+the simplest is as follows.
+
+Make the loop say, not |while guess <> number:| or whatever, but
+simply |while 1:|. Remember that PYthon treats zero as meaning
+``false'' and any non-zero number as meaning ``true'', so a loop
+that begins |while 1:| will go on for ever -- it will never stop.
+
+That doesn't seem like much of an improvement. But, try the following.
+
+\begin{program}
+while 1:
+  x = random_between(1,10)
+  print x
+  if x == 5:
+    break
+  print 'x was not 5!'
+\end{program}
+
+The only new thing here is the second-last line: |break|. If you try
+running that program you should be able to guess what |break| means.
+In case you can't, I'll tell you: it means ``stop going round the
+loop you're in the middle of, right now''. (What happens if a |break|
+happens while the computer is in the middle of \emph{more than one}
+loop? Make a guess, and write a program to see whether your guess
+is right.)
+
+Now that you know about |while| and |break|, you should be able
+to make your guessing-game program keep asking for guesses until
+the player enters the correct number. Just put the guess-asking
+bit inside a |while 1:| loop, and do a |break| if the player
+enters the right number.
+%--------------------------------------------------------------------------
+\section{How many guesses?}
+Keeping track of the number of guesses the player has made is
+easy. It's just like keeping track of the number of correct
+answers given in the tables-testing program in Sheet~2. Have
+a variable for it, set it to 0 at the start, and add 1 to it
+each time the player makes a guess.
+
+Go on, do it.
+%--------------------------------------------------------------------------
+\section{Another game?}
+Now, this game is so exciting that when you've played it once you'll
+be desperate to play again (maybe). So when the game is over the machine
+ought to ask you if you'd like another.
+
+You already know about the function |read_number()|, which lets the user
+enter a number. But what you want here isn't a number, but a yes-or-no
+answer to a question. To get that, use the function |read_yesorno()|.
+Try this:
+
+\begin{interaction}
+>>> \T{print read_yesorno('Would you like another game?')}
+Would you like another game? \T{yes}
+1
+>>> \T{print read_yesorno('Would you like another game?')}
+Would you like another game? \T{no}
+0
+\end{interaction}
+
+If it's not obvious yet what |read_yesorno| does, play with it
+some more: try giving it different questions to ask, and answering
+differently. What happens if you just say |y| instead of |yes|?
+Does it matter whether you say |no| or |NO|? I've said this before,
+but it's worth saying again: \emph{experiment}.
+
+Of course, as well as printing the result of |read_yesorno|
+you could give it a name
+
+\begin{program}
+bored = read_yesorno('Are you bored yet?')
+\end{program}
+
+or use it in something more interesting:
+
+\begin{program}
+if read_yesorno('Would you like some chocolate?'):
+  print 'Sorry, I have none.'
+else:
+  print 'Very strange.'
+\end{program}
+
+What we want to do is to keep on playing games, until the player
+says that they don't want another. We can do this by putting the
+whole program -- everything you've written so far -- inside another
+|while 1:|, and doing a |break| if the player says no to ``Would you
+like another game?''.
+
+So, do that. Then check that your program still works.
+%--------------------------------------------------------------------------
+\section{What next?}
+There are plenty of ways to make this program better.
+Here are a few suggestions.
+
+\begin{itemize}
+\item Let the player decide what range the numbers should be in.
+      There's nothing magical about having numbers from 1 to 1000;
+      you might want a quicker game (1 to 20?) or a slower one
+      (1 to 1000000000?).
+\item Make it a two-player game, so that one player enters a number
+      and the other has to guess it. Clear the screen after the first
+      player enters their number.
+\item If you do that, you could then make the players swap places
+      each game, so that the player who chooses the number in one
+      game has to guess the other player's number in the next game.
+\item And if you do \emph{that}, you'll probably want to make the
+      program begin by asking for the players' names, so that it
+      can say at the start of the game whose turn it is to do what.
+\item The program could also keep track of how many guesses each
+      player has needed on average.
+\item (This is harder!) Make the computer do the guessing -- you
+      choose a number, and answer the computer's guesses. To make
+      this interesting, you'll need to think of a good strategy
+      for the computer to use when guessing\dots
+\end{itemize}
+
+When you've done that, you could go on to Sheet 5, in which you'll
+write a more interesting game using the graphics stuff you learned
+about in Sheet~3.
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+%--------------------------------------------------------------------------
+\end{document}

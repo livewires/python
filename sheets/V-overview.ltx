@@ -1,0 +1,174 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: V-overview.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{V}{Overview of the course}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+There are a lot of worksheets in our beginners' Python course.
+The most important are the five numbered sheets; you should
+work your way through those. But they'll be pretty hard going
+unless you also make use of the lettered sheets, which give
+you useful information about particular topics.
+
+This sheet gives a very brief description of all the sheets.
+
+I've given each sheet a ``difficulty rating'': one to three
+stars.
+
+\begin{tabular}{rl}
+  $*$ & Basic. This stuff is reasonably easy, and you'll need to know it. \\
+ $**$ & Intermediate. This is trickier, but it might be useful. \\
+$*{*}*$ & Advanced. You don't need this to complete the course, but
+          if you're feeling adventurous it might be interesting.
+\end{tabular}
+
+\section{Numbered worksheets}
+
+Things to try, programs to write.
+
+\newcommand{\xsheet}[4]{%
+\noalign{\smallskip}
+\qquad \textbf{#1} & \ifcase #2 \or$*$\or$**$\or$*{*}*$\else?\fi & \emph{#3} \\
+     & & \parbox[t]{5in}{#4\strut} \\}
+
+\begin{tabular}{lcl}
+\xsheet{1}{1}{Introducing Python}{You should read this second (after Sheet~R).
+                          It's a little tour of some of the simpler
+                          things you can do with Python.}
+\xsheet{2}{1}{Turning the Tables}{Computers are better at arithmetic
+                                  than people. By the end of this sheet
+                                  you'll have written a program that
+                                  tests you on your tables.}
+\xsheet{3}{2}{Pretty pictures}{An introduction to graphics in Python.
+                               This sheet also introduces the important
+                               idea of \emph{functions}.}
+\xsheet{4}{1}{Higher! Lower!}{Writing a guessing game program.
+                              Not very hard, but there are plenty
+                              of ideas for taking it further.}
+\xsheet{5}{2}{The Robots are Coming}{A graphical game in which you
+                                     try to outwit a horde of robots.}
+\end{tabular}
+
+\section{Lettered worksheets}
+
+Important (and unimportant) topics.
+
+\begin{tabular}{lcl}
+\xsheet{A}{1}{Lists}{Lists of things are important in Python.
+                     This sheet shows you some things you can
+                     do with them.}
+\xsheet{C}{1}{Conditions and Conditionals}{How to tell the computer ``Do this if so-and-so
+                            is true; otherwise, do that''}
+\xsheet{D}{2}{Dictionaries and Tuples}{Dictionaries and tuples: two kinds of object
+                            that aren't covered elsewhere in the course}
+\xsheet{E}{1}{Errors (also called Exceptions)}{Some rude messages you might get from Python,
+                      and what they mean}
+\xsheet{F}{2}{Functions}{An important tool for organising programs}
+\xsheet{G}{2}{Graphics}{More details about drawing pictures with Python}
+\xsheet{I}{1}{Input and output}{How to make Python tell you things
+                                and ask you questions}
+\xsheet{J}{1}{Jargon}{A guide to some technical terms. A useful sheet
+                      to have around.}
+\xsheet{L}{1}{Loops}{How to do things over and over again. Important.}
+\xsheet{M}{3}{Modules}{An advanced topic: How Python manages to provide
+                       a huge number of useful functions without being
+                       too confusing.}
+\xsheet{O}{2}{Objects and classes}{Fairly easy. Important for the Games
+worksheets.}
+\xsheet{R}{1}{Running Python}{Probably the first sheet you should read.
+                              This tells you how to get Python running
+                              on your computer, how to enter commands
+                              and write programs, etc.}
+\xsheet{S}{1}{Strings}{What you can do with bits of text.}
+\xsheet{T}{2}{Time}{How to tell the time, wait for 0.3 of a second, etc.}
+\xsheet{V}{1}{Overview}{You're reading it.}
+\xsheet{W}{3}{The LiveWires module}{Which of the things you've done
+                                     actually depend on special stuff
+                                     we've written.}
+\end{tabular}
+
+%-----------------------------------------------------------------------------
+\end{document}

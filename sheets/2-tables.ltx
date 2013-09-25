@@ -1,0 +1,465 @@
+\newif\ifaspdf
+\ifx\pdfoutput\undefined
+\aspdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\aspdftrue
+\fi
+\ifaspdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage{graphics}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: 2-tables.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\usepackage{ulem}
+\sheet{2}{Turning the Tables}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%---------------------------------------------------------------------------
+\section{Introduction}
+One thing computers are very, very good at is arithmetic.
+This sheet will show you how to make the computer test how good
+you are at it. (The computer is probably about 2,000,000,000 times
+faster than you, but for now we'll only test how accurate you are.)
+%---------------------------------------------------------------------------
+\section{What you need to know}
+To do this sheet, you need to know:
+\begin{itemize}
+\item
+  How to edit and run a Python program: see Sheet~R (\emph{Running Python})
+\item
+  The basic bits of Python, from Sheet~1
+\item
+  Some simple arithmetic!
+\end{itemize}
+%---------------------------------------------------------------------------
+\section{Planning it out}
+In sheet 1 you typed things in at the ``prompt'' and got immediate results. 
+In this sheet you're going to start writing a ``program''; a bunch of stuff 
+you want the computer to do all in one go, in the right order, depending on 
+other stuff\dots but don't worry, we'll guide you through it and it's not 
+that hard.
+
+When you start to think about writing a program, it's helpful to
+begin by thinking exactly what will usually happen when the program
+runs. It'll probably go something like this:
+
+\begin{interaction}
+What's 6 times 7? \T{49}
+No, I'm afraid the answer is 42.
+What's 3 times 2? \T{6}
+That's right -- well done.
+\C{And so on, with several more questions\dots}
+What's 5 times 9? \T{45}
+That's right -- well done.
+
+I asked you 10 questions. You got 7 of them right.
+Well done!
+\end{interaction}
+
+So, here are some things we need to be able to make the computer do:
+
+\begin{itemize}
+\item Choose numbers (at random, preferably)
+\item Display a sum
+\item Calculate the right answer
+\item Get an answer from the person using the program
+\item See whether it's right or not
+\item Display a ``that's right'' or ``that's wrong'' message
+\item Keep count of how many questions were answered right
+\item Ask a total of (say) 10 questions, and then stop
+\item Display a final message saying how you've done
+\end{itemize}
+
+That's quite a lot of things to do, but most of them are quite
+easy. We'll do them one at a time.
+%---------------------------------------------------------------------------
+\section{Random numbers}
+Let's start with the first item on that list: choosing the numbers.
+Try asking Python this and see what it says:
+
+\begin{interaction}
+>>> \T{from livewires import *} \C{This is magic; see the box below.}
+>>> \T{random_between(10,15)}
+\end{interaction}
+
+What do you think |random_between| does? Try repeating that last
+line a few more times until you're sure you understand how it
+behaves.
+
+\begin{note}
+That first line there is important. You'll need to put it at the start
+of every program you write. It lets you use some things we've added to
+the basic Python language, to make your life easier.
+
+As well as putting it in programs you write, you should also
+type it in when you start a Python session. Otherwise Python
+won't understand some of the things you ask it to do.
+
+See Sheet~M (\emph{Modules}) if you want the gruesome details
+of what's going on here.
+\end{note}
+
+\emph{Challenge}: Make Python print a sum like
+
+\begin{interaction}
+What is 7 times 2 ?
+\end{interaction}
+
+where the two numbers are generated randomly, between 1 and 10
+(inclusive).
+%---------------------------------------------------------------------------
+\section{Questions and answers}
+OK, so now we know how to make Python display the question.
+This isn't much use if we can't get an answer from the
+\sout{victim} person using the program. Fortunately,
+we can. Try this and see what happens:
+
+\begin{interaction}
+>>> \T{print read_number()}   \C{Do you need the \emph{print}? Think back to Sheet~1.}
+\end{interaction}
+
+What about this?
+
+\begin{interaction}
+>>> \T{print 2*read_number()}
+\end{interaction}
+
+\emph{Challenge}: Make Python ask for \emph{two} numbers, add them up,
+and print the result. Hint: you can do it with a single command, it's just
+a bit longer than the ones you've seen so far.
+
+You can change what Python says when asking for a number, if you
+like. Try this:
+
+\begin{interaction}
+>>> \T{print read_number('What is your favourite number?')}
+\end{interaction}
+
+Now: Write a short program that displays a sum using two random
+numbers (as above), and then gets the user to type in an answer.
+This should just be a matter of combining two things you've already
+done, but in a program rather than on the prompt; check Sheet~R if 
+you're not sure how to do that. 
+Don't worry about making the program check whether the user's
+number is right, or anything. Save this program so that you don't
+lose it: you'll be needing it again.
+%---------------------------------------------------------------------------
+\section{Remembering the numbers}
+Well, now is the time to worry about making the program check
+whether the user's number is right. This is trickier than what
+we've done so far, because we need to use those random numbers
+\emph{twice}: once when we're saying what sum we want done, and
+once when we're working out the right answer.
+
+\emph{Important Principle}: If you're writing a program and you
+need to use something twice, \emph{give it a name}.
+
+We discussed names in sheet~1, but here's a brief reminder.
+
+You give things names by using the |=| sign, and after that
+you can use the name instead of the thing you named:
+
+\begin{interaction}
+>>> \T{thing=1234}
+>>> \T{5*thing}
+6170
+\end{interaction}
+
+\emph{Challenge}: Write a new program that makes a random number and
+prints it out 5 times. (This is \emph{not} the same thing as
+printing out 5 different random numbers!) You'll need to give
+the random number a name.
+
+\emph{Challenge}: Find the program you wrote that prints a sum
+and asks for the answer. Change it so that it gives names to the
+numbers in the sum. Check that you've done it right by making it
+print the sum twice -- run the program and make sure that it
+does ask the \emph{same} question twice, not two different
+questions.
+
+Make your program do the following:
+
+\begin{enumerate}
+\item Choose two random numbers from 1 to 10.
+\item Display a multiplication sum involving them.
+\item Ask what the answer is.
+\item Say what the answer should have been.
+\end{enumerate}
+
+You've already done the first three of these; so the only new
+thing is the last one. Save the program again!
+%---------------------------------------------------------------------------
+\section{Right or Wrong?}
+The program you've just written could be used for testing
+someone's tables, but it seems rather silly to make the human
+check all the answers; that's just the kind of boring job computers
+do well. So, the next stage is to get the machine to check whether
+the answer you gave was right, instead of just saying what it should
+have been and leaving you to decide.
+
+To do this, we need a new -- and very important -- idea.
+%---------------------------------------------------------------------------
+\section{If \dots}
+
+Write a new program that looks like this, and run it.
+(The spaces at the start of some of the lines are important!)
+
+\begin{note}
+Even though this isn't underlined, you should still type it in.
+The underlining thing is only done when there's a mixture of
+things you type in and things that the computer says, to help
+you see which is which.
+\end{note}
+
+\begin{program}
+if 1 < 2:
+  print 'Something is wrong!'
+else:
+  print 'Something is right!'
+\end{program}
+
+\begin{note}
+The reason why the spaces at the start of a line matter
+is that Python uses them to decide how much of your program
+is controlled by the |if|. Suppose you say
+
+\begin{program}
+if 1 > 1000:
+  print 'Ouch!'
+print 'Boink!'
+\end{program}
+
+Then the computer \emph{will} print |Boink!|, because that line
+isn't part of the |if|. But if the |print 'Boink!'| line had
+spaces at the start like the |print 'Ouch!'| line, then it
+\emph{would} be part of the |if|, and therefore wouldn't get
+printed.
+
+Most computer languages don't take any notice of space at the
+start of a line. This means that they have to solve the problem
+in a different way; usually they need something like |end if|
+at the end of the |if|, or else they insist that you surround
+everything controlled by the |if| in some kind of brackets.
+Python's way is easier to read.
+\end{note}
+
+Now change the |<| to |>|, and run the program again. Can you guess
+what's going on? (In case you haven't already met the symbols in
+school: |<| means ``is less than'', and |>| means ``is greater than''.)
+
+\emph{Challenge}: Write a program that asks you for a number
+and then prints different things depending on whether the number
+is bigger than 100 or not.
+
+For our tables-testing program, of course, what we want to know
+isn't whether the number you typed in is \emph{bigger~than} the
+correct answer; we want to know whether it's \emph{equal~to} it.
+
+You might expect to do that by writing
+|if |\emph{something}| = |\emph{somethingelse}|:| and so on,
+but in fact it turns out that to avoid confusion between
+(1) using |=| to mean ``is equal to'' and (2) using |=| to
+mean ``is the name of'', Python uses different symbols for
+those two things. We've already seen that |=| is how you
+say ``is the name of'', so ``is equal to'' must be something
+different.
+
+In fact, in Python ``is equal to'' is written with \emph{two}
+equals signs, like this: |==| .
+
+(If you want to know more about |if| and related things,
+see Sheet~C (\emph{Conditionals}).)
+
+\emph{Challenge}: Change the little program you just wrote that
+tests whether a number is bigger than 100, so that instead it
+tests whether the number is \emph{equal to} 100.
+
+Now you should have no difficulty making your tables-testing program
+print a ``yes!'' or ``no!'' message depending on whether you typed in
+the right answer to the sum or not. So now you have a program that
+tests you on \emph{one} multiplication sum, and then stops. We're
+making progress\dots
+%---------------------------------------------------------------------------
+\section{Over and over and over again}
+
+You may remember the |for| loop, from sheet~1. Whether you do
+or not, here's an example of how to use it. Write a little program:
+
+\begin{program}
+for x in 1,2,3,4,5,6:
+  print 'x is', x
+\end{program}
+
+(Do I still need to remind you that \emph{spaces at the starts of lines
+matter}?)
+
+\emph{Challenge}: Put that whole program inside another |for| loop,
+so that it all happens three times.
+
+If you managed that, find your tables-testing program and do something
+similar so that it does everything 10 times.
+
+If you want to know more about how to do things over and over again
+in Python, see Sheet~L (\emph{Loops}).
+%---------------------------------------------------------------------------
+\section{Who's counting?}
+A little while ago I was complaining that our program forced the
+person using it to check their own answers. We've fixed that now,
+but the user still has to count how many answers they've got right.
+The computer ought to be able to do that.
+
+Here's a little program to try. It doesn't have much to do with
+the tables-tester, but you'll probably find what you have to do
+next easier if you try this first.
+
+\begin{program}
+odd=1
+for x in 1,2,3,4,5,6:
+  print 'An odd number:', odd
+  odd = odd+2
+\end{program}
+
+That last line may look rather strange: how can |odd| be equal to
+|odd+2|? Well, remember that I said a little while ago that in Python
+|==| means ``is equal to'', and |=| means ``is a name for''. What
+the line tells Python to do is: work out |odd+2|, and then call
+\emph{that} |odd|.
+
+(In sheet~1 I mentioned that what we're calling ``names'' are often
+called ``variables''. You've now discovered why: the things they name
+can change, or \emph{vary}. In the program above, |odd| starts off
+meaning 1; then it means 3, then 5, and so on.)
+
+OK. Back to the tables-testing.
+
+Add the following lines to your tables-testing program.
+You'll have to work out \emph{where} in the program to put each one.
+Some of the lines may need some spaces added at the start.
+
+\begin{program}
+right = 0
+wrong = 0
+right = right + 1
+wrong = wrong + 1
+print 'You got', right, 'questions right and', wrong, 'wrong.'
+\end{program}
+%---------------------------------------------------------------------------
+\section{Improving the program}
+If you've done everything correctly so far, you now have a program
+that does roughly what I described at the start of this sheet.
+There are lots of things that could be made better; if you aren't
+fed up of the program yet, you could try some of these:
+
+\begin{enumerate}
+\item
+  \emph{Improve the layout}. It's a pity that the question and
+  the user's answer have to be on different lines, and that there
+  are some unnecessary spaces. Have a look
+  at Sheet~I which tells you a bit more about ``input and
+  output'': that is, making the program ask things or say things.
+  You may find that you also need to know some things described
+  in Sheet~S (\emph{Strings}).
+\item
+  \emph{Timing}. It's probably not hard to get 100\% if you don't
+  mind taking, say, an hour over each question. But if you get 100\%
+  and take less than a second per question, you're doing very well.
+  So, make the program time you and report at the end how long you
+  took. You'll need to look at Sheet~T (\emph{Time}) for this.
+\item
+  \emph{Adjustable difficulty}. Some people are very good with
+  numbers. They might find being tested on numbers from 1~to~10
+  rather boring. Some people are very bad with numbers, and might
+  prefer easier questions. Obviously, it's not too hard to change
+  the program to use larger or smaller numbers. (Look at the
+  program and make sure you can see how to do that.) It might be
+  more interesting if the program became a little harder every time
+  you get a question right, and a little easier every time you
+  get one wrong. (For this to work well, you'd probably need to
+  ask more than 10 questions.)
+\item
+  \emph{Adjustable length}. You might want a quick test, with only
+  four questions. Or a long one, with 100 questions, to see how long
+  you can stay awake. Make the program begin by asking how many
+  questions you want, and then ask that many.
+
+  To do this, you'll need to know about things called ``ranges''.
+  They're described in Sheet~L (\emph{Loops}).
+\end{enumerate}
+%---------------------------------------------------------------------------
+\section{What next?}
+The next sheet in the series is sheet 3, ``Pretty pictures''.
+It's all about graphics: drawing pictures with Python.
+%---------------------------------------------------------------------------
+\end{document}

@@ -1,0 +1,211 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: E-errors.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{E}{Errors (also called Exceptions)}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+When something goes wrong, Python responds by giving you a rude
+message that might look something like this:
+\begin{program}
+Traceback (innermost last):
+  File "<stdin>", line 1, in ?
+  File "<stdin>", line 1, in f
+TypeError: illegal argument type for built-in operation
+\end{program}
+
+You can usually ignore everything except the last line, although
+the earlier lines may -- if you look at them closely -- give some
+hints about where the trouble happened.
+
+This sheet is a brief guide to some of the commoner things you might
+see on that last line, what they mean and what you might have done
+to provoke them.
+
+\section{Error messages}
+
+\subsection{Attribute Errors, Key Errors, Index Errors}
+
+These have messages starting ``|AttributeError:|'', ``|KeyError:|''
+or ``|IndexError:|''. They all mean something rather similar: you
+were trying to get at a part of an object (one element of a list,
+for instance), but you asked for a non-existent part of the object.
+So, if |x| is the list |[1,2,3]| and you ask for |x[100]| you'll
+get an |IndexError|.
+
+\subsection{Name Errors}
+
+These all have messages starting ``|NameError:|''. They mean
+``I've never heard of this thing''. The ``thing'' Python's
+never heard of is what comes after ``|NameError:|''. This
+might mean that you mistyped something: |primt x| instead of
+|print x|, say. It might also mean that you used a variable
+(i.e., a name) before it was defined. Or that you used a
+\emph{function} before it was |def|ed.
+
+One way this can sometimes happen is if you forget the quotation marks
+around a string.
+
+\subsection{Syntax Errors}
+
+These all have messages starting ``|SyntaxError:|''. What they
+have in common is that you said something Python couldn't even
+begin to make sense of. If someone says ``I apple eat like the to''
+then that's a syntax error!
+
+|SyntaxError: invalid syntax|
+
+This can mean lots of things. Here are some examples of things
+that provoke it.
+
+\begin{program}
++ + +          \C{Add \emph{what} to \emph{what}?}
+1z6            \C{Is it a number? Is it a variable? Is it a mistake?}
+for            \C{After |for| there ought to be some more stuff}
+while if:      \C{|if| isn't a thing that can be true or false!}
+def 1(x):      \C{|1| is a number. You can't use it as a name for a function}
+f([)           \C{The |[| starts a list, but you never finished it}
+if 1==2        \C{You missed out the ``:'' at the end of the line}
+if x=y:        \C{That should say |==|, not |=|}
+\end{program}
+
+One way in which you can get slightly surprising syntax errors is
+if you mess up the indentation (spaces at starts of lines), so if
+you can't find anything else wrong it's worth checking that the
+indentation is right.
+
+|SyntaxError: invalid token|
+
+This usually means that you messed up when typing a string.
+Maybe you missed off the final quotation mark, or tried to
+put apostrophes into a string surrounded by single quotes,
+or something like that.
+
+\subsection{Type Errors}
+
+These all have messages starting ``|TypeError:|''. What they
+have in common is that Python was expecting one kind of object
+(a number, maybe) and you gave it another (a string, or a list,
+perhaps).
+
+A lot of these things can happen in non-obvious ways. For instance,
+if you hand something that isn't a number to one of the graphics
+functions -- |move()|, |draw()| etc -- then you are likely to
+get a |TypeError|.
+
+|TypeError: illegal argument type for built-in operation|
+
+\emph{Means}: You asked Python to do a ``built-in operation''
+(i.e., something like |+|) on the wrong sort of object. For
+instance, you might have asked it to add a number to a string.
+
+|TypeError: len() of unsized object|
+
+You asked for the length of something that doesn't have a length.
+|len()| makes sense for strings, lists and tuples (you don't need
+to know what a ``tuple'' is), and not much else.
+
+|TypeError: not enough arguments; expected 1, got 0|
+
+You tried to use a function, but the function was defined with more
+arguments than you gave it. You probably forgot one!
+
+|TypeError: number coercion failed|
+
+You tried to do something using numbers, but one of the things involved
+wasn't a number. You can get this by doing |4+'ouch'|.
+
+|TypeError: too many arguments; expected 1, got 3|
+
+You tried to use a function, but the function was defined with fewer
+arguments than you gave it.
+
+|TypeError: unsubscriptable object|
+
+You tried to do something like |a[3]| where |a| was the wrong kind
+of thing. This can easily happen if you use a function that expects
+a string and give it something else instead.
+
+\end{document}

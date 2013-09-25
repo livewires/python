@@ -1,0 +1,628 @@
+%!
+%%BoundingBox: 62 647 145 730
+%%Title: robomove
+%%CreationDate: Sat Aug 14 17:32:14 1999
+%%Creator: Tgif-4.1.16 by William Chia-Wei Cheng (william@cs.UCLA.edu)
+
+/tgifdict 52 dict def
+tgifdict begin
+
+/tgifellipsedict 6 dict def
+tgifellipsedict /mtrx matrix put
+
+/TGEL % tgifellipse
+ { tgifellipsedict begin
+      /yrad exch def
+      /xrad exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      xrad yrad scale
+      0 0 1 0 360 arc
+      savematrix setmatrix
+   end
+ } def
+
+/tgifarrowtipdict 8 dict def
+tgifarrowtipdict /mtrx matrix put
+
+/TGAT % tgifarrowtip
+ { tgifarrowtipdict begin
+      /dy exch def
+      /dx exch def
+      /h exch def
+      /w exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      dy dx atan rotate
+      0 0 moveto
+      w neg h lineto
+      w neg h neg lineto
+      savematrix setmatrix
+   end
+ } def
+
+/bd { bind def } bind def
+
+/GS { gsave } bd
+/GR { grestore } bd
+/NP { newpath } bd
+/CP { closepath } bd
+/CHP { charpath } bd
+/CT { curveto } bd
+/L { lineto } bd
+/RL { rlineto } bd
+/M { moveto } bd
+/RM { rmoveto } bd
+/S { stroke } bd
+/F { fill } bd
+/TR { translate } bd
+/RO { rotate } bd
+/SC { scale } bd
+/MU { mul } bd
+/DI { div } bd
+/DU { dup } bd
+/NE { neg } bd
+/AD { add } bd
+/SU { sub } bd
+/PO { pop } bd
+/EX { exch } bd
+/CO { concat } bd
+/CL { clip } bd
+/EC { eoclip } bd
+/EF { eofill } bd
+/IM { image } bd
+/IMM { imagemask } bd
+/ARY { array } bd
+/SG { setgray } bd
+/RG { setrgbcolor } bd
+/SD { setdash } bd
+/W { setlinewidth } bd
+/SM { setmiterlimit } bd
+/SLC { setlinecap } bd
+/SLJ { setlinejoin } bd
+/SH { show } bd
+/FF { findfont } bd
+/MS { makefont setfont } bd
+/AR { arcto 4 {pop} repeat } bd
+/CURP { currentpoint } bd
+/FLAT { flattenpath strokepath clip newpath } bd
+/TGSM { tgiforigctm setmatrix } def
+/TGRM { savematrix setmatrix } def
+
+end
+
+tgifdict begin
+/tgifsavedpage save def
+
+1 SM
+1 W
+
+0 SG
+
+72 0 MU 72 11 MU TR
+72 128 DI 100.000 MU 100 DI DU NE SC
+
+GS
+
+/tgiforigctm matrix currentmatrix def
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      112 160 M
+      256 160 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      112 208 M
+      256 208 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      112 144 M
+      256 144 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      112 224 M
+      256 224 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      160 112 M
+      160 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      208 112 M
+      208 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      144 112 M
+      144 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      224 112 M
+      224 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      112 176 M
+      256 176 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      112 192 M
+      256 192 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      176 112 M
+      176 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      192 112 M
+      192 256 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      184 136 M
+      32 0 atan DU cos 12.000 MU 184 exch SU
+      exch sin 12.000 MU 168 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      184 168 12.000 5.000 0 32 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      184 168 12.000 5.000 0 32 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      232 184 M
+      0 -32 atan DU cos 12.000 MU 200 exch SU
+      exch sin 12.000 MU 184 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      200 184 12.000 5.000 -32 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      200 184 12.000 5.000 -32 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      184 232 M
+      -32 0 atan DU cos 12.000 MU 184 exch SU
+      exch sin 12.000 MU 200 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      184 200 12.000 5.000 0 -32 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      184 200 12.000 5.000 0 -32 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      136 184 M
+      0 32 atan DU cos 12.000 MU 168 exch SU
+      exch sin 12.000 MU 184 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      168 184 12.000 5.000 32 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      168 184 12.000 5.000 32 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      144 144 M
+      24 24 atan DU cos 12.000 MU 168 exch SU
+      exch sin 12.000 MU 168 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      168 168 12.000 5.000 24 24 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      168 168 12.000 5.000 24 24 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      224 144 M
+      24 -24 atan DU cos 12.000 MU 200 exch SU
+      exch sin 12.000 MU 168 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      200 168 12.000 5.000 -24 24 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      200 168 12.000 5.000 -24 24 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      224 224 M
+      -24 -24 atan DU cos 12.000 MU 200 exch SU
+      exch sin 12.000 MU 200 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      200 200 12.000 5.000 -24 -24 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      200 200 12.000 5.000 -24 -24 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      144 224 M
+      -24 24 atan DU cos 12.000 MU 168 exch SU
+      exch sin 12.000 MU 200 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      168 200 12.000 5.000 24 -24 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      168 200 12.000 5.000 24 -24 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      152 128 M
+      16 16 atan DU cos 12.000 MU 168 exch SU
+      exch sin 12.000 MU 144 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      168 144 12.000 5.000 16 16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      168 144 12.000 5.000 16 16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      128 152 M
+      16 16 atan DU cos 12.000 MU 144 exch SU
+      exch sin 12.000 MU 168 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      144 168 12.000 5.000 16 16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      144 168 12.000 5.000 16 16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      216 128 M
+      16 -16 atan DU cos 12.000 MU 200 exch SU
+      exch sin 12.000 MU 144 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      200 144 12.000 5.000 -16 16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      200 144 12.000 5.000 -16 16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      240 152 M
+      16 -16 atan DU cos 12.000 MU 224 exch SU
+      exch sin 12.000 MU 168 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      224 168 12.000 5.000 -16 16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      224 168 12.000 5.000 -16 16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      128 216 M
+      -16 16 atan DU cos 12.000 MU 144 exch SU
+      exch sin 12.000 MU 200 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      144 200 12.000 5.000 16 -16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      144 200 12.000 5.000 16 -16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      152 240 M
+      -16 16 atan DU cos 12.000 MU 168 exch SU
+      exch sin 12.000 MU 224 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      168 224 12.000 5.000 16 -16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      168 224 12.000 5.000 16 -16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      216 240 M
+      -16 -16 atan DU cos 12.000 MU 200 exch SU
+      exch sin 12.000 MU 224 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      200 224 12.000 5.000 -16 -16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      200 224 12.000 5.000 -16 -16 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      240 216 M
+      -16 -16 atan DU cos 12.000 MU 224 exch SU
+      exch sin 12.000 MU 200 exch SU L
+   TGSM
+   3 W
+   S
+   1 W
+GR
+GS
+   TGSM
+   NP
+      224 200 12.000 5.000 -16 -16 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      224 200 12.000 5.000 -16 -16 TGAT
+   CP F
+GR
+
+% OVAL
+0 SG
+NP 184 184 4 4 TGEL F
+GS
+   GS
+      NP 184 184 4 4 TGEL
+      S
+   GR
+GR
+
+GR
+tgifsavedpage restore
+end
+showpage
+
+%MatchingCreationDate: Sat Aug 14 17:32:14 1999

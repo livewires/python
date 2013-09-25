@@ -1,0 +1,158 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage{graphics}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: I-inout.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{I}{Input and output}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+Almost any interesting program has to get information from somewhere,
+and produce some sort of answers somewhere. These are called ``input''
+and ``output''. This sheet describes some of the ways Python handles
+input and output.
+
+Some of the things in here require you to have done
+
+\begin{program}
+from livewires import *
+\end{program}
+
+before they'll work.
+
+\section{Input}
+
+Here are some useful functions that ask the user a question and
+wait for an answer. They all expect that the user will hit
+\key{Enter} after typing the answer.
+
+|read_number()| Expects a number. If you type in something that
+isn't a number, you'll get told to try again.
+
+|read_number('Enter a number: ')| The same, but prints that message
+before waiting for input. It's usually better to use this version
+of |read_number| (perhaps with a different message, like |'How old
+are you?'|) so that the person using your program knows what's
+required.
+
+|read_string()| Expects a string. You don't need to put quotation
+marks around it.
+
+|read_string("What's your name?")| Just like |read_string()|, but
+prints a message first.
+
+|read_yesorno()| Expects |yes|, |no|, |y| or |n|, in either capitals
+or lowercase.
+
+|read_yesorno('Would you like another game?')| Just like
+|read_yesorno()|, but prints a message first.
+
+\section{Output}
+
+The main thing you need to know about output is the |print|
+statement. It can print any object:
+
+\begin{interaction}
+>>> \T{x=[1,2,3]} \C{A list,}
+>>> \T{y='zog'}   \C{a string,}
+>>> \T{z=99}      \C{a number,}
+>>> \T{f=repr}    \C{a function}
+>>> \T{print x,y,z,f}
+[1, 2, 3] zog 99 <built-in function repr>
+\end{interaction}
+
+Notice that it puts spaces between the things it prints.
+
+If you write two |print| statements, one after the other, you'll
+see that the second starts printing on a fresh line rather than
+following on from the first. If that isn't what you want, put a
+comma at the end of the first |print|:
+
+\begin{program}
+print 123,
+print 456
+\end{program}
+
+This will print |123 456| on a single line.
+\end{document}

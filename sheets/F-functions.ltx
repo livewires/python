@@ -1,0 +1,344 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: F-functions.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{F}{Functions}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+A \emph{function} is just a piece of Python program with a name.
+Functions are very important; this sheet tells you all about
+functions in Python.
+
+\section{What's a function?}
+
+A function is like a recipe. It's a set of instructions that
+you can refer to by name. Using functions saves thinking,
+in the same sort of way as using recipes does; if you're
+planning a meal it's much easier if you can just say ``We'll
+have spaghetti bolognaise and apple crumble'' rather than
+having to plan every detail of the meal ``from first principles''.
+
+Functions are useful when you want to do the same thing several
+times: you just define a function once (like writing down a
+recipe) and then use it several times (like making several
+cakes with the same recipe).
+
+They're even more useful when you want to do \emph{almost} the
+same thing several times. You can write a function so that some
+bits of what it does aren't completely specified, and when
+the function is used the details get filled in. This is like
+having a recipe that will make several different kinds of pie,
+I suppose.
+
+Functions are also useful even if you're only going to use
+each function once. They don't make your program any shorter
+then, but they do make it easier to understand. (You'll probably
+just have to take my word for this, until you've written lots
+of programs and discovered it for yourself!)
+
+\section{Defining and using functions}
+
+To define a simple function (that does the same thing every
+time you use it), do something like this:
+
+\begin{program}
+def some_name_or_other():
+  do something
+  do something else
+  blah blah blah
+\end{program}
+
+And to use it, you just say
+
+\begin{program}
+some_name_or_other()
+\end{program}
+
+That will do basically the same as copying everything inside
+the function definition would have done.
+
+\section{Local variables}
+
+Suppose you say
+
+\begin{program}
+def say_boo_twice():
+  boo = 'Boo!!!'
+  print boo, boo
+
+boo = 'boo hoo'
+say_boo_twice()
+\end{program}
+
+Then after doing that, |boo| will still be a name for the string
+|'boo hoo'| -- \emph{not} for |'Boo!!!'|. (So this is something
+that's different from what would happen if you just copied the
+definition of the function instead of ``calling'' the function
+by its name.)
+
+There's a good reason for this. It means that functions can't have
+terribly unexpected effects. Someone reading the second half of that
+little program wouldn't have any reason to suspect that |say_boo_twice()|
+would change the value of |boo|. So, making changes to variables ``local''
+to the function makes programs easier to understand: you don't need to
+know all about what's inside |say_boo_twice()| in order to understand
+a piece of program that uses it.
+
+The variable |boo| inside |say_boo_twice| is called a ``local variable''.
+
+\section{Global variables}
+
+Actually, I lied to you when I said that calling a function can't
+have unexpected effects on variables' values. It can, but you have
+to ask for this to happen. If we change the program above by adding
+one extra line
+
+\begin{program}
+def say_boo_twice():
+  global boo         \C{This is the extra line}
+  boo = 'Boo!!!'
+  print boo, boo
+
+boo = 'boo hoo'
+say_boo_twice()
+\end{program}
+
+then the value of |boo| \emph{will} change. Saying |global boo| means:
+``The variable |boo| is not a local variable.'' (``Global'' is the
+opposite of ``local''.)
+
+You shouldn't need to do this very often, especially because of a
+useful rule: If a function uses a variable \emph{but never changes its
+value}, then the variable is assumed to be global. So your functions
+can \emph{use} variables from the rest of your program without the
+trouble of writing |global|; it's only if you want to change those
+variables that you need to say they're |global|. And, usually, you
+shouldn't need to do that.
+
+\section{Functions with arguments}
+
+The most interesting functions have ``arguments''. An argument is
+a piece of information you give when using a function that makes
+a difference to what the function does. If you have a recipe that
+tells you how to make any number of pancakes (``allow a pint of milk
+for every 12 pancakes'', etc) then the number of pancakes is an
+\emph{argument} to the recipe (though cookery books don't usually
+put it that way!).
+
+Here's how you define a function with arguments.
+
+\begin{program}
+def print_two_things(x,y):
+  print 'x is', x
+  print 'y is', y
+\end{program}
+
+You can probably guess that if you say |print_two_things(1,'boing!')|
+then the computer will say
+
+\begin{program}
+x is 1
+y is boing!
+\end{program}
+
+(The arguments to a function are really just a special kind of local
+variable: inside |print_two_things|, |x| and |y| are local variables
+whose values are given when you say |print_two_things(1,'boing!')|
+or whatever.)
+
+\section{Returning values}
+
+Some functions don't just \emph{do} things; they also produce
+results. For instance, you can write a function that takes two
+arguments and has, as its result, the sum of those two arguments.
+(There's no particular reason why you'd want to do that; it
+just makes a simple example.)
+
+Here's how you do that.
+
+\begin{program}
+def add(a,b):
+  return a+b
+\end{program}
+
+(The magic word |return| means ``the following is the result
+of the function''.) So, you could use this function like so:
+
+\begin{program}
+print '3 plus 4 is', add(3,4)
+\end{program}
+
+which would, unsurprisingly, print |3 plus 4 is 7|.
+
+\section{Optional arguments}
+
+Sometimes the arguments to a function are \emph{usually} the same,
+but occasionally you want to do something different. You can save
+some typing by using ``optional arguments''. Here's how to do that.
+
+\begin{program}
+def do_something(x, y=999):
+  print x,y
+\end{program}
+
+You can now use this in three ways.
+
+\begin{enumerate}
+\item As an ordinary function with two arguments. |do_something(5,6)|
+      does just the same as if the definition had just begun with
+      |def do_something(x,y):| .
+\item As a function with \emph{one} argument. If you don't say what
+      value |y| should get, it will be set to 999 for the duration of
+      the function. So, |do_something(1)| is the same as
+      |do_something(1,999)| .
+\item As a function with one argument, and a ``keyword argument'' which
+      you can call by name. In other words, you can say
+      |do_something(8, y=123)|. Obviously this isn't very
+      useful, but if |do_something| had had \emph{several}
+      optional arguments this lets you give special values
+      to some of them but not others.
+\end{enumerate}
+
+\section{Weird stuff}
+
+There are some slightly strange things you can do with functions.
+For instance, as far as Python is concerned, a function is just
+another object, no more unusual than a number or a string. So you
+can use one function as an argument to another. For instance,
+the built-in function (i.e., a function Python provides for you
+without you having to define it) called |map| works like this:
+
+\begin{interaction}
+>>> \T{def thrice(x):}
+... \T{  return 3*x}
+...                     \C{Just hit \key{Enter} here.}
+>>> \T{map(thrice, [1,2,3,100])}
+[3, 6, 9, 300]
+\end{interaction}
+
+You might find a use for this some day.
+
+\section{Why bother?}
+
+It's possible to write quite complicated programs without
+bothering with functions at all. What does using functions
+gain you?
+
+\begin{itemize}
+\item \emph{Your programs will be clearer}. It's easier to understand
+      a program when it's divided up into manageable portions,
+      and functions are a useful way of doing that.
+\item \emph{You won't have to think so hard}. If your program is
+      divided up sensibly into functions, you can understand what
+      each bit of it does without having to remember the details
+      of every other bit. When you see |update_high_scores()| you'll
+      know what that does, without the effort of reading through the
+      code that actually updates the high scores, so it will be
+      quicker to understand the bit of the program that uses
+      |update_high_scores()|.
+\item \emph{You'll save typing}. If you have to do the same thing
+      (or even roughly the same thing) several times, put it in a
+      function. Then you only have to explain how to do it once.
+\item \emph{Your programs will be more adaptable}. If you find
+      that you need to change something about your program, it's
+      much easier to do that if it's neatly packaged up into
+      functions. Otherwise you'll have nightmares wondering
+      whether you really caught \emph{every} place in the program
+      that deals with the player's score and adjusted it for the
+      new scoring rules.
+\item \emph{You'll be able to re-use more of what you write}.
+      With a bit of luck, you'll find that some functions you
+      write are useful for several things, so that you can use
+      the same function (or a slight variant) in several programs.
+      That saves you the effort of having to write it several
+      times!
+\end{itemize}
+
+You probably won't see the point of lots of the things on this list
+until you've actually written (or read!) some complicated programs.
+But once you've done that, you'll discover that functions are
+essential for keeping large programs under control.
+%-----------------------------------------------------------------------------
+\end{document}

@@ -1,0 +1,278 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: A-lists.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{A}{Lists in Python}
+\author{Rhodri James}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Rhodri James. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%------------------------------------------------------------------
+\section{Spam, spam, spam}
+Lists are collections of things.  You make lists of what you want when
+you go shopping, lists of what's been cooked in the canteen, or lists
+of where your robots are on the screen.  So how do you make a list in
+Python?
+
+\begin{interaction}
+>>> \T{menu = ['spam', 'eggs', 'chips', 'beans']}
+>>> \T{numbers = [1, 2, 3]}
+>>> \T{both = [2, "wombats", "are", 4, "going elsewhere"]}
+>>> \T{empty = []}
+\end{interaction}
+
+Yes, you just stick square brackets around whatever you want to turn
+into a list, even when that something is nothing at all!  That's not
+as silly as it sounds, by the way; everything has to start from
+somewhere, so why not start a list with nothing on it, and add items
+as you think of it.
+
+\begin{note}
+	If you are used to other computer languages, you may already
+	be thinking that Python's lists sound a lot like arrays.
+	Congratulations, they are arrays, mostly.  Keep reading,
+	though; there are some little twists in thinking coming!
+\end{note}
+
+%-----------------------------------------------------------------
+\section{Slice of spam, sir?}
+Now we have this list, how do we find out what's on it?  Python
+conveniently numbers everything on our list for us, and lets us find
+out what each thing is by writing its number in square brackets after
+the list's name.  Try typing the following:
+
+\begin{interaction}
+>>> \T{menu[1]}		\C{First thing on the list?}
+'eggs'			\C{Not 'spam'.  Oops!}
+\end{interaction}
+
+In fact Python numbers items on the list from 0, not from 1, so our
+spam is actually |menu[0]|.  You can also use negative numbers to read
+from the end of the list, rather than the beginning.  The last item on
+the list is numbered |-1|, so this works a little more like you would
+expect!
+
+\begin{interaction}
+>>> \T{menu[-2]}
+'chips'
+>>> \T{numbers[-1]}
+3
+\end{interaction}
+
+Something else you can do with lists is to ``slice'' them, making a
+new list from part of the old one.  Just tell Python where you want it
+to start taking things from and where you want it to stop, with a
+colon |:| in between them.
+
+\begin{interaction}
+>>> \T{menu[1:3]}
+['eggs', 'chips']	\C{Take items 1 & 2, stop at 3.}
+>>> \T{menu[:2]}
+['spam', 'eggs']	\C{Start at the beginning if you don't say.}
+>>> \T{menu[2:]}
+['chips', 'beans']	\C{End at the end if you don't say.}
+>>> \T{menu[:]}
+['spam', 'eggs', 'chips', 'beans']	\C{Silly!}
+\end{interaction}
+
+We can do a few other things with lists that you haven't seen yet.
+
+\begin{interaction}
+>>> \T{menu + numbers}	\C{``Concatenation'' works just like strings.}
+['spam', 'eggs', 'chips', 'beans', 1, 2, 3]
+>>> \T{['x'] * 3}	\C{``Repetition'', again just like strings.}
+[ 'x', 'x', 'x']
+>>> \T{numbers.append(100)}  \C{Add something to the end of the list.}
+>>> \T{print numbers}		     \C{It didn't print out for itself!}
+[1, 2, 3, 100]
+>>> \T{len(numbers)}	\C{How long is my list?}
+4
+>>> \T{numbers.reverse()}    \C{Turn the list upside-down.}
+>>> \T{print numbers}		     \C{Again, it didn't print for itself.}
+[100, 3, 2, 1]
+>>> \T{numbers.sort()}	\C{Sort the list into order.}
+>>> \T{print numbers}
+[1, 2, 3, 100]
+>>> \T{numbers.index(3)}\C{Where in the list is 3?}
+2                       \C{Position 2 (counting from 0)}
+>>> \T{numbers[2]}      \C{Check that position 2 really has the right thing}
+3                       \C{Yes!}
+>>> \T{numbers.index(1234)}\C{What if it's not there?}
+Traceback (innermost last):
+  File "<stdin>", line 1, in ?
+ValueError: list.index(x): x not in list
+\C{Eeeek. So don't do that, then.}
+>>> del numbers[2]      \C{Removing an item from the list}
+>>> numbers
+[1, 2, 100]             \C{It's gone.}
+>>> \T{range(3)}	\C{Making useful lists.}
+[0, 1, 2]
+>>> \T{range(1,4)}	\C{A bit like slicing in reverse.}
+[1, 2, 3]
+\end{interaction}
+
+(Some of those probably look rather weird -- for instance,
+|numbers.sort()|. Don't worry about it!)
+
+The |range| function is very useful for |for| loops --
+see Sheet~L (\emph{Loops}).
+
+There are lots more things that you can do with lists; you'll discover
+some of them on the holiday!
+
+%----------------------------------------------------------------
+\section{Lists of lists of lists of \dots}
+Sometimes one list isn't enough.  Suppose you wanted to keep a list of
+what you had eaten for breakfast; it's easy enough to write
+
+\begin{interaction}
+>>> \T{breakfast = ['coffee', 'corn flakes', 'toast', 'marmalade']}
+\end{interaction}
+
+and carry on.  But suppose you wanted to list what you had eaten for
+breakfast every day, and you don't always eat the same things.  What
+do you do then.
+
+Fortunately, Python is very helpful about this.  Remember that we said
+earlier that lists were just collections of things.  Well, lists are
+things too, so making lists of lists is just like making lists of
+anything else!
+
+\begin{interaction}
+>>> \T{breakfast = [}
+...   \T{'Monday', ['coffee', 'rice crispies'],} \C{Remember the spaces!}
+...   \T{'Tuesday', ['orange juice', 'toast', 'marmalade'],}
+...   \T{'Wednesday', ['coffee'] ]}
+\end{interaction}
+
+(Look, I was in a hurry on Wednesday!)
+
+\begin{note}
+	Some people call lists of lists ``2-dimensional arrays'' or
+	``tables'', because you can write them out in rows and columns
+	(two dimensions!) like a table.  Unlike real tables (and many
+	other computer languages), in Python you don't have to have
+	every row the same length.
+\end{note}
+
+To get at the list items, just add ``indices'' (item numbers) in
+square brackets to the end of the list name.  For a list in a list you
+need two sets of square brackets.  For a list in a list in a list you
+need three, and so on.
+
+\begin{interaction}
+>>> \T{breakfast[3]}
+['orange juice', 'toast', 'marmalade']
+>>> \T{breakfast[3][0]}
+'orange juice'
+\end{interaction}
+
+%----------------------------------------------------------------
+\section{A subtle trap}
+So far, we've talked about lists as collections of things.  Actually,
+it's more accurate to say that Python's lists are really collections
+of ``references'' or ``pointers'' to things.  For most purposes, this
+makes no difference at all, and you can happily ignore us being
+pedants here.  However, when you make lists from variables or other
+lists, then it can become important.
+
+For example, when you replicate a list, you get copies of the same
+\emph{identical} list.  They are all actually the same list, so when
+you change one, you actually change them all.  So the following
+doesn't work quite the way you might have expected:
+
+\begin{interaction}
+>>> \T{wombat = [[1, 2, 3]] * 3}
+>>> \T{print wombat}
+[[1, 2, 3], [1, 2, 3], [1, 2, 3]]
+>>> \T{wombat[0][2] = 4}
+>>> \T{print wombat}
+[[1, 2, 4], [1, 2, 4], [1, 2, 4]]
+\end{interaction}
+
+There are ways around this; the easiest is do something that makes a
+new list from the oldest, such writing the list out separately each
+time or (if you are copying from a variable) taking a slice of the
+whole list.  Maybe typing |numbers[:]| isn't so silly after all!
+
+(If you didn't understand any of that last bit, don't worry.)
+
+%----------------------------------------------------------------
+\end{document}

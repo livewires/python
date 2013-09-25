@@ -1,0 +1,283 @@
+\newif\ifaspdf
+\ifx\pdfoutput\undefined
+\aspdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\aspdftrue
+\fi
+\ifaspdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: R-running.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{R}{Running Python}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+This sheet tells you:
+\begin{itemize}
+\item How to get Python running on your computer;
+\item How to type in commands and have the machine obey them;
+\item How to write programs;
+\item How to save programs to disc, load them again, and run them.
+\end{itemize}
+
+It's pretty much essential reading.
+
+\section{Getting Python started}
+
+\subsection{On a LiveWires `Raspberry Pi' computer}
+
+The standard computers we now use on LiveWires are tiny, cheap devices called 
+Raspberry Pi. These use an `SD-card' for their storage so we can provide a standard
+environment on something the size of a rather thick stamp! If you're using one of
+these, and you have logged in to the ``lwuser'' account, it will present you a 
+little window asking for your name and whether you are doing beginners or games. 
+Answering ``beginners'' will produce a Python shell.
+
+If you've already done the beginners and want to do ``games'', that option will 
+present a command shell (called an `xterm') and an editor with your Python programs
+open.
+
+\subsection{Otherwise...}
+
+On other properly set-up machines, there is probably an icon on the desktop, or on 
+the quick launch bar by the ``Start'' button, that looks like a green snake. Or 
+perhaps a very stylized blue and yellow snake. That icon will launch the Python 
+shell.
+
+If even that fails, for example if you're now at home and have just installed 
+Python and the LiveWires library on a PC\dots
+
+\subsection{On a computer running Windows}
+
+\begin{enumerate}
+\item Click with the mouse button on the ``Start'' button at the bottom left
+      of your screen. That will bring up a menu.
+\item One of the items on the menu should be ``Programs''. Click on that.
+      This will produce another menu to the right of the first one.
+\item One of the items on this menu should be ``Python {\it n.n}''. Click on that,
+      producing yet another level of menu.
+\item One of the things in there should be ``IDLE (Python GUI)''. Click
+      on that.
+\end{enumerate}
+
+\subsection{On a computer running Unix}
+
+On many modern Unix-like machines there is a ``start menu'' like on Windows. If
+not\dots
+
+\begin{enumerate}
+\item Ask a leader to get you a ``shell window''.
+\item Type into it ``|idle|''.
+\end{enumerate}
+
+After doing whichever of these is appropriate for the computer you're
+using, you should have a window labelled ``Python Shell''. This is
+where you should type commands.
+
+\section{Prompts and commands}
+
+When the machine says |>>>| to you, it's ready for you to give it
+orders. At the end of each line you type, remember to press the
+\key{Enter} key (it may not be labelled ``Enter''; if you don't
+know what key I'm talking about, ask a leader).
+
+This |>>>| thing is called a ``prompt''.
+
+Sometimes, when you've typed something in, Python will give you a
+slightly different prompt: |...| instead of |>>>|. This means ``You
+didn't finish typing something in, so I'm waiting for more''.
+Sometimes this is because you started a multi-line statement like
+|for| or |if|. If you have no idea why it's doing it, try the
+following.
+\begin{enumerate}
+\item Hit \key{Enter} without typing anything else.
+      If that doesn't work \dots
+\item Hold down the \key{Control} key, and while you're holding it
+      press the \key{C} key. (More briefly: ``type Control-C''.)
+      This will probably produce a complaining error message, but
+      get you back to an ordinary prompt.
+\end{enumerate}
+
+\section{Programs}
+
+Typing in commands one at a time is a very convenient thing to be
+able to do. But if you're trying to do something more complicated,
+you want to have it stored somewhere so that you can make small
+changes and do it all again.
+
+In your Python shell window, use the mouse to select ``File''
+at the top left of the window. That will produce a menu. Choose
+``New window''.
+
+That ought to create a new window, a bit like the Python shell
+window but labelled ``Untitled'' and with no prompt in it. You can
+enter a Python program into there.
+
+\subsection{Saving a program}
+
+When you have something you want to keep in one of these windows,
+go to the window's ``File'' menu, and this time select ``Save As''.
+That should produce a window labelled ``Save as'' and a lot of funny
+stuff in it. If we've set things up right, most of that window
+should be empty, or contain programs you've already saved. Check
+with a leader the first time you try this, to make sure it's
+set up correctly. (If it isn't, all sorts of Bad Things could
+happen\dots)
+
+Once you've checked that you're in the right place, click in the
+box to the right of the words ``File name'' and type in a name
+for your program. You should type something that ends with |.py|
+like |circles.py| or |game.py| . That makes it easier for the
+computer to know in the future that it's a \textbf{Py}thon program.
+
+There's now a copy of your program on the computer's disc. It will
+stay there even if you turn the computer off.
+
+If you make changes to your program, and want to update the
+saved file (replacing whatever you saved before with what's in
+the program now), choose ``Save'' from the ``File'' menu.
+
+If you want to change the program and \emph{not} wipe out the
+older version of it, choose ``Save As'' again and enter a different
+name.
+
+You can always see what name your program will get when it's
+saved by looking at the title bar of the window.
+
+\subsection{Loading a program}
+
+If you've saved a program and you want to look at it again (to make
+changes, or just to run it), choose ``Open'' from the ``File'' menu.
+You'll get a window very like the ``Save As'' one. Double-click on
+the file you want to load. If you can't find the file you want to
+load, ask a leader.
+
+\subsection{Running a program}
+
+So, you have a program in a window, and you want to try it out
+to see whether it actually works or not. In other words,
+you want to ``run'' the program.
+
+Use the mouse to select the ``Run'' menu (at the top of the window).
+One of the items on that menu is called ``Run module''; click on that.
+That will run your program.
+
+\subsection{Running games}
+
+IDLE (the editor we used on the beginners course) and the games module 
+don't get on very well together. You may find IDLE freezes or crashes 
+when trying to run games. The best way around this is to use a different 
+editor, or to edit your program with IDLE then save the program and run 
+it yourself, outside IDLE.
+
+For the standard LiveWires Raspberry Pi, we have installed an editor 
+called ``SCiTE'', which works well. One nice thing is that you can 
+run your program from there.
+
+To run a program from SCiTE, you simply press the ``F5'' key. A small 
+window opens with the progress so you will see any errors or text 
+output your program produces.
+
+To run the program yourself, under Windows you can find the file you've
+just saved in Explorer and double click on the icon of the file. Under
+Unix, type |python mygame.py| replacing |mygame.py| with the name of
+your saved file.
+
+There's a problem with running this way from Windows. If your program
+crashses and gives an error message, you won't see it as Windows closes
+the Python window as soon as the program has finished. If you want to
+see the error message, do the following:
+
+\begin{enumerate}
+\item Click with the mouse button on the ``Start'' button at the bottom left
+      of your screen. That will bring up a menu.
+\item One of the items on the menu should be ``Programs''. Click on that.
+      This will produce another menu to the right of the first one.
+\item One of the items on this menu should be ``MS DOS prompt''. Click on that.
+      A box should appear on the screen with something like |C:\\windows|
+      in it.
+\item Type |cd|, a space, and the name of the directory containing your
+saved file. The prompt on the left side of the screen should change to
+this name.
+\item Type |python mygame.py|, replacing |mygame.py| with the name of your 
+saved file. On some machines you may need to type |c:\\python24\\python mygame.py| or similar.
+\end{enumerate}
+
+
+
+%-----------------------------------------------------------------------------
+\end{document}

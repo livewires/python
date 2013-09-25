@@ -1,0 +1,168 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: S-strings.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{S}{Strings}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+A ``string'' is a piece of text. Strings are made up of ``characters'';
+a character is a single letter, digit, symbol or whatever. Python provides
+lots of things for doing with strings; this sheet tells you about some
+of them.
+
+\section{Entering strings}
+
+You can put a string into your program by putting it inside
+quotation marks. Single quotes and double quotes are both
+fine, but you must use the same sort of quotation mark at
+the start and at the end!
+
+In these worksheets, I've usually used single quotes. If you
+prefer double quotes, that's fine. If you want a string that
+contains a single-quote character (which also serves as the
+apostrophe), you should surround it with double quotes:
+|"I'm bored"| rather than |'I'm bored'| (which won't work
+at all: can you see why?)
+
+\section{Strings as sequences}
+
+There are some things that work on lists as well as on strings.
+They work because both lists and strings are ``sequences''. Here's
+a very brief summary. (You might want to compare with with
+Sheet~A (\emph{Lists}).)
+
+\begin{interaction}
+>>> \T{thing = 'I am the walrus'}  \C{A string to work with}
+>>> \T{gloop = "Another string"}   \C{And another one}
+>>> \T{thing+gloop}                \C{String concatenation \dots}
+'I am the walrusAnother string'    \C{\quad works as you might guess}
+>>> \T{2*thing}                    \C{String replication \dots}
+'I am the walrusI am the walrus'   \C{\quad also does what you'd think}
+>>> \T{thing[0]}                   \C{We start counting at 0}
+'I'                                \C{\quad so we get the first character}
+>>> \T{thing[1:5}                  \C{Characters 1 (inclusive) to 5 (exclusive)}
+' am '                             \C{\quad so 4 characters in all}
+>>> \T{len(thing)}                 \C{How many characters?}
+15                                 \C{That many!}
+\end{interaction}
+
+\section{The `string' module}
+
+If you say |import string| then after that you can use a whole lot of
+functions specially for working on strings. Here are a few useful ones:
+
+\begin{interaction}
+>>> \T{import string}              \C{Make this stuff available}
+>>> \T{string.capitalize('walrus')}
+'Walrus'
+>>> \T{string.lower('WalRUs')}
+'walrus'
+>>> \T{string.upper('WalRUs')}
+'WALRUS'
+>>> \T{string.split('I am the walrus')}
+['I', 'am', 'the', 'walrus']
+>>> \T{string.replace('I am a twit', 'a', 'the')}
+'I them the twit'
+\end{interaction}
+
+(The names, with those dots in, are a bit strange. You might
+like to look at Sheet~M (\emph{Modules}).)
+
+There are a \emph{lot} more things you can do with strings if you
+want to. If there's something you can't see how to do, ask a leader.
+
+\section{Other things}
+
+It's possible to convert just about any object into a string
+that represents it. So, for instance, 1234 would become the
+string |'1234'|. The function that does this is called |repr|
+(short for ``representation''). So, whatever |x| is, |repr(x)|
+is a string describing it.
+
+If |repr(x)| is too clumsy or too much effort to type, you can
+instead say |`x`| -- notice that those are a different kind of
+quotation mark: |`| isn't the same as |'| !
+
+\end{document}

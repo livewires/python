@@ -1,0 +1,158 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: T-time.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{T}{Time}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+Time is important. So you might want to know how long someone
+has been using your program, or what time of day it is; you
+might want to make something happen exactly 10 times per second;
+in any case, you need to know what Python can do about time.
+This sheet tells you about that.
+
+\section{The `time' module}
+
+If you say |import time| then after that you can use a number
+of functions for working with times. If you're curious about
+what ``|import|'' means, see Sheet~M (\emph{Modules}).
+
+\subsection{Telling the time}
+
+|time.time()| gives the number of seconds since the very beginning
+of the year 1970. You may think this is a strange way to represent
+time. You'd be right too, but fortunately Python provides ways of
+turning this sort of time into something more useful.
+
+|time.localtime(t)|, if |t| is a time value produced by |time.time()|,
+is an object made up of 9 numbers. Here's what it produced for me
+using the time right now:
+
+\begin{interaction}
+>>> \T{time.localtime(time.time())}
+(1999, 8, 10, 17, 21, 16, 1, 222, 1)
+\end{interaction}
+
+Those 9 numbers are, in order:
+\begin{tabular}{rl}
+0 & the year \\
+1 & the month of the year (January is 1, December is 12) \\
+2 & The day of the month \\
+3 & The hour of the day (in the 24-hour clock: so |17| means 5pm \\
+4 & The minute of the hour \\
+5 & The number of seconds past the minute \\
+6 & The day of the \emph{week} (Monday is 0, Sunday is 6) \\
+7 & The day number within the year (1 January is 1) \\
+8 & 1 if ``daylight saving time'' is in force, 0 otherwise
+\end{tabular}
+
+So, you can use this to make a simple clock.
+
+\begin{program}
+import time
+while 1:
+  t = time.localtime(time.time())
+  print 'The time is', t[3], ':', t[4], 'and', t[5], 'sec'.
+  time.sleep(1)   \C{I'll explain this in a moment.}
+\end{program}
+
+\subsection{Describing the time}
+
+There's a complicated function called |time.strftime| which
+lets you print times more neatly. If you want to know the
+gruesome details, ask a leader. Here's a little example.
+
+\begin{interaction}
+>>> \T{import time}
+>>> \T{time.strftime('%A, %d %B %Y, at %I:%M%p', time.localtime(time.time()))}
+'Tuesday, 10 August 1999, at 05:41PM'
+\end{interaction}
+
+\subsection{Waiting}
+
+|time.sleep(0.1234)| does absolutely nothing for 0.1234 seconds
+(or as close to that as the machine can manage).
+%-----------------------------------------------------------------------------
+\end{document}

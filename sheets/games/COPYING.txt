@@ -1,0 +1,95 @@
+THE LIVEWIRES DOCUMENTATION LICENCE
+
+COPYRIGHT NOTICE:
+
+The copyright notices for each document in this distribution
+are as follows:
+
+Game: Asteroids
+    Copyright Paul Wright. All rights reserved.
+
+Game: Chain Reaction
+    Copyright Rhodri James. All rights reserved.
+
+Game: Draughts
+    Copyright Rhodri James. All rights reserved.
+
+Game: Minesweeper
+    Copyright Rhodri James. All rights reserved.
+
+Game: Othello
+    Copyright Rhodri James. All rights reserved.
+
+Game: Pacman
+    Copyright Neil Turton. All rights reserved.
+
+Game: Scramfender
+    Copyright Rhodri James. All rights reserved.
+
+Game: Snake
+    Copyright Rhodri James. All rights reserved.
+
+Game: Space War
+    Copyright Paul Wright. All rights reserved.
+
+Game: Tetris
+    Copyright Rhodri James. All rights reserved.
+
+Game: The Fourteen-Fifteen Puzzle
+    Copyright Rhodri James. All rights reserved.
+
+Game: The Robots Are Coming
+    Copyright Rhodri James. All rights reserved.
+
+The documents referred to above are each subject to the
+conditions and disclaimer below.
+
+CONDITIONS:
+
+A "Transparent" form of a document means a machine-readable form,
+represented in a format whose specification is available to the general
+public, whose contents can be viewed and edited directly and
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or for
+automatic translation to a variety of formats suitable for input to text
+formatters. A copy made in an otherwise Transparent file format whose
+markup has been designed to thwart or discourage subsequent modification
+by readers is not Transparent. A form that is not Transparent is
+called "Opaque". 
+
+Examples of Transparent formats include LaTeX source and plain text.
+Examples of Opaque formats include PDF and Postscript.  Paper copies of
+a document are considered to be Opaque.
+
+Redistribution and use of this document in Transparent and Opaque
+forms, with or without modification, are permitted provided that the
+following conditions are met: 
+
+- Redistributions of this document in Transparent form must retain
+  the above copyright notice, this list of conditions and the following
+  disclaimer. 
+
+- Redistributions of this document in Opaque form must reproduce the
+  above copyright notice, this list of conditions and the following
+  disclaimer in the documentation and/or other materials provided with
+  the distribution, and reproduce the above copyright notice in the
+  Opaque document itself.
+
+- Neither the name of Scripture Union, nor LiveWires nor the names of
+  its contributors may be used to endorse or promote products derived
+  from this document without specific prior written permission. 
+
+DISCLAIMER:
+
+THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 

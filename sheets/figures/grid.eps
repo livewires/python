@@ -1,0 +1,1658 @@
+%!
+%%BoundingBox: 65 360 397 756
+%%Title: grid
+%%CreationDate: Fri Aug 13 17:22:00 1999
+%%Creator: Tgif-4.1.16 by William Chia-Wei Cheng (william@cs.UCLA.edu)
+
+/tgifdict 55 dict def
+tgifdict begin
+
+/tgifellipsedict 6 dict def
+tgifellipsedict /mtrx matrix put
+
+/TGEL % tgifellipse
+ { tgifellipsedict begin
+      /yrad exch def
+      /xrad exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      xrad yrad scale
+      0 0 1 0 360 arc
+      savematrix setmatrix
+   end
+ } def
+
+/tgifarrowtipdict 8 dict def
+tgifarrowtipdict /mtrx matrix put
+
+/TGAT % tgifarrowtip
+ { tgifarrowtipdict begin
+      /dy exch def
+      /dx exch def
+      /h exch def
+      /w exch def
+      /y exch def
+      /x exch def
+      /savematrix mtrx currentmatrix def
+      x y translate
+      dy dx atan rotate
+      0 0 moveto
+      w neg h lineto
+      w neg h neg lineto
+      savematrix setmatrix
+   end
+ } def
+
+/TGMAX
+ { exch dup 3 1 roll exch dup 3 1 roll gt { pop } { exch pop } ifelse
+ } def
+/TGMIN
+ { exch dup 3 1 roll exch dup 3 1 roll lt { pop } { exch pop } ifelse
+ } def
+/TGSW { stringwidth pop } def
+
+/bd { bind def } bind def
+
+/GS { gsave } bd
+/GR { grestore } bd
+/NP { newpath } bd
+/CP { closepath } bd
+/CHP { charpath } bd
+/CT { curveto } bd
+/L { lineto } bd
+/RL { rlineto } bd
+/M { moveto } bd
+/RM { rmoveto } bd
+/S { stroke } bd
+/F { fill } bd
+/TR { translate } bd
+/RO { rotate } bd
+/SC { scale } bd
+/MU { mul } bd
+/DI { div } bd
+/DU { dup } bd
+/NE { neg } bd
+/AD { add } bd
+/SU { sub } bd
+/PO { pop } bd
+/EX { exch } bd
+/CO { concat } bd
+/CL { clip } bd
+/EC { eoclip } bd
+/EF { eofill } bd
+/IM { image } bd
+/IMM { imagemask } bd
+/ARY { array } bd
+/SG { setgray } bd
+/RG { setrgbcolor } bd
+/SD { setdash } bd
+/W { setlinewidth } bd
+/SM { setmiterlimit } bd
+/SLC { setlinecap } bd
+/SLJ { setlinejoin } bd
+/SH { show } bd
+/FF { findfont } bd
+/MS { makefont setfont } bd
+/AR { arcto 4 {pop} repeat } bd
+/CURP { currentpoint } bd
+/FLAT { flattenpath strokepath clip newpath } bd
+/TGSM { tgiforigctm setmatrix } def
+/TGRM { savematrix setmatrix } def
+
+end
+
+tgifdict begin
+/tgifsavedpage save def
+
+1 SM
+1 W
+
+0 SG
+
+72 0 MU 72 11 MU TR
+72 128 DI 100.000 MU 100 DI DU NE SC
+
+GS
+
+/tgiforigctm matrix currentmatrix def
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 376 664 M 456 664 L 456 744 L 376 744 L CP
+      2 W
+      S
+   GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 672 M
+      456 672 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 680 M
+      456 680 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 688 M
+      456 688 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 696 M
+      456 696 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 704 M
+      456 704 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 712 M
+      456 712 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 720 M
+      456 720 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 728 M
+      456 728 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      376 736 M
+      456 736 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   408 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   408 NE 704 NE TR
+GS
+   NP
+      408 704 M
+      488 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   400 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   400 NE 704 NE TR
+GS
+   NP
+      400 704 M
+      480 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   392 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   392 NE 704 NE TR
+GS
+   NP
+      392 704 M
+      472 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   384 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   384 NE 704 NE TR
+GS
+   NP
+      384 704 M
+      464 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   376 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   376 NE 704 NE TR
+GS
+   NP
+      376 704 M
+      456 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   368 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   368 NE 704 NE TR
+GS
+   NP
+      368 704 M
+      448 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   360 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   360 NE 704 NE TR
+GS
+   NP
+      360 704 M
+      440 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   352 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   352 NE 704 NE TR
+GS
+   NP
+      352 704 M
+      432 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   344 704 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   344 NE 704 NE TR
+GS
+   NP
+      344 704 M
+      424 704 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% BOX
+0 SG
+GS
+   10 SM
+   GS
+      NP 192 128 M 704 128 L 704 512 L 192 512 L CP
+      2 W
+      S
+   GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      208 512 M
+      208 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      224 512 M
+      224 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      240 512 M
+      240 400 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 496 M
+      336 496 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 480 M
+      320 480 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 464 M
+      304 464 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      256 512 M
+      256 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 448 M
+      288 448 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 432 M
+      272 432 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 416 M
+      240 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      272 512 M
+      272 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      288 512 M
+      288 464 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      304 512 M
+      304 480 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 400 M
+      224 400 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      320 512 M
+      320 480 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      192 384 M
+      224 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      688 512 M
+      688 368 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      672 512 M
+      672 368 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      656 512 M
+      656 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      640 512 M
+      640 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      624 512 M
+      624 400 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      608 512 M
+      608 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      592 512 M
+      592 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      576 512 M
+      576 432 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 496 M
+      560 496 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 480 M
+      560 480 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 464 M
+      576 464 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 448 M
+      576 448 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 432 M
+      592 432 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 416 M
+      608 416 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 400 M
+      608 400 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   NP
+      704 384 M
+      624 384 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   320 144 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   320 NE 144 NE TR
+GS
+   NP
+      320 272 M
+      320 144 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   320 160 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   320 NE 160 NE TR
+GS
+   NP
+      320 288 M
+      320 160 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   304 176 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   304 NE 176 NE TR
+GS
+   NP
+      304 288 M
+      304 176 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   136 200 TR
+   [0.000 1.000 -1.000 0.000 72 -72] CO
+   136 NE 200 NE TR
+GS
+   NP
+      136 200 M
+      280 200 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   160 192 TR
+   [0.000 1.000 -1.000 0.000 64 -64] CO
+   160 NE 192 NE TR
+GS
+   NP
+      160 192 M
+      288 192 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   184 184 TR
+   [0.000 1.000 -1.000 0.000 56 -56] CO
+   184 NE 184 NE TR
+GS
+   NP
+      184 184 M
+      296 184 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   288 192 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   288 NE 192 NE TR
+GS
+   NP
+      288 288 M
+      288 192 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   208 176 TR
+   [0.000 1.000 -1.000 0.000 48 -48] CO
+   208 NE 176 NE TR
+GS
+   NP
+      208 176 M
+      304 176 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   232 168 TR
+   [0.000 1.000 -1.000 0.000 40 -40] CO
+   232 NE 168 NE TR
+GS
+   NP
+      232 168 M
+      312 168 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   264 152 TR
+   [0.000 1.000 -1.000 0.000 24 -24] CO
+   264 NE 152 NE TR
+GS
+   NP
+      264 152 M
+      312 152 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   288 208 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   288 NE 208 NE TR
+GS
+   NP
+      288 304 M
+      288 208 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   240 224 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   240 NE 224 NE TR
+GS
+   NP
+      240 272 M
+      240 224 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   224 240 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   224 NE 240 NE TR
+GS
+   NP
+      224 272 M
+      224 240 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   288 144 TR
+   [0.000 1.000 -1.000 0.000 16 -16] CO
+   288 NE 144 NE TR
+GS
+   NP
+      288 144 M
+      320 144 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   224 256 TR
+   [0.000 1.000 -1.000 0.000 0 0] CO
+   224 NE 256 NE TR
+GS
+   NP
+      224 288 M
+      224 256 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   304 144 TR
+   [0.000 1.000 -1.000 0.000 16 -16] CO
+   304 NE 144 NE TR
+GS
+   NP
+      304 144 M
+      336 144 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 144 TR
+   [-0.000 -1.000 1.000 -0.000 -144 0] CO
+   704 NE 144 NE TR
+GS
+   NP
+      704 288 M
+      704 144 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 160 TR
+   [-0.000 -1.000 1.000 -0.000 -144 0] CO
+   704 NE 160 NE TR
+GS
+   NP
+      704 304 M
+      704 160 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 176 TR
+   [-0.000 -1.000 1.000 -0.000 -128 0] CO
+   704 NE 176 NE TR
+GS
+   NP
+      704 304 M
+      704 176 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 192 TR
+   [-0.000 -1.000 1.000 -0.000 -128 0] CO
+   704 NE 192 NE TR
+GS
+   NP
+      704 320 M
+      704 192 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 208 TR
+   [-0.000 -1.000 1.000 -0.000 -112 0] CO
+   704 NE 208 NE TR
+GS
+   NP
+      704 320 M
+      704 208 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 224 TR
+   [-0.000 -1.000 1.000 -0.000 -96 0] CO
+   704 NE 224 NE TR
+GS
+   NP
+      704 320 M
+      704 224 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 240 TR
+   [-0.000 -1.000 1.000 -0.000 -96 0] CO
+   704 NE 240 NE TR
+GS
+   NP
+      704 336 M
+      704 240 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   704 256 TR
+   [-0.000 -1.000 1.000 -0.000 -80 0] CO
+   704 NE 256 NE TR
+GS
+   NP
+      704 336 M
+      704 256 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   616 344 TR
+   [-0.000 -1.000 1.000 -0.000 72 -72] CO
+   616 NE 344 NE TR
+GS
+   NP
+      760 344 M
+      616 344 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   600 344 TR
+   [-0.000 -1.000 1.000 -0.000 72 -72] CO
+   600 NE 344 NE TR
+GS
+   NP
+      744 344 M
+      600 344 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   592 320 TR
+   [-0.000 -1.000 1.000 -0.000 64 -64] CO
+   592 NE 320 NE TR
+GS
+   NP
+      720 320 M
+      592 320 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   576 320 TR
+   [-0.000 -1.000 1.000 -0.000 64 -64] CO
+   576 NE 320 NE TR
+GS
+   NP
+      704 320 M
+      576 320 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   568 296 TR
+   [-0.000 -1.000 1.000 -0.000 56 -56] CO
+   568 NE 296 NE TR
+GS
+   NP
+      680 296 M
+      568 296 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   560 272 TR
+   [-0.000 -1.000 1.000 -0.000 48 -48] CO
+   560 NE 272 NE TR
+GS
+   NP
+      656 272 M
+      560 272 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   544 272 TR
+   [-0.000 -1.000 1.000 -0.000 48 -48] CO
+   544 NE 272 NE TR
+GS
+   NP
+      640 272 M
+      544 272 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% POLY/OPEN-SPLINE
+0.745 0.745 0.745 RG
+GS
+   536 248 TR
+   [-0.000 -1.000 1.000 -0.000 40 -40] CO
+   536 NE 248 NE TR
+GS
+   NP
+      616 248 M
+      536 248 L
+   TGSM
+   1 W
+   S
+GR
+GR
+
+% OVAL
+0 SG
+GS
+   GS
+      NP 248 472 12 12 TGEL
+      S
+   GR
+GR
+
+% OVAL
+0 SG
+GS
+   GS
+      NP 416 704 56 60 TGEL
+      S
+   GR
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      236 476 M
+      364 728 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      260 468 M
+      460 664 L
+   TGSM
+   1 W
+   S
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      192 96 M
+      0 512 atan DU cos 8.000 MU exch sin 8.000 MU RM
+      0 512 atan DU cos 8.000 MU 704 exch SU
+      exch sin 8.000 MU 96 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      192 96 8.000 3.000 -512 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      192 96 8.000 3.000 -512 0 TGAT
+   CP F
+GR
+GS
+   TGSM
+   NP
+      704 96 8.000 3.000 512 0 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      704 96 8.000 3.000 512 0 TGAT
+   CP F
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      160 128 M
+      384 0 atan DU cos 8.000 MU exch sin 8.000 MU RM
+      384 0 atan DU cos 8.000 MU 160 exch SU
+      exch sin 8.000 MU 512 exch SU L
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      160 128 8.000 3.000 0 -384 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      160 128 8.000 3.000 0 -384 TGAT
+   CP F
+GR
+GS
+   TGSM
+   NP
+      160 512 8.000 3.000 0 384 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      160 512 8.000 3.000 0 384 TGAT
+   CP F
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      384 80 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (640 pixels = 64 squares) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+GS
+   72 446 TR
+   [-0.000 -1.000 1.000 -0.000 48 -66] CO
+   72 NE 446 NE TR
+GR
+   GS
+      1 W
+      72 446 TR
+      [-0.000 -1.000 1.000 -0.000 48 -66] CO
+      0 14 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (480 pixels = 48 squares) SH
+      GR
+   GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      216 576 M
+      216.00 549.33 226.67 514.67
+      -64 32 atan DU cos 8.000 MU 248 exch SU
+      exch sin 8.000 MU 472 exch SU CT
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      248 472 8.000 3.000 32 -64 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      248 472 8.000 3.000 32 -64 TGAT
+   CP F
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      184 592 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (square \(3,2\)) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      200 528 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (0) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      216 528 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (1) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      232 528 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (2) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      248 528 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (3) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      176 512 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (0) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      176 496 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (1) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      176 480 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (2) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      176 464 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (3) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      464 656 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (10 by 10 pixels per square) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      376 760 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (0) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      448 760 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (9) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      360 744 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (0) SH
+      GR
+   GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      360 672 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (9) SH
+      GR
+   GR
+
+% BOX
+0.745 0.745 0.745 RG
+NP 240 464 M 256 464 L 256 480 L 240 480 L CP F
+GS
+   10 SM
+   GS
+      NP 240 464 M 256 464 L 256 480 L 240 480 L CP
+      S
+   GR
+GR
+
+% BOX
+0.745 0.745 0.745 RG
+NP 400 680 M 408 680 L 408 688 L 400 688 L CP F
+GS
+   10 SM
+   GS
+      NP 400 680 M 408 680 L 408 688 L 400 688 L CP
+      S
+   GR
+GR
+
+% POLY/OPEN-SPLINE
+0 SG
+GS
+   NP
+      512 728 M
+      458.67 722.67 434.67 716.00 440.00 708.00 CT
+      445.33 700.00 434.67 692.00
+      -12 -40 atan DU cos 8.000 MU 408 exch SU
+      exch sin 8.000 MU 684 exch SU CT
+   TGSM
+   1 W
+   S
+GR
+GS
+   TGSM
+   NP
+      408 684 8.000 3.000 -40 -12 TGAT
+   1 SG CP F
+   0 SG
+   NP
+      408 684 8.000 3.000 -40 -12 TGAT
+   CP F
+GR
+
+% TEXT
+NP
+0 SG
+   GS
+      1 W
+      520 728 M
+      GS
+            0 SG
+            /Times-Roman FF [14 0 0 -14 0 0] MS
+            (pixel \(33,27\)) SH
+      GR
+   GR
+
+GR
+tgifsavedpage restore
+end
+showpage
+
+%MatchingCreationDate: Fri Aug 13 17:22:00 1999

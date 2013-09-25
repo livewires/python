@@ -1,0 +1,22 @@
+Release 1, 2000-10-04:
+----------------------
+
+The first release.
+
+Release 1.1, 2001-05-14:
+------------------------
+
+Changed to Times fonts for space saving on PDFs. 
+
+Release 1.2, 2001-11-01:
+------------------------
+
+Update for use of Pygame for games worksheets.
+
+Release 1.3, 2009-07-01:
+------------------------
+
+Sundry small fixes and additional games.
+
+$Id: CHANGES.txt,v 1.5 2001/10/28 21:16:00 paul Exp paul $
+

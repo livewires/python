@@ -1,0 +1,188 @@
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+\ifpdf
+	\documentclass[pdftex]{wsheet}
+\else
+	\documentclass{wsheet}
+\fi
+\usepackage{rcs}
+\usepackage[colorlinks]{hyperref}
+\RCS $Id: M-modules.ltx 239 2010-07-23 21:41:31Z RobPearce $
+\RCS $Date: 2010-07-23 22:41:31 +0100 (Fri, 23 Jul 2010) $
+\RCS $Revision: 239 $
+\sheet{M}{Modules}
+\author{Gareth McCaughan}
+\date{Revision \RCSRevision, \RCSDate}
+\begin{document}
+
+\section{Credits}
+
+% COPYRIGHT NOTICE:
+\copyright{} Gareth McCaughan. All rights reserved.
+% 
+% CONDITIONS:
+% 
+% A "Transparent" form of a document means a machine-readable form,
+% represented in a format whose specification is available to the general
+% public, whose contents can be viewed and edited directly and
+% straightforwardly with generic text editors or (for images composed of
+% pixels) generic paint programs or (for drawings) some widely available
+% drawing editor, and that is suitable for input to text formatters or for
+% automatic translation to a variety of formats suitable for input to text
+% formatters. A copy made in an otherwise Transparent file format whose
+% markup has been designed to thwart or discourage subsequent modification
+% by readers is not Transparent. A form that is not Transparent is
+% called "Opaque". 
+% 
+% Examples of Transparent formats include LaTeX source and plain text.
+% Examples of Opaque formats include PDF and Postscript.  Paper copies of
+% a document are considered to be Opaque.
+% 
+% Redistribution and use of this document in Transparent and Opaque
+% forms, with or without modification, are permitted provided that the
+% following conditions are met: 
+% 
+% - Redistributions of this document in Transparent form must retain
+%   the above copyright notice, this list of conditions and the following
+%   disclaimer. 
+% 
+% - Redistributions of this document in Opaque form must reproduce the
+%   above copyright notice, this list of conditions and the following
+%   disclaimer in the documentation and/or other materials provided with
+%   the distribution, and reproduce the above copyright notice in the
+%   Opaque document itself.
+% 
+% - Neither the name of Scripture Union, nor LiveWires nor the names of
+%   its contributors may be used to endorse or promote products derived
+%   from this document without specific prior written permission. 
+% 
+% DISCLAIMER:
+% 
+% THIS DOCUMENT IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS ``AS
+% IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+% THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+% PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS,
+% CONTRIBUTORS OR SCRIPTURE UNION BE LIABLE FOR ANY DIRECT, INDIRECT,
+% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+% NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+% DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+% THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+% (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+% THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+
+This document is part of the LiveWires Python Course. You may
+modify and/or distribute this document as long as you comply with the
+LiveWires Documentation Licence: you should have received a copy of the
+licence when you received this document.
+
+For the \LaTeX{} source of this sheet, and for more information on
+LiveWires and on this course, see the LiveWires web site at
+\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+
+%-----------------------------------------------------------------------------
+\section{Introduction}
+
+Python provides a \emph{huge} number of useful functions and
+other such things. (These worksheets describe, perhaps, about 1\%
+of what there is. Maybe 2\%.) So many different functions might
+be confusing, so they're parcelled up into things called
+``modules''.
+
+\section{Importing modules}
+
+You can think of a module as a collection of useful things.
+(The actual definition is a bit complicated, and you really don't
+need it.) To make the Useful Things in a module available to you,
+you have to ``import'' the module. So:
+
+\begin{program}
+import stuff
+\end{program}
+
+makes the things in the module |stuff| available for your program
+to use. Those things will have names that look like |stuff.thingy|
+so that there's no danger of two things in different modules
+``colliding'' by having the same name. It's a bit like with
+telephone numbers: there are probably lots of people whose
+phone number is 321987; that's why there are ``dialling codes''
+like 01223 (for Cambridge). The module name is like a dialling
+code.
+
+\section{Living dangerously}
+
+It can get very tiresome, having to type a module name in
+over and over again. So Python gives you a way to get at
+the things in a module more directly. If you say
+
+\begin{program}
+from stuff import blarp,weeble
+\end{program}
+
+then the things that would have been called |stuff.blarp| and
+|stuff.weeble| are available under the shorter names |blarp|
+and |weeble|. (This doesn't import anything else from the
+module, under any name.)
+
+It might be worth doing this if you find yourself using some
+bits of a module a lot.
+
+\section{Living even more dangerously}
+
+What if you use \emph{lots} of things from a module a lot?
+Then you can say
+
+\begin{program}
+from stuff import *
+\end{program}
+
+which has the effect of making \emph{everything} (well, almost
+everything) in module |stuff| available without needing to
+type |stuff.| at the start of any of the names. Doing this
+is usually a Bad Idea; there might be two modules containing
+different things with the same name, and then all kinds of
+bad things could happen.
+
+There's just one case in which we recomend that you do this:
+the special LiveWires module we've written to make your life
+easier. Any program that uses anything from it should begin
+with |from livewires import *| . (The main reason for
+that is that we wanted you to be able to use the things in
+the module without needing to understand what modules are
+and why they result in names like |stuff.thingy| \dots)
+
+\section{Finding out what's in a module}
+
+After doing |import stuff|, you can get a list of all the
+names of things in |stuff| by typing |dir(stuff)|. This
+probably won't usually be very helpful, but if you're
+feeling like exploring \dots
+
+\section{Some useful modules}
+
+As I said at the start, there are a lot of modules out there.
+There are more than 170 modules that come as standard with
+Python! When you're feeling brave, you might like to find out
+about some of them. Here's a very brief list of things it's
+worth knowing about. Look them up in the official Python
+documentation, or investigate for yourself. (I recommend
+looking them up.) To understand some of the documentation,
+you may need to know about ``classes'' and ``objects'':
+see Sheet~O (\emph{Objects and Classes}).
+
+\begin{tabular}{ll}
+|sys|    & Mostly some slightly useful variables. \\
+|string| & Things for strings. \\
+|re|     & ``Regular expressions'': a complicated but powerful way
+           of doing more advanced things with strings. \\
+|math|   & Mathematical functions and constants. \\
+|random| & Random numbers. \\
+|time|   & Time and date. \\
+\end{tabular}
+
+%-----------------------------------------------------------------------------
+\end{document}
