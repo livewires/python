@@ -3,6 +3,9 @@
 Release 1.3
 
 
+**Download the worksheets [here](https://github.com/livewires/python/releases)**
+
+
 # INTRODUCTION #
 
 This is the LiveWires Python Course, release 1.3. It consists of a
