@@ -5,6 +5,8 @@ The LiveWires Python Course is intended to teach the [Python](http://www.python.
 * Get the [worksheets](sheets/) to read and learn python
 * Get the [package](module/) (you'll need this to run the worksheet code)
 
+You can find the worksheets and the package on the [downloads page](https://github.com/livewires/python/releases).
+
 The current LiveWires Python Course release is release 1.2. The current LiveWires package release is release 2.1.
 
 ## About the course ##
