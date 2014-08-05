@@ -62,11 +62,14 @@ S: Strings
 T: Time
     Copyright Gareth McCaughan. All rights reserved.
 
+U: Using The LiveWires Modules
+    Copyright Rhodri James. All rights reserved.
+
 V: Overview of the course
     Copyright Gareth McCaughan. All rights reserved.
 
 W: The LiveWires module
-    Copyright Gareth McCaughan and Paul Wright. All rights reserved.
+    Copyright Gareth McCaughan, Paul Wright and Rhodri James. All rights reserved.
 
 The documents referred to above are each subject to the
 conditions and disclaimer below.
