@@ -67,7 +67,7 @@ all: $(TARGETS) games
 
 clean:	force_look
 	cd games; $(MAKE) clean
-	rm $(TARGETS) *.aux *.log *.out
+	rm -f $(TARGETS) *.aux *.log *.out
 
 games:	force_look
 	cd games; $(MAKE) 

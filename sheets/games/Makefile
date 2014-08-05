@@ -25,7 +25,7 @@ snake.ltx tetris.ltx
 all: $(TARGETS) COPYING.txt
 
 clean: 
-	rm $(TARGETS) *.aux *.log *.out
+	rm -f $(TARGETS) *.aux *.log *.out
 
 COPYING.txt: ../COPYING.txt.src $(SOURCES) ../mkcopying.py
 	echo "THE LIVEWIRES DOCUMENTATION LICENCE" > COPYING.txt
