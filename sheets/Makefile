@@ -6,11 +6,11 @@
 .SUFFIXES: .ltx .dvi .ps .pdf
 
 .ltx.dvi:
-	latex $<
+	latex $(LATEX_OPTS) $<
 .dvi.ps:
 	dvips -o $@ $<
 .ltx.pdf:
-	pdflatex $< $@; pdflatex $< $@
+	pdflatex $(LATEX_OPTS) $< $@; pdflatex $(LATEX_OPTS) $< $@
 
 # If you add LaTeX source files, you'll need to change both SOURCES and
 # TARGETS. Don't include things in the games directory in SOURCES or

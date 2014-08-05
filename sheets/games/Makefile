@@ -4,11 +4,11 @@
 .SUFFIXES: .ltx .dvi .ps .pdf
 
 .ltx.dvi:
-	latex $<
+	latex $(LATEX_OPTS) $<
 .dvi.ps:
 	dvips -o $@ $<
 .ltx.pdf:
-	pdflatex $<; pdflatex $<
+	pdflatex $(LATEX_OPTS) $<; pdflatex $(LATEX_OPTS) $<
 
 # Note: if you add to these and want your LaTeX source to go in the
 # source release archive, you'll need to add the filenames of the latex
