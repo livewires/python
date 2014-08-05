@@ -31,7 +31,7 @@ U-usage.ltx V-overview.ltx W-livewires.ltx
 # the source release archive. Note that this includes the LaTeX source
 # under games, as I've not worked out how to get recursive make to
 # handle the production of the source archive.
-AUX = COPYING.txt COPYING.txt.src Makefile README.txt README-latex.txt \
+AUX = COPYING.txt COPYING.txt.src Makefile README.md README-latex.txt \
 TEMPLATE.ltx blurb.ltx figures/bullet.eps figures/bullet.pdf \
 figures/compass.eps figures/compass.pdf figures/coords.eps \
 figures/coords.pdf figures/face-grid.eps figures/face-grid.pdf \
@@ -60,7 +60,7 @@ games/jen9.bmp games/jen10.bmp games/jen11.bmp games/jen12.bmp \
 games/jen13.bmp games/jen14.bmp
 
 # Files which aren't PDF files but should go in the PDF release
-PDFAUX=README.txt COPYING.txt games/COPYING.txt CHANGES.txt\
+PDFAUX=README.md COPYING.txt games/COPYING.txt CHANGES.txt\
 games/asteroid.bmp games/stars.bmp
 
 all: $(TARGETS) games
@@ -84,7 +84,7 @@ COPYING.txt: COPYING.txt.src $(SOURCES) mkcopying.py
 	echo "conditions and disclaimer below." >> COPYING.txt
 	cat COPYING.txt.src >> COPYING.txt
 
-../release/livewires-pdfs.tar.gz: all README.txt COPYING.txt CHANGES.txt
+../release/livewires-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt
 	tar --dereference -cvf ../release/livewires-pdfs.tar ./*.pdf games/*.pdf \
 	$(PDFAUX)
 	gzip --force --best ../release/livewires-pdfs.tar
