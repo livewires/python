@@ -1,15 +1,4 @@
-\newif\ifpdf
-\ifx\pdfoutput\undefined
-\pdffalse % we are not running PDFLaTeX
-\else
-\pdfoutput=1 % we are running PDFLaTeX
-\pdftrue
-\fi
-\ifpdf
-	\documentclass[pdftex]{wsheet}
-\else
-	\documentclass{wsheet}
-\fi
+\documentclass{wsheet}
 \usepackage{rcs}
 \usepackage[colorlinks]{hyperref}
 \RCS $Id: 4-highlow.ltx 239 2010-07-23 21:41:31Z RobPearce $

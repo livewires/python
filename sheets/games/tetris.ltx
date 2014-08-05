@@ -1,15 +1,4 @@
-\newif\ifpdf
-\ifx\pdfoutput\undefined
-\pdffalse % we are not running PDFLaTeX
-\else
-\pdfoutput=1 % we are running PDFLaTeX
-\pdftrue
-\fi
-\ifpdf
-        \documentclass[pdftex]{wsheet}
-\else
-        \documentclass{wsheet}
-\fi
+\documentclass{wsheet}
 \usepackage{rcs}
 \RCS $Id: spacewar.ltx,v 1.15 2001/10/07 13:52:49 paul Exp paul $
 \RCS $Date: 2001/10/07 13:52:49 $

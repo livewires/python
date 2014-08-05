@@ -1,15 +1,4 @@
-\newif\ifpdf
-\ifx\pdfoutput\undefined
-\pdffalse % we are not running PDFLaTeX
-\else
-\pdfoutput=1 % we are running PDFLaTeX
-\pdftrue
-\fi
-\ifpdf
-        \documentclass[pdftex]{wsheet}
-\else
-        \documentclass{wsheet}
-\fi
+\documentclass{wsheet}
 \usepackage{graphics}
 \graphicspath{{../figures/}}
 \usepackage[colorlinks]{hyperref}
