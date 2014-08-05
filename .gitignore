@@ -71,3 +71,4 @@ nosetests.xml
 *.vrb
 *.xdy
 *.tdo
+release/

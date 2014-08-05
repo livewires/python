@@ -84,12 +84,15 @@ COPYING.txt: COPYING.txt.src $(SOURCES) mkcopying.py
 	echo "conditions and disclaimer below." >> COPYING.txt
 	cat COPYING.txt.src >> COPYING.txt
 
-../release/livewires-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt
+../release:
+	mkdir ../release
+
+../release/livewires-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt ../release
 	tar --dereference -cvf ../release/livewires-pdfs.tar ./*.pdf games/*.pdf \
 	$(PDFAUX)
 	gzip --force --best ../release/livewires-pdfs.tar
 
-../release/livewires-ltx.tar.gz: $(SOURCES) $(AUX)
+../release/livewires-ltx.tar.gz: $(SOURCES) $(AUX) ../release
 	tar --dereference -cvf ../release/livewires-ltx.tar $(SOURCES) $(AUX)
 	gzip --force --best ../release/livewires-ltx.tar
 
