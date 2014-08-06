@@ -181,7 +181,7 @@ from livewires import * \C{As usual}
 begin_graphics()        \C{So that we can draw things}
 allow_moveables()       \C{This is explained later!}
 place_player()
-finished = 0
+finished = False
 while not finished:
   move_player()
 end_graphics()          \C{We've finished}
@@ -467,8 +467,8 @@ that is true'', if you haven't already done that.)
 If they \emph{are} in the same place, the program should print
 a message saying something like ``You've been caught'', and set
 that |finished| variable that gets tested at the top of the
-main |while|~loop to something other than~0. Then the program
-will finish when the player gets caught.
+main |while|~loop to True. Then the program will finish when the player
+gets caught.
 
 What about the first problem?
 
@@ -1005,7 +1005,7 @@ old one; and that's what I suggest we do here. So \dots
   \end{itemize}
   \item Finally, say |robots = surviving_robots| .
   \item If there are now no robots left, the player has won!
-        Display a congratulatory message and set |finished=1| .
+        Display a congratulatory message and set |finished=True|.
 \end{itemize}
 
 At this point you should pretty much have a working game. (It'll
