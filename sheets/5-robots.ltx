@@ -227,16 +227,16 @@ look back at Sheet~2 where |random_between()| was
 introduced.
 
 And then it needs to put the player on the screen by saying
-something like |circle(player_x, player_y, 5, filled=1)|,
+something like |circle(player_x, player_y, 5, filled=True)|,
 except that those obviously aren't the right coordinates
 for the centre of the circle (because |player_x| etc are
 measured in grid squares, and |circle()| wants coordinates
 in pixels). What we actually need is for the centre of
 the circle to be in the middle of the grid square. So
-|circle(10*player_x, 10*player_y, 5, filled=1)| should
+|circle(10*player_x, 10*player_y, 5, filled=True)| should
 do the trick.
 
-(If you're confused by the |filled=1| bit, you might like
+(If you're confused by the |filled=True| bit, you might like
 to take a look at Sheet~F (\emph{Functions}), which describes
 ``keyword arguments''.)
 
@@ -788,7 +788,7 @@ of how the new version is going to work. So, here is one.
           \item Make a new shape object for it. I suggest a filled
                 box.
 
-                |robot.shape = box(blah,blah,blah,blah,filled=1)|
+                |robot.shape = box(blah,blah,blah,blah,filled=True)|
         \end{itemize}
   \item \emph{What about moving the robots?}
         No problem. Just move the robots one by one.

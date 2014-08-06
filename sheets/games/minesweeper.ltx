@@ -275,7 +275,7 @@ class Mine(boards.Container, GridBox):
                               self.ypos() + BOX_SIZE/2,
                               MINE_SIZE,
                               colour.black,
-                              filled=1)
+                              filled=True)
     if self.flagged:
       self.flag.raise_object()
 \end{program}
@@ -693,7 +693,7 @@ the |__init__| function in |GridBox|.
     else:
       # Not yet flagged, so make one
       self.flag = games.Polygon(self.screen, self.xpos(), self.ypos(),
-                                FLAG, colour.green, filled=1)
+                                FLAG, colour.green, filled=True)
       self.screen.update_flag_count(1)
     self.flagged = not self.flagged
 \end{program}

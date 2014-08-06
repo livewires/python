@@ -445,7 +445,7 @@ class Counter(games.Circle):
 \C{Remember, __init__ is the function that}
 \C{is called when you first make a Counter}
   def __init__(self, board, x, y, player):
-    self.init_circle(board, x, y, COUNTER_SIZE, player, filled=1)
+    self.init_circle(board, x, y, COUNTER_SIZE, player, filled=True)
 \end{program}
 
 That's it.  Run your program now and see what it does.
@@ -546,7 +546,7 @@ class Counter(boards.Container, games.Circle):
   def __init__(self, board, x, y, player):
     self.height = 1
     self.init_container(['number'])
-    self.init_circle(board, x, y, COUNTER_SIZE, player, filled=1)
+    self.init_circle(board, x, y, COUNTER_SIZE, player, filled=True)
     self.number = games.Text(board, x, y, "1", NUMBER_SIZE, colour.yellow)
 \end{program}
 

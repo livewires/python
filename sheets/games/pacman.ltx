@@ -592,7 +592,7 @@ class Wall(Immovable):
     forbid_movables()
     dot_size = grid_size * 0.2
     circle(screen_x, screen_y, dot_size,      \C{Just draw a circle.}
-           colour = wall_colour, filled = 1)
+           colour=wall_colour, filled=True)
     allow_movables()
 \end{program}
 
@@ -703,7 +703,7 @@ class Wall(Immovable):  \C{This should already be in your program.}
     forbid_movables()
     dot_size = grid_size * 0.2               \C{You can remove...}
     circle(screen_x, screen_y, dot_size,     \C{...these three lines...}
-           colour = wall_colour, filled = 1) \C{...if you like.}
+           colour=wall_colour, filled=True) \C{...if you like.}
     (x, y) = self.place
     neighbours = [ (x+1, y), (x-1, y),  \C{Make a list of our neighbours.}
                    (x, y+1), (x, y-1) ]
@@ -978,9 +978,9 @@ class Pacman(Movable):     \C{This should already be in your program.}
     endpoints = (self.direction + angle, \C{Rotate according to the direction}
                  self.direction + 360 - angle)
     self.body = circle(screen_point, pacman_size, \C{Draw the sector}
-                       colour = pacman_colour,
-                       filled = 1,
-                       endpoints = endpoints)
+                       colour=pacman_colour,
+                       filled=True,
+                       endpoints=endpoints)
 
   def get_angle(self):
     (x, y) = self.place               \C{Work out how far away the}
@@ -1214,8 +1214,8 @@ class Food(Immovable):   \C{This should already be in your program.}
     (screen_x, screen_y) = self.screen_point
     self.dot = circle(screen_x, screen_y,
                       food_size,
-                      colour = food_colour,
-                      filled = 1)
+                      colour=food_colour,
+                      filled=True)
 \end{program}
 
 Now, we need to arrange for the food to get eaten at the right time.
@@ -1396,8 +1396,8 @@ class Ghost(Movable):    \C{This should already be in your program.}
                      y*grid_size + screen_y))
 
     self.body = polygon(coords, self.colour, \C{Draw the body}
-                        closed = 1,
-                        filled = 1)
+                        closed=1,
+                        filled=True)
 \end{program}
 
 %-----------------------------------------------------------------------------
@@ -1653,8 +1653,8 @@ class Capsule(Immovable):   \C{This should already be in your program.}
     (screen_x, screen_y) = self.screen_point
     self.dot = circle(screen_x, screen_y,
                       capsule_size,
-                      colour = capsule_colour,
-                      filled = 1)
+                      colour=capsule_colour,
+                      filled=True)
 \end{program}
 
 If you try the game now, you'll see the capsules on the screen, but

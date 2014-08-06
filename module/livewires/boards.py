@@ -104,7 +104,8 @@ class GameCell(games.Polygon):
         shape = ((0, 0), (0, box_size), (box_size, box_size), (box_size, 0))
 
         self.init_polygon(board.screen, self.screen_x, self.screen_y, shape,
-                          fill_colour, filled=1, outline=line_colour, static=1)
+                          fill_colour, filled=True, outline=line_colour,
+                          static=1)
 
         self.neighbours = []
         self.direction = [ None ] * 8

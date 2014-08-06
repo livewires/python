@@ -558,7 +558,7 @@ one side removed is not closed.
 
 \begin{itemize}
 
-\item |init_polygon (screen, x, y, shape, colour, filled=1,
+\item |init_polygon (screen, x, y, shape, colour, filled=True,
 outline=None, static=0)|
 
 |screen| is the |Screen| that the |Polygon| is on.
@@ -577,8 +577,8 @@ numbers from 0 to 255, specifying how much red, green and blue
 respectively there is in the colour.  The |colours| module provides a
 number of useful predefined colours.
 
-If |filled| is 1, the polygon is filled in with its |colour|. If
-|filled| is 0, only the outline of the polygon is drawn.
+If |filled| is True, the polygon is filled in with its |colour|. If
+|filled| is False, only the outline of the polygon is drawn.
 
 |outline| is the colour of the outline of the polygon, if it needs to
 be different from the main |colour|.  If |outline| is |None|, then
@@ -611,8 +611,8 @@ methods of its own:
 
 \begin{itemize}
 
-\item |init_circle (screen, x,y, radius, colour, filled=1,
-  outline=None, static=0)|
+\item |init_circle (screen, x,y, radius, colour, filled=True, outline=None,
+static=0)|
 
 |screen| is the |Screen| that the |Circle| is on.
 
@@ -623,7 +623,7 @@ point.
 
 |colour| is the colour of the circle.
 
-If |filled| is 1, the polygon is filled. If |filled| is 0, only the
+If |filled| is True, the polygon is filled. If |filled| is False, only the
 outline of the circle is drawn.
 
 |outline| is the colour of the edge of the circle, if it needs to be

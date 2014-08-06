@@ -421,7 +421,7 @@ def line(x0, y0, x1=None, y1=None, colour=None):
 
 ### box() #####################################################################
 
-def box(x0, y0, x1=None, y1=None, colour=None, filled=0):
+def box(x0, y0, x1=None, y1=None, colour=None, filled=False):
 
     global _canvas_x, _canvas_y
 
@@ -463,7 +463,7 @@ def box(x0, y0, x1=None, y1=None, colour=None, filled=0):
 
 ### polygon() #################################################################
 
-def polygon(coords, colour=None, closed=0, filled=0):
+def polygon(coords, colour=None, closed=0, filled=False):
 
     global _canvas_x, _canvas_y
 
@@ -519,7 +519,7 @@ def polygon(coords, colour=None, closed=0, filled=0):
 
 ### circle() ##################################################################
 
-def circle(x, y, r=None, colour=None, filled=0, endpoints=None):
+def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
 
     global _canvas_x, _canvas_y
 
@@ -919,14 +919,15 @@ def test():
         for y in xrange(200,99,-1):
             plot(402,y,colour=Colour.blue)
         line((400,200), 400,0, colour=Colour.red)
-        polygon(((300,300),(350,400),(400,350)), colour=Colour.green, filled=1)
+        polygon(((300,300),(350,400),(400,350)), colour=Colour.green,
+                filled=True)
         polygon(((500,300),(550,400),(600,350)), colour=Colour.blue)
         polygon(((510,300),(560,400),(610,350)), colour=Colour.blue, closed=1)
-        box((50,400),100,450, colour=Colour.red, filled=1)
-        circle(200,200,40,colour=Colour.red, filled=1)
+        box((50,400),100,450, colour=Colour.red, filled=True)
+        circle(200,200,40,colour=Colour.red, filled=True)
         circle(200,200,50,colour=Colour.green, endpoints=(10,45))
         circle(200,200,50,colour=Colour.blue,
-               endpoints=((195,190), 200), filled=1)
+               endpoints=((195,190), 200), filled=True)
         move(100,100)
         text('Hello world', serifs=1, size=14)
     # XXX Think about how to handle errors in programs that prevent
