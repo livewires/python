@@ -1,5 +1,7 @@
 # Livewires Python Course #
 
+[![Build Status](https://travis-ci.org/livewires/python.svg?branch=master)](https://travis-ci.org/livewires/python)
+
 The LiveWires Python Course is intended to teach the [Python](http://www.python.org/) programming language to people who have never programmed before.
 
 * Get the [worksheets](sheets/) to read and learn python
