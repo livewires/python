@@ -13,7 +13,7 @@ You can find the package on the [downloads page](https://github.com/livewires/py
 
 ## Getting the sheets ##
 
-The worksheets are built by Travis CI, and a tarball is output [here](http://livewires-worksheets.s3.amazonaws.com/index.html).
+The worksheets are built by Travis CI, and a tarballs are output to the livewires-worksheet S3 bucket; a nice viewer for the contents is available [here](http://shrub.appspot.com/livewires-worksheets/?s=date:d).
 
 ## About the course ##
 
