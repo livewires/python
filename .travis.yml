@@ -1,21 +1,20 @@
 language: python
-env:
- global:
-  - "ARTIFACTS_AWS_REGION=eu-west-1"
-  - "ARTIFACTS_S3_BUCKET=livewires-worksheets"
-  - secure: "EmkksC2U3V+HU9OgIbuQ/E1RNCfQ/W/b250eXYYK8PT4NvDpzVn5NLatFmxI1ok90el6bmUbj6Bmk6p+JKic9Z4OM+fkEuZblCIbFHvBKC/U7Xy5wV+wEykWpyZd1wFS3iSt3AM4Ick2xxcRJ/qwb4L9Kt4cnJ7Xmq1WiBWKkzE="
-  - secure: "xKZ6L4BxOg2wWMe71i/581nqNEeUO5oEtlXJlvzMJCKkwVbazuR3hTCK2hIPJFRX6SoCGAaXhtcBo8HGPizll226VUnhh9CPoyCm/zwI51nRtzWlsBbnTVvT/QfRLnVEKWE1miADKrqQXT0x+jTa1G3K2h656u7t8/cnkdtA6Xo="
-
 python:
- - "2.7"
+- '2.7'
 install:
- - "sudo add-apt-repository -y ppa:texlive-backports/ppa"
- - "sudo apt-get update"
- - "sudo apt-get install texlive make"
-before_script:
- - "gem install travis-artifacts"
+- sudo add-apt-repository -y ppa:texlive-backports/ppa
+- sudo apt-get update
+- sudo apt-get install texlive make
 script:
- - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
-after_script:
- - "mv release/livewires-pdfs.tar.gz livewires-pdfs-$TRAVIS_BUILD_NUMBER.tar.gz"
- - "travis-artifacts upload --path livewires-pdfs-$TRAVIS_BUILD_NUMBER.tar.gz --target-path ''"
+- (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
+deploy:
+  provider: s3
+  access_key_id: AKIAJNGHJWMQEU6QAIPQ
+  secret_access_key:
+    secure: tviNwD7V1A4WRzCwnRGXTHUf6kdbEG+7X7AxnTnSEf+ar1iXl/1aplLKFccc9vwzlGy0sUVqv0wg0kmQkIMhUhdZovOD4gUnOARUZzkTHj9L0apIb2gxLyEyYHCRFiIKLT6Vto8iPbU3ALCoQAhk2oQwM+dznQb6lg+U5HpRK8U=
+  bucket: livewires-worksheets
+  local-dir: release
+  upload-dir: "$TRAVIS_BUILD_NUMBER"
+  acl: !ruby/string:HighLine::String public_read
+  on:
+    repo: livewires/python
