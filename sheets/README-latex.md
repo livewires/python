@@ -150,7 +150,7 @@ What is LiveWires?
 LiveWires is a Scripture Union holiday for 12 to 15 year olds, which
 takes place in the UK every summer. The LiveWires Python Course was
 written by the some of team of volunteers who run the holiday, to help
-us to teach Python to some of the young people on the holiday. 
+us to teach Python to some of the young people on the holiday.
 
 The LiveWires web site is at <http://www.livewires.org.uk/>
 
@@ -162,7 +162,6 @@ children, young people and families. SU staff and volunteers work in
 more than 130 countries; in the UK its work includes schools work,
 missions, family ministry, helping Christians to read the Bible and
 supporting the church through training and resources. Scripture Union
-holidays have been happening for more than 100 years. 
+holidays have been happening for more than 100 years.
 
 For more information on SU, see <http://www.scripture.org.uk/>
-
