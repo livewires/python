@@ -835,11 +835,12 @@ class Polygon (Object, ColourMixin, OutlineMixin):
     reference point.
     """
     def __init__ (self, screen, x, y, shape, colour, filled=True,
-                  outline = None, static=0, thickness=1):
-        self.init_polygon (screen, x, y, shape, colour, filled, outline, static, thickness)
+                  outline=None, static=0, thickness=1):
+        self.init_polygon(
+            screen, x, y, shape, colour, filled, outline, static, thickness)
 
-    def init_polygon (self, screen, x, y, shape, colour, filled=True,
-                      outline = None, static = 0, thickness = 1):
+    def init_polygon(self, screen, x, y, shape, colour, filled=True,
+                     outline=None, static=0, thickness=1):
         """
         Arguments:
 
@@ -938,11 +939,12 @@ class Circle (Object, ColourMixin, OutlineMixin):
     The reference point is the centre of the circle.
     """
 
-    def __init__ (self, screen, x, y, radius, colour, filled=True, outline = None, static=0):
+    def __init__(self, screen, x, y, radius, colour, filled=True,
+                 outline=None, static=0):
         self.init_circle (screen, x, y, radius, colour, filled, outline, static)
 
-    def init_circle (self, screen, x, y, radius, colour, filled=True,
-                     outline=None, static=0):
+    def init_circle(self, screen, x, y, radius, colour, filled=True,
+                    outline=None, static=0):
 
         self._colour = colour
         self._outline = outline
