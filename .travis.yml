@@ -16,5 +16,6 @@ deploy:
   local-dir: release
   upload-dir: "$TRAVIS_BUILD_NUMBER"
   acl: !ruby/string:HighLine::String public_read
+  skip_cleanup: true
   on:
     repo: livewires/python
