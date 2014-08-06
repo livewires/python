@@ -17,4 +17,5 @@ before_script:
 script:
  - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 after_script:
- - "travis-artifacts upload --path release/livewires-pdfs.tar.gz"
+ - "mv release/livewires-pdfs.tar.gz livewires-pdfs-$TRAVIS_BUILD_NUMBER.tar.gz"
+ - "travis-artifacts upload --path livewires-pdfs-$TRAVIS_BUILD_NUMBER.tar.gz --target-path ''"
