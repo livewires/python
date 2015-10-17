@@ -107,7 +107,7 @@ class Screen:
         # Bomb if you try this more than once: pygame can only have one
         # window
         if Screen.initialised:
-            raise GamesError, "Cannot have more than on Screen object"
+            raise GamesError("Cannot have more than on Screen object")
 
         Screen.initialised = 1
 
@@ -149,10 +149,10 @@ class Screen:
         self._display.blit (self._background, (0,0))
         pygame.display.update ()
 
-    def set_background_colour (self, back_col):
+    def set_background_color (self, back_col):
         """
-        Set the background to a surface consisting of the colour
-        provided.  Strange things will happen should the colour
+        Set the background to a surface consisting of the color
+        provided.  Strange things will happen should the color
         have transparency!
         """
 
@@ -734,37 +734,37 @@ class Sprite (Object):
 
 #------------------------------------------------------------------------------
 
-class ColourMixin:
+class ColorMixin:
     """
-    This is a mixin class which handles colour changes for geometric
+    This is a mixin class which handles color changes for geometric
     objects by redrawing them on a new surface using their
     _create_surface method.
     """
 
-    def set_colour(self, colour):
-        if colour != self._colour:
-            self._colour = colour
+    def set_color(self, colour):
+        if color != self._colour:
+            self._color = colour
             if self._static:
                 self._erase()
                 self._dirty = 1
             surface = self._create_surface ()
             self.replace_image(surface)
 
-    def get_colour(self):
-        return self._colour
+    def get_color(self):
+        return self._color
 
 #------------------------------------------------------------------------------
 
 class OutlineMixin:
     """
-    This is a mixin class which handles colour changes for the outlines
+    This is a mixin class which handles color changes for the outlines
     of geometric objects by redrawing them on a new surface using their
     _create_surface method.
     """
 
-    def set_outline(self, colour):
-        if colour != self._outline:
-            self._outline = colour
+    def set_outline(self, color):
+        if color != self._outline:
+            self._outline = color
             if self._static:
                 self._erase()
                 self._dirty = 1
@@ -775,7 +775,7 @@ class OutlineMixin:
         return self._outline
 
 #------------------------------------------------------------------------------
-class Text(Object, ColourMixin):
+class Text(Object, ColorMixin):
     """
     A class for representing text on the screen.
 
@@ -783,11 +783,11 @@ class Text(Object, ColourMixin):
     bounding box.
     """
 
-    def __init__(self, screen, x, y, text, size, colour, static=0):
+    def __init__(self, screen, x, y, text, size, color, static=0):
 
-        self.init_text (screen, x, y, text, size, colour, static)
+        self.init_text (screen, x, y, text, size, color, static)
 
-    def init_text (self, screen, x, y, text, size, colour, static=0):
+    def init_text (self, screen, x, y, text, size, color, static=0):
         """
         Arguments:
 
@@ -796,12 +796,12 @@ class Text(Object, ColourMixin):
         y -- y-coordinate of centre of bounding box.
         text -- the text to display.
         size -- nominal height of the text, in pixels.
-        colour -- the colour the text should be.
+        color -- the colour the text should be.
         """
         if not _have_font:
-            raise GameError, "We don't have pygame.font, so can't create text objects"
+            raise GameError("We don't have pygame.font, so can't create text objects")
         self._size = size
-        self._colour = colour
+        self._color = colour
         self._text = text
         self._font = pygame.font.Font(None, self._size)
         self._a = 0
@@ -811,7 +811,7 @@ class Text(Object, ColourMixin):
         self.move_to(x,y)
 
     def _create_surface (self):
-        result = self._font.render(self._text, 1, self._colour)
+        result = self._font.render(self._text, 1, self._color)
         r = result.get_rect()
         self._set_offsets(-0.5*(r.right-r.left), -0.5*(r.bottom-r.top))
         return result
@@ -828,18 +828,18 @@ class Text(Object, ColourMixin):
 
 #------------------------------------------------------------------------------
 
-class Polygon (Object, ColourMixin, OutlineMixin):
+class Polygon (Object, ColorMixin, OutlineMixin):
     """
     A polygon, either drawn in outline or filled in. Its shape
     is specified as a list of points relative to the polygon's
     reference point.
     """
-    def __init__ (self, screen, x, y, shape, colour, filled=True,
+    def __init__ (self, screen, x, y, shape, color, filled=True,
                   outline=None, static=0, thickness=1):
         self.init_polygon(
-            screen, x, y, shape, colour, filled, outline, static, thickness)
+            screen, x, y, shape, color, filled, outline, static, thickness)
 
-    def init_polygon(self, screen, x, y, shape, colour, filled=True,
+    def init_polygon(self, screen, x, y, shape, color, filled=True,
                      outline=None, static=0, thickness=1):
         """
         Arguments:
@@ -848,12 +848,12 @@ class Polygon (Object, ColourMixin, OutlineMixin):
         x -- x-coordinate of reference point.
         y -- y-coordinate of reference point.
         shape -- a list of vertices, each given as (dx,dy) from reference point.
-        colour -- colour to draw either the boundary or the whole polygon.
+        color -- colour to draw either the boundary or the whole polygon.
         filled -- true iff the polygon is to be filled in.
-        outline -- colour to draw the outline in (if different from whole polygon)
+        outline -- color to draw the outline in (if different from whole polygon)
         static -- whether or not the polygon is ever expected to move
         """
-        self._colour = colour
+        self._color = colour
         self.screen = screen # Must do this here so surface convert works
         self._filled = filled
         self._shape = tuple(shape)
@@ -867,9 +867,9 @@ class Polygon (Object, ColourMixin, OutlineMixin):
                          static=static)
 
     def __repr__(self):
-        return "<Polygon at (%s,%s), %s, %s, colour %s, outline %s: %s>" \
+        return "<Polygon at (%s,%s), %s, %s, color %s, outline %s: %s>" \
                % (self.xpos(), self.ypos(), ["filled","unfilled"][not self._filled],
-                  ["dynamic","static"][self._static], self._colour, self._outline, self._shape)
+                  ["dynamic","static"][self._static], self._color, self._outline, self._shape)
 
     def set_shape (self, shape):
         self._shape = tuple(shape)
@@ -900,15 +900,15 @@ class Polygon (Object, ColourMixin, OutlineMixin):
         surface = pygame.Surface ((maxx-minx + 1, maxy-miny + 1)).convert ()
 
         # The part of the surface not occupied by the polygon should be
-        # transparent. We choose a colour for it that isn't the same as the
+        # transparent. We choose a color for it that isn't the same as the
         # one in which the polygon is to be drawn.
-        key_colour = (0,0,0)
-        if self._colour == key_colour or self._outline == key_colour:
-            key_colour = (0,0,10)
-            if self._colour == key_colour or self._outline == key_colour:
-                key_colour = (0, 10, 10)
-        surface.fill (key_colour)
-        surface.set_colorkey (key_colour, RLEACCEL)
+        key_color = (0,0,0)
+        if self._color == key_colour or self._outline == key_colour:
+            key_color = (0,0,10)
+            if self._color == key_colour or self._outline == key_colour:
+                key_color = (0, 10, 10)
+        surface.fill (key_color)
+        surface.set_colorkey (key_color, RLEACCEL)
 
         nshape = []
         for (x,y) in shape:
@@ -921,32 +921,32 @@ class Polygon (Object, ColourMixin, OutlineMixin):
         self._set_offsets(minx, miny)
 
         if self._filled:
-            pygame.draw.polygon (surface, self._colour, nshape, 0)
+            pygame.draw.polygon (surface, self._color, nshape, 0)
             if self._outline != None:
                 pygame.draw.polygon (surface, self._outline, nshape, self._thickness)
         elif self._outline != None:
             pygame.draw.polygon (surface, self._outline, nshape, self._thickness)
         else:
-            pygame.draw.polygon (surface, self._colour, nshape, self._thickness)
+            pygame.draw.polygon (surface, self._color, nshape, self._thickness)
 
         return surface
 
 #------------------------------------------------------------------------------
 
-class Circle (Object, ColourMixin, OutlineMixin):
+class Circle (Object, ColorMixin, OutlineMixin):
     """
     A circle, filled or otherwise, on the screen.
     The reference point is the centre of the circle.
     """
 
-    def __init__(self, screen, x, y, radius, colour, filled=True,
+    def __init__(self, screen, x, y, radius, color, filled=True,
                  outline=None, static=0):
-        self.init_circle (screen, x, y, radius, colour, filled, outline, static)
+        self.init_circle (screen, x, y, radius, color, filled, outline, static)
 
-    def init_circle(self, screen, x, y, radius, colour, filled=True,
+    def init_circle(self, screen, x, y, radius, color, filled=True,
                     outline=None, static=0):
 
-        self._colour = colour
+        self._color = colour
         self._outline = outline
         self.screen = screen # Must do this here so surface convert in _create_surface works
         self._filled = filled
@@ -962,25 +962,25 @@ class Circle (Object, ColourMixin, OutlineMixin):
 
         surface = pygame.Surface ((2 * self._radius + 1, 2 * self._radius +1)).convert ()
 
-        key_colour = (0,0,0)
-        if self._colour == key_colour or self._outline == key_colour:
-            key_colour = (0,0,10)
-            if self._colour == key_colour or self._outline == key_colour:
-                key_colour = (0,10,10)
+        key_color = (0,0,0)
+        if self._color == key_colour or self._outline == key_colour:
+            key_color = (0,0,10)
+            if self._color == key_colour or self._outline == key_colour:
+                key_color = (0,10,10)
 
-        surface.fill (key_colour)
-        surface.set_colorkey (key_colour, RLEACCEL)
+        surface.fill (key_color)
+        surface.set_colorkey (key_color, RLEACCEL)
 
         self._set_offsets(-self._radius, -self._radius)
 
         if self._filled:
-            pygame.draw.ellipse (surface, self._colour, surface.get_rect (), 0)
+            pygame.draw.ellipse (surface, self._color, surface.get_rect (), 0)
             if self._outline != None:
                 pygame.draw.ellipse (surface, self._outline, surface.get_rect (), 1)
         elif self._outline != None:
             pygame.draw.ellipse (surface, self._outline, surface.get_rect (), 1)
         else:
-            pygame.draw.ellipse (surface, self._colour, surface.get_rect (), 1)
+            pygame.draw.ellipse (surface, self._color, surface.get_rect (), 1)
 
         return surface
 
@@ -1108,11 +1108,11 @@ class Message (Text, Timer):
     of the bounding box.
     """
 
-    def __init__ (self, screen, x, y, text, size, colour, lifetime, after_death=None):
-        self.init_message (screen, x, y, text, size, colour, lifetime,
+    def __init__ (self, screen, x, y, text, size, color, lifetime, after_death=None):
+        self.init_message (screen, x, y, text, size, color, lifetime,
         after_death)
 
-    def init_message (self, screen, x, y, text, size, colour, lifetime, after_death=None):
+    def init_message (self, screen, x, y, text, size, color, lifetime, after_death=None):
         """
         Arguments:
 
@@ -1120,13 +1120,13 @@ class Message (Text, Timer):
         y -- y-coordinate of centre of bounding box.
         text -- the text to display.
         size -- the size of the text, in pixels nominal height.
-        colour -- the colour of the text.
+        color -- the colour of the text.
         lifetime -- the number of frames to wait before disappearing.
         after_death -- the function to call immediately before disappearing.
         """
 
         self._after_death = after_death
-        self.init_text (screen, x, y, text, size, colour)
+        self.init_text (screen, x, y, text, size, color)
         self.init_timer (lifetime)
 
     def tick (self):
@@ -1184,7 +1184,7 @@ class Animation (Sprite, Timer):
         self.n_repeats = n_repeats or -1
         first_image = self.next_image()
         if first_image is None:
-            raise GamesError, "An animation with no images is illegal."
+            raise GamesError("An animation with no images is illegal.")
         Object.__init__(self, screen, x, y, self.next_image())
         self.init_timer(repeat_interval)
 
@@ -1215,15 +1215,15 @@ def load_image(file, transparent=1):
     file -- the filename of the image to load
     transparent -- whether the background of the image should be transparent.
                    Defaults to true.
-                   The background colour is taken as the colour of the pixel
+                   The background color is taken as the colour of the pixel
                    at (0,0) in the image.
     """
     if not _have_image:
-        raise GamesError, "We don't have pygame.image, so can't load \"%s\"" % file
+        raise GamesError("We don't have pygame.image, so can't load \"%s\"" % file)
     try:
         surface = pygame.image.load(file)
     except pygame.error:
-        raise GamesError, 'Could not load image "%s" %s'%(file, pygame.get_error())
+        raise GamesError('Could not load image "%s" %s'%(file, pygame.get_error()))
     if transparent:
         corner = surface.get_at((0, 0))
         surface.set_colorkey(corner, RLEACCEL)
@@ -1234,7 +1234,7 @@ def load_sound(file):
     Load a sound file, returning a Sound object.
     """
     if not _have_mixer:
-        raise GameError, "We don't have pygame.mixer, so can't load \"%s\"" % file
+        raise GameError("We don't have pygame.mixer, so can't load \"%s\"" % file)
     try: return pygame.mixer.Sound(file)
     except pygame.error: return None
 
@@ -1245,11 +1245,11 @@ def load_animation(nonrepeating_files, repeating_files=[], transparent=1):
     """
     def _(name, transparent=transparent):
         if not _have_image:
-            raise GamesError, "We don't have pygame.image, so can't load animation \"%s\"" % name
+            raise GamesError("We don't have pygame.image, so can't load animation \"%s\"" % name)
         try: surface = pygame.image.load(name)
         except pygame.error:
-            raise GamesError, 'Could not load animation frame "%s": %s' % (
-                name, pygame.get_error())
+            raise GamesError('Could not load animation frame "%s": %s' % (
+                name, pygame.get_error()))
         if transparent:
             surface.set_colorkey(surface.get_at((0,0)), RLEACCEL)
         return surface.convert()
@@ -1274,7 +1274,7 @@ def scale_image(image, x_scale, y_scale=None):
 ###############################################################################
 if __name__ == "__main__":
 
-    import colour
+    import color
 
     s = Screen (700, 500)
     try: stars = load_image ("starfield.bmp")
@@ -1293,7 +1293,7 @@ if __name__ == "__main__":
 
     class SillyMessage (Text, Timer):
         def __init__ (self):
-            Text.__init__ (self, s, 200, 200, "Hello", 100, colour.green)
+            Text.__init__ (self, s, 200, 200, "Hello", 100, color.green)
             Timer.__init__ (self, 50)
             self.counter = 0
 
@@ -1310,7 +1310,7 @@ if __name__ == "__main__":
     class Square (Polygon, Mover):
         def __init__ (self):
             shape = ((0,0), (100,0), (100, 100), (0, 100))
-            self.init_polygon (s, 200, 100, shape, colour.red, 1)
+            self.init_polygon (s, 200, 100, shape, color.red, 1)
             self.init_mover (1, 0, 4)
 
         def moved (self):
@@ -1323,7 +1323,7 @@ if __name__ == "__main__":
 
     class MovingCircle (Circle, Mover):
         def __init__ (self):
-            self.init_circle (s, 500, 100, 50, colour.purple, 0)
+            self.init_circle (s, 500, 100, 50, color.purple, 0)
             self.init_mover (-1, 1, 0)
 
         def moved (self):
@@ -1337,7 +1337,7 @@ if __name__ == "__main__":
         def __init__ (self):
             self.length = 100
             shape = ((0,0), (self.length,0), (self.length, 10), (0, 10))
-            self.init_polygon (s, 200, 400, shape, colour.red, 1)
+            self.init_polygon (s, 200, 400, shape, color.red, 1)
             self.init_timer ()
 
         def tick (self):
@@ -1347,9 +1347,9 @@ if __name__ == "__main__":
 
     eb = ExpandingBar ()
 
-    mess = Message (s, 500, 300, "WIBBLE", 50, colour.purple, 100)
+    mess = Message (s, 500, 300, "WIBBLE", 50, color.purple, 100)
 
-    dummy = Polygon(s, 500,300, ((0,0),(50,0),(50,50),(0,50)), colour.white)
+    dummy = Polygon(s, 500,300, ((0,0),(50,0),(50,50),(0,50)), color.white)
 
     s.mainloop ()
 

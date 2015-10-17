@@ -35,13 +35,13 @@
 
 
 from livewires import games
-from livewires import colour
+from livewires import color
 from pygame.constants import *
 from random import randint
 
-DEFAULT_LINE_COLOUR   = colour.black
-DEFAULT_FILL_COLOUR   = colour.light_grey
-DEFAULT_CURSOR_COLOUR = colour.red
+DEFAULT_LINE_COLOR   = color.black
+DEFAULT_FILL_COLOR   = color.light_grey
+DEFAULT_CURSOR_COLOR = color.red
 
 LEFT = 0
 UP_LEFT = 1
@@ -79,19 +79,19 @@ class GameCell(games.Polygon):
     In typical applications this will be subclassed.
     """
     def __init__(self, board, i, j,
-                 line_colour = DEFAULT_LINE_COLOUR, fill_colour = DEFAULT_FILL_COLOUR):
-        self.init_gamecell(board, i, j, line_colour, fill_colour)
+                 line_color = DEFAULT_LINE_COLOR, fill_colour = DEFAULT_FILL_COLOUR):
+        self.init_gamecell(board, i, j, line_color, fill_colour)
 
-    def init_gamecell(self, board, i, j, line_colour = DEFAULT_LINE_COLOUR,
-                                         fill_colour = DEFAULT_FILL_COLOUR):
+    def init_gamecell(self, board, i, j, line_color = DEFAULT_LINE_COLOR,
+                                         fill_color = DEFAULT_FILL_COLOR):
         """
         Arguments:
 
         board -- The board this lives on.
         i -- Column number within the grid, starting at 0 at the left.
         j -- Row number within the grid, starting with 0 at the top.
-        line_colour -- Colour of edges.
-        fill_colour -- Colour of interior of cell.
+        line_color -- Color of edges.
+        fill_color -- Color of interior of cell.
 
         Creating grid cells is usually the job of the GridBoard
         object.
@@ -104,7 +104,7 @@ class GameCell(games.Polygon):
         shape = ((0, 0), (0, box_size), (box_size, box_size), (box_size, 0))
 
         self.init_polygon(board.screen, self.screen_x, self.screen_y, shape,
-                          fill_colour, filled=True, outline=line_colour,
+                          fill_color, filled=True, outline=line_colour,
                           static=1)
 
         self.neighbours = []
@@ -143,16 +143,16 @@ class GameBoard:
     """
 
     def __init__(self, screen, origin, n_cols, n_rows, box_size,
-                 line_colour = DEFAULT_LINE_COLOUR,
-                 fill_colour = DEFAULT_FILL_COLOUR,
-                 cursor_colour = DEFAULT_CURSOR_COLOUR):
+                 line_color = DEFAULT_LINE_COLOR,
+                 fill_color = DEFAULT_FILL_COLOR,
+                 cursor_color = DEFAULT_CURSOR_COLOR):
         self.init_gameboard(screen, origin, n_cols, n_rows,
-                            line_colour, fill_colour, cursor_colour)
+                            line_color, fill_colour, cursor_colour)
 
     def init_gameboard(self, screen, origin, n_cols, n_rows, box_size,
-                       line_colour = DEFAULT_LINE_COLOUR,
-                       fill_colour = DEFAULT_FILL_COLOUR,
-                       cursor_colour = DEFAULT_CURSOR_COLOUR):
+                       line_color = DEFAULT_LINE_COLOR,
+                       fill_color = DEFAULT_FILL_COLOR,
+                       cursor_color = DEFAULT_CURSOR_COLOR):
         """
         Arguments:
         screen -- The screen on which this board lives.
@@ -160,9 +160,9 @@ class GameBoard:
         n_cols -- The number of columns in the grid.
         n_rows -- The number of rows in the grid.
         box_size -- The total width and height of each cell.
-        line_colour -- The colour of the grid lines.
-        fill_colour -- The colour of the interior of each cell.
-        cursor_colour -- The colour in which the edges of a cell
+        line_color -- The colour of the grid lines.
+        fill_color -- The colour of the interior of each cell.
+        cursor_color -- The colour in which the edges of a cell
                          should be highlighted when the "cursor"
                          is over it.
 
@@ -177,9 +177,9 @@ class GameBoard:
         self.cursor = None
         self.screen = screen
 
-        self._line_colour = line_colour
-        self._fill_colour = fill_colour
-        self._cursor_colour = cursor_colour
+        self._line_color = line_colour
+        self._fill_color = fill_colour
+        self._cursor_color = cursor_colour
 
         self.key_movements = {
             K_UP:    (0,-1),
@@ -221,7 +221,7 @@ class GameBoard:
         of GameCell instead.
         """
         return GameCell(self, i, j,
-                        self._line_colour, self._fill_colour)
+                        self._line_color, self._fill_colour)
 
     def create_neighbours(self, orthogonal_only = 0):
         """
@@ -237,9 +237,9 @@ class GameBoard:
                     for l in (-1, 0, 1):
                         if k==l==0 or not self.on_board(i+k,j+l):
                             continue
-                        if k <> l and k <> -l:
+                        if k != l and k != -l:
                             self.grid[i][j].add_neighbour(self.grid[i+k][j+l])
-                        elif not orthogonal_only and k <> 0 and l <> 0:
+                        elif not orthogonal_only and k != 0 and l != 0:
                             self.grid[i][j].add_neighbour(self.grid[i+k][j+l])
 
     def create_directions(self, orthogonal_only = 0, wrap = 0):
@@ -254,37 +254,37 @@ class GameBoard:
             for j in xrange(self._n_rows):
                 if not self.on_board(i, j):
                     continue
-                if i <> 0 or wrap:
+                if i != 0 or wrap:
                     k = (i-1) % self._n_cols
                     if self.on_board(k, j):
                         self.grid[i][j].add_direction(LEFT, self.grid[k][j])
                     if not orthogonal_only:
-                        if j <> 0 or wrap:
+                        if j != 0 or wrap:
                             l = (j-1) % self._n_rows
                             if self.on_board(k, l):
                                 self.grid[i][j].add_direction(UP_LEFT, self.grid[k][l])
-                        if j <> self._n_rows-1 or wrap:
+                        if j != self._n_rows-1 or wrap:
                             l = (j+1) % self._n_rows
                             if self.on_board(k, l):
                                 self.grid[i][j].add_direction(DOWN_LEFT, self.grid[k][l])
-                if i <> self._n_cols-1 or wrap:
+                if i != self._n_cols-1 or wrap:
                     k = (i+1) % self._n_cols
                     if self.on_board(k, j):
                         self.grid[i][j].add_direction(RIGHT, self.grid[k][j])
                     if not orthogonal_only:
-                        if j <> 0 or wrap:
+                        if j != 0 or wrap:
                             l = (j-1) % self._n_rows
                             if self.on_board(k, l):
                                 self.grid[i][j].add_direction(UP_RIGHT, self.grid[k][l])
-                        if j <> self._n_rows-1 or wrap:
+                        if j != self._n_rows-1 or wrap:
                             l = (j+1) % self._n_rows
                             if self.on_board(k, l):
                                 self.grid[i][j].add_direction(DOWN_RIGHT, self.grid[k][l])
-                if j <> 0 or wrap:
+                if j != 0 or wrap:
                     l = (j-1) % self._n_rows
                     if self.on_board(i, l):
                         self.grid[i][j].add_direction(UP, self.grid[i][l])
-                if j <> self._n_rows-1 or wrap:
+                if j != self._n_rows-1 or wrap:
                     l = (j+1) % self._n_rows
                     if self.on_board(i, l):
                         self.grid[i][j].add_direction(DOWN, self.grid[i][l])
@@ -317,7 +317,7 @@ class GameBoard:
             self.handle_keypress(key)
             return
 
-        if self.cursor <> None:
+        if self.cursor != None:
             (x, y) = (self.cursor.grid_x+dx, self.cursor.grid_y+dy)
             if self.on_board(x,y):
                 self.move_cursor(x,y)
@@ -338,7 +338,7 @@ class GameBoard:
         if self.cursor is None:
             self.cursor = self.grid[i][j]
             self.cursor.raise_object()
-            self.cursor.set_outline(self._cursor_colour)
+            self.cursor.set_outline(self._cursor_color)
             self.cursor.treat_as_dynamic()
             self.cursor_moved()
         else:
@@ -351,7 +351,7 @@ class GameBoard:
         if self.cursor is not None:
             self.cursor.treat_as_static()
             self.cursor.raise_object()
-            self.cursor.set_outline(self._line_colour)
+            self.cursor.set_outline(self._line_color)
             self.cursor_moved() # To reacquire visibility of contents
             self.cursor = None
 
@@ -362,10 +362,10 @@ class GameBoard:
         """
         self.cursor.treat_as_static()
         self.cursor.raise_object()
-        self.cursor.set_outline(self._line_colour)
+        self.cursor.set_outline(self._line_color)
         self.cursor = self.grid[i][j]
         self.cursor.raise_object()
-        self.cursor.set_outline(self._cursor_colour)
+        self.cursor.set_outline(self._cursor_color)
         self.cursor.treat_as_dynamic()
         self.cursor_moved()
 
@@ -390,16 +390,16 @@ class SingleBoard(GameBoard, games.Screen):
     """
 
     def __init__(self, margins, n_cols, n_rows, box_size,
-                 line_colour = DEFAULT_LINE_COLOUR,
-                 fill_colour = DEFAULT_FILL_COLOUR,
-                 cursor_colour = DEFAULT_CURSOR_COLOUR):
+                 line_color = DEFAULT_LINE_COLOR,
+                 fill_color = DEFAULT_FILL_COLOR,
+                 cursor_color = DEFAULT_CURSOR_COLOR):
         self.init_singleboard(margins, n_cols, n_rows, box_size,
-                              line_colour, fill_colour, cursor_colour)
+                              line_color, fill_colour, cursor_colour)
 
     def init_singleboard(self, margins, n_cols, n_rows, box_size,
-                         line_colour = DEFAULT_LINE_COLOUR,
-                         fill_colour = DEFAULT_FILL_COLOUR,
-                         cursor_colour = DEFAULT_CURSOR_COLOUR):
+                         line_color = DEFAULT_LINE_COLOR,
+                         fill_color = DEFAULT_FILL_COLOR,
+                         cursor_color = DEFAULT_CURSOR_COLOR):
         """
         Arguments:
         margins -- A tuple (x,y) giving the amount of space on each side:
@@ -410,9 +410,9 @@ class SingleBoard(GameBoard, games.Screen):
         n_cols -- The number of columns in the grid.
         n_rows -- The number of rows in the grid.
         box_size -- The total width and height of each cell.
-        line_colour -- The colour of the grid lines.
-        fill_colour -- The colour of the interior of each cell.
-        cursor_colour -- The colour in which the edges of a cell
+        line_color -- The colour of the grid lines.
+        fill_color -- The colour of the interior of each cell.
+        cursor_color -- The colour in which the edges of a cell
                          should be highlighted when the "cursor"
                          is over it.
 
@@ -425,7 +425,7 @@ class SingleBoard(GameBoard, games.Screen):
         self.init_screen(n_cols * box_size + left+right,
                          n_rows * box_size + top+bottom)
         self.init_gameboard(self, (left,top), n_cols, n_rows, box_size,
-                            line_colour, fill_colour, cursor_colour)
+                            line_color, fill_colour, cursor_colour)
 
 
 class Container:
@@ -450,7 +450,7 @@ class Container:
             else:
                 break
         else:
-            raise games.GamesError, "Unable to raise this object"
+            raise games.GamesError("Unable to raise this object")
         for content in self._contents:
             object = self.__dict__[content]
             if object != None:
@@ -465,7 +465,7 @@ class Container:
             else:
                 break
         else:
-            raise games.GamesError, "Unable to destroy this object"
+            raise games.GamesError("Unable to destroy this object")
         for content in self._contents:
             object = self.__dict__[content]
             if object != None:
@@ -484,7 +484,7 @@ class Container:
             else:
                 break
         else:
-            raise games.GamesError, "Unable to move this object"
+            raise games.GamesError("Unable to move this object")
         for content in self._contents:
             object = self.__dict__[content]
             if object != None:
