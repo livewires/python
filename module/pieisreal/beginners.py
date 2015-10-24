@@ -837,14 +837,16 @@ random_between = random.randint
 read_string = input
 
 def read_number(prompt='Please enter a number: '):
-    numeric_types = [types.ComplexType, types.FloatType,
-                     types.IntType, types.LongType];
+    numeric_types = [int, float, complex];
     if prompt!='' and prompt[-1] not in string.whitespace:
         prompt = prompt + ' '
     while 1:
         result = input(prompt)
-        if type(result) in numeric_types:
-            return result
+        for i_type in numeric_types:
+            try:
+                return i_type(result)
+            except(ValueError):
+                pass
         print("But that wasn't a number!")
 
 def read_yesorno(prompt='Yes or no? '):
