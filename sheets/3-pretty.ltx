@@ -77,14 +77,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal/}{|http://github.com/centricwebestate/pieisreal/|}
 
 \section{Introduction}
 This sheet will teach you a little about doing graphics (pictures
@@ -105,7 +105,7 @@ In Sheet~1, you saw a rather boring example of graphics in Python.
 Let's go over it again, a little more carefully. It began like this:
 
 \begin{program}
-from livewires import *
+from pieisreal import *
 begin_graphics()
 \end{program}
 
@@ -121,7 +121,7 @@ All the interesting stuff happens in between. (And, in fact, it's
 not all that interesting.)
 
 \begin{program}
-set_colour(Colour.red)
+set_colour(Color.red)
 \end{program}
 
 This means: until further notice, draw everything in red. There's
@@ -135,7 +135,7 @@ draw(200,100)
 \end{program}
 
 To understand these lines, you need to know how Python (actually,
-this isn't Python itself so much as the |livewires| module, but never
+this isn't Python itself so much as the |pieisreal| module, but never
 mind) thinks about graphics.
 
 \subsection{Pixels}
@@ -191,7 +191,7 @@ with straight lines. Faces are sort of round, after all. So \dots
 Circles, for instance. Try this little program.
 
 \begin{program}
-from livewires import *
+from pieisreal import *
 begin_graphics()
 circle(300,200,100)
 \end{program}
@@ -204,7 +204,7 @@ three numbers, to make sure you understand what they all do.
 What does this do? (Try to guess before you actually run it.)
 
 \begin{program}
-from livewires import *
+from pieisreal import *
 begin_graphics()
 for r in 100,110,120,130,140:
   circle(300,200,r)
@@ -329,8 +329,8 @@ lines!)
 
 \begin{interaction}
 >>> \T{def shout():}
-...   \T{print 'Python is wonderful!'}
-...   \T{print 'And so am I.'}
+...   \T{print('Python is wonderful!')}
+...   \T{print('And so am I.')}
 ... \C{Just press \key{Enter} here.}
 \end{interaction}
 
@@ -363,7 +363,7 @@ it might mean.
 
 \begin{interaction}
 >>> \T{def twice(x):}
-...   \T{print x, '+', x, 'is', x+x}
+...   \T{print(x, '+', x, 'is', x+x)}
 ... \C{Just press \key{Enter} here.}
 \end{interaction}
 
@@ -377,7 +377,7 @@ like it did for |shout| and |moan| earlier), except that
 ``|x| is 7''. So it's rather as if you'd said
 
 \begin{program}
-print 7, '+', 7, 'is', 7+7
+print(7, '+', 7, 'is', 7+7)
 \end{program}
 
 For some reason, things that get put inside function definitions 
@@ -396,7 +396,7 @@ pretty obvious once you've seen it, so I'll just give an example.
 
 \begin{program}
 def add(x,y):
-  print x, '+', y, '=', x+y
+  print(x, '+', y, '=', x+y)
 \end{program}
 
 Then you can say |add(7,5)| and the computer will tell you what
@@ -475,7 +475,7 @@ def draw_face(x,y):
 \end{program}
 
 You need to leave a couple of the earlier lines outside the 
-function; things like the |from livewires import *| that 
+function; things like the |from pieisreal import *| that 
 aren't to do with drawing the face.
 
 (If you try running your program right now it won't do anything 
@@ -604,7 +604,7 @@ I'm just including it because I think it looks nice.
 Give it a try and see if you agree.
 
 \begin{program}
-from livewires import *
+from pieisreal import *
 begin_graphics()
 for i in range(0,400):
   move(i,0)

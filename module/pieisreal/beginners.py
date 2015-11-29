@@ -390,7 +390,7 @@ def line(x0, y0, x1=None, y1=None, color=None):
     #   line(x0, y0, x1, y1)
     # complicates life somewhat...
 
-    tt = types.TupleType
+    tt = tuple
 
     try: # catches unpacking errors
         if type(x0) is tt:
@@ -528,9 +528,7 @@ def circle(x, y, r=None, color=None, filled=False, endpoints=None):
 
     # Unpack a tuple argument
 
-    tt = types.TupleType
-
-    if type(x) is tt:
+    if type(x) is tuple:
         if r is not None: raise ExBadParameters('too many parameters')
         r = y                           # shift remaining argument
         x, y = x                        # and unpack tuple
