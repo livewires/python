@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -117,7 +117,7 @@ Here's a brief list of ways to compare things in Python.
 |a >  b| & True if |a| is greater than |b| \\
 |a >= b| & True if |a| is greater than or equal to|b| \\
 |a == b| & True if |a| is equal to |b| \\
-|a <> b| & True if |a| is not equal to |b|
+|a != b| & True if |a| is not equal to |b|
 \end{tabular}
 
 It's pretty obvious what these things mean when |a| and |b|
@@ -129,7 +129,7 @@ Very Silly. For instance, it turns out that Python thinks
 that 3 is less than |'silly'|.
 
 When you're testing whether two things are unequal, you can
-use |!=| instead of |<>| if you prefer.
+use |!=| instead of |!=| if you prefer.
 
 Be careful, by the way, to notice the difference between |=|
 and |==|. You use |=| for setting a variable (i.e., giving
@@ -168,7 +168,7 @@ This is pretty straightforward:
 
 \begin{program}
 if x < 3:
-  print 'x is less than 3. I'm setting it to 3.'
+  print('x is less than 3. I'm setting it to 3.')
   x = 3
 \end{program}
 
@@ -178,9 +178,9 @@ magic word |else|:
 
 \begin{program}
 if x<3:
-  print 'x is less than 3.'
+  print('x is less than 3.')
 else:
-  print 'x is not less than 3.'
+  print('x is not less than 3.')
 \end{program}
 
 And, less often, you want to test a whole bunch of conditions
@@ -190,11 +190,11 @@ For this, you need the strange word |elif|, which is short for
 
 \begin{program}
 if x<3:
-  print 'x is less than 3'
+  print('x is less than 3')
 elif x<4:
-  print 'x is not less than 3, but it's less than 4.'
+  print('x is not less than 3, but it's less than 4.')
 else:
-  print "x isn't even less than 4."
+  print("x isn't even less than 4.")
 \end{program}
 
 \section{Other uses of conditions}

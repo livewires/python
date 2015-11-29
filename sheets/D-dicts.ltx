@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal/}{|http://github.com/centricwebestate/pieisreal/|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -88,7 +88,7 @@ example. So here is one.
 \begin{interaction}
 >>> \T{dict = \{\}}       \C{An empty dictionary.}
 >>> \T{dict[1] = 'boo!'}  \C{Add a piece of information to it.}
->>> \T{dict['ouch'] = 99} \C{And another.}
+>>> \T{d} \C{And another.}
 >>> \T{dict}              \C{Lets's see what's in there.}
 {'ouch': 99, 1: 'boo!'}   \C{Two ``associations''.}
 >>> \T{dict['ouch']}      \C{What's associated with |'ouch'| ?}
@@ -130,10 +130,10 @@ do something like this:
 
 \begin{interaction}
 >>> \T{dict = \{'a': 123, 'b': 987\}} \C{Set up a dictionary}
->>> \T{dict.has_key('a')}             \C{Any association for |'a'| ?}
-1                                     \C{Yes.}
->>> \T{dict.has_key('z')}             \C{Any association for |'z'| ?}
-0                                     \C{Nope.}
+>>> \T{'a' in dict}             \C{Any association for |'a'| ?}
+True                                     \C{Yes.}
+>>> \T{'z' in dict}             \C{Any association for |'z'| ?}
+True                                     \C{Nope.}
 \end{interaction}
 
 \subsection{Keys}
