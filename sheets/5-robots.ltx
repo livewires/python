@@ -66,14 +66,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -323,7 +323,7 @@ import time \C{See Sheet T for more about this}
 begin_graphics()
 while 1:
   keys = keys_pressed()
-  print keys
+  print(keys)
   if 'q' in keys: \C{See Sheet C if you don't understand this}
     break \C{See Sheet L if you aren't sure what this means}
   time.sleep(0.5) \C{Wait half a second.}
@@ -371,7 +371,7 @@ called |x| that exists outside |f|:
 
 \begin{interaction}
 >>> \T{f()}
->>> \T{print x}
+>>> \T{print(x)}
 Blah blah blah ERROR ERROR blah blah
 NameError: x
 \end{interaction}
@@ -380,7 +380,7 @@ But if you add to the definition of |f| a line saying |global x|
 (just after the |def|, and indented by the same amount as the rest
 of the definition), then the variable |x| inside |f| will be ``global'':
 in other words, |x| will mean just the same inside |f| as it does
-outside. So the |print x| that gave an error with the other version
+outside. So the |print(x)| that gave an error with the other version
 of |f| will now happily print ``|1|''.
 
 I hope it's clear that this bit of magic is what we need to fix
@@ -607,7 +607,7 @@ Try doing this in your ``Python Shell'' window.
 >>> \T{fred = Robot()}
 >>> \T{fred.x = 100}
 >>> \T{fred.y = 200}
->>> \T{print fred.x, fred.y}
+>>> \T{print(fred.x, fred.y)}
 \end{interaction}
 
 (I'm sure you can guess what that last |print| statement will
@@ -650,7 +650,7 @@ For instance, after the example above, suppose we say
 
 \begin{interaction}
 >>> \T{bill = fred}
->>> \T{print bill.x}
+>>> \T{print(bill.x)}
 \end{interaction}
 
 Then the machine will print |100|, just as it would have if we'd

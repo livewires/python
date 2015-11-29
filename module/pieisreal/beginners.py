@@ -852,8 +852,7 @@ def read_yesorno(prompt='Yes or no? '):
         prompt = prompt + ' '
     while 1:
         result = input(prompt)
-        try: result = string.lower(string.split(result)[0])
-        except: result=''
+        result = result.split()[0].lower()
         if result=='yes' or result=='y': return 1
         if result=='no' or result=='n': return 0
         print("Please answer yes or no.")
