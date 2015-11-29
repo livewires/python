@@ -11,7 +11,7 @@ setup(
     name="PieIsReal",
     version=version,
     dependency_links=[
-        "http://pygame.org/ftp/"
+        "http://www.pygame.org/ftp/pygame-1.9.1release.tar.gz#egg=pygame-1.9.1"
     ],
     extras_require={'pygame':["pygame>=1.9.2"]},
     description="PieIsReal is a python learning framework forked from"

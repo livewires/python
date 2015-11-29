@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -85,12 +85,12 @@ describes.)
 For any of this stuff to work, you need to have done
 
 \begin{program}
-from livewires import *
+from pieisreal import *
 \end{program}
 
 at some point. If you're writing a program, that should be the first
 line. If you're just typing commands one by one into the ``Python Shell''
-window, you should type the |from livewires ...| thing once; after that,
+window, you should type the |from pieisreal ...| thing once; after that,
 you don't need to do it again unless you quit Python.
 
 There's an introduction to graphics in Sheet~3, so this sheet is more
@@ -127,7 +127,7 @@ You can change various things about the window:
 \begin{program}
 begin_graphics()                      \C{640 by 480, white background}
 begin_graphics(width=800,height=600)  \C{A larger window}
-begin_graphics(background=Colour.black)\C{Black background}
+begin_graphics(background=Color.black)\C{Black background}
 begin_graphics(title='Walrus')        \C{Different window title}
 \end{program}
 
@@ -152,7 +152,7 @@ move the current point.
 \end{tabular}
 
 Most of these can take an optional ``keyword argument'' specifying
-the colour to use: |draw(x,y,colour=red)| .
+the color to use: |draw(x,y,color=red)| .
 
 Some (|box| and |circle|) can take a keyword argument saying whether
 to fill them in or not (default is not to fill):
@@ -164,39 +164,39 @@ point on the screen or an angle. If the first endpoint given is a
 point, you don't need to give the radius of the circle.
 
 There's also |polygon()|. Argument is a list of coordinates.
-Keyword arguments: |colour|, |closed|, |filled|.
+Keyword arguments: |color|, |closed|, |filled|.
 
 |text| takes some keyword arguments too. |size|, |serifs|. You
 can change the default values of these with |set_textsize(sz)|
 and |set_textserifs(x)|.
 
-\section{Colours}
+\section{Colors}
 
-Just as there's a ``current point'', there's a ``current colour''.
-By default, it starts off being black. Colours look like this:
-|Colour(r,g,b)| where |r|,|g|,|b| are numbers between 0 and 1
+Just as there's a ``current point'', there's a ``current color''.
+By default, it starts off being black. Colors look like this:
+|Color(r,g,b)| where |r|,|g|,|b| are numbers between 0 and 1
 indicating how much red, how much green and how much blue there are
-in the colour you want. So, for instance, |Colour(0,0,0)| is black;
-|Colour(1,1,1)| is white; |Colour(1,1,0)| is bright yellow.
+in the color you want. So, for instance, |Color(0,0,0)| is black;
+|Color(1,1,1)| is white; |Color(1,1,0)| is bright yellow.
 
-You can assign colours to variables (i.e., give them names):
-|yellow = Colour(1,1,0)|, for instance.
+You can assign colors to variables (i.e., give them names):
+|yellow = Color(1,1,0)|, for instance.
 
-To change the current colour, do |set_colour(c)| where |c| is
-a colour. This function call returns the ``current colour'' that
+To change the current color, do |set_color(c)| where |c| is
+a color. This function call returns the ``current color'' that
 was in force before you changed it, so you can do things like
 
 \begin{program}
 def draw_red_line():
-  old_colour = set_colour(Colour.red) \C{|Colour.red| is pre-defined}
+  old_color = set_color(Color.red) \C{|Color.red| is pre-defined}
   move(100,100)
   draw(200,200)
-  set_colour(old_colour) \C{Leave current colour as it was before we started}
+  set_color(old_color) \C{Leave current color as it was before we started}
 \end{program}
 
-As that program fragment indicates, there are some colours defined
-for you: |Colour.red|, |Colour.green|, |Colour.blue|, |Colour.black|
-and |Colour.white| . In fact, there are some more: |Colour.|\emph{foo}
+As that program fragment indicates, there are some colors defined
+for you: |Color.red|, |Color.green|, |Color.blue|, |Color.black|
+and |Color.white| . In fact, there are some more: |Color.|\emph{foo}
 where \emph{foo} is one of: |dark_grey|, |grey|, |light_grey|,
 |dark_red|, |dark_green|, |dark_blue|, |yellow|, |brown| .
 
