@@ -1,6 +1,6 @@
 language: python
 python:
-- '2.7.10'
+- 2.7.10
 install:
 - sudo add-apt-repository -y ppa:texlive-backports/ppa
 - sudo apt-get update
@@ -9,12 +9,12 @@ script:
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
   provider: s3
-  access_key_id: AKIAJNGHJWMQEU6QAIPQ
+  access_key_id: AKIAIX73Z7Z6RWZASYWA
   secret_access_key:
-    secure: "dRilRvRvlob1nqKkcdphgO0dgIGEsTa+ol1TOmRJxtDaGHHJWW9d3uqd/O3+0wx9JAeZat8931FcjCvwZVBO6FIh+QKtVfwrXzkghxZR+OMc/ILk+1hColOrD2snh5l7mubkIdLHXRbp/LD37Qrua0hPzo70sCsslnNFoVZpIffk9FPCcnacNYxa2hMGx0D9OR8TMlXLLq+zdzTRQIWFPwhbUw03UPq9gqbZIYm6+qgER+wAnWLuapSF849tuK+PKNRs50bKV17xY0u8l9xpmr++JjNn7LvwlaJWSPWUbFpYRFJOf0Id7SBC5+5GX2f7VsEPe9K3x0Iik7R7aoui7xRdGJGjSMUOcKlpZt/x+BIy6I+oq6KG8cZ+kVZSyHrR/HSC2iyQ9mnJGZBLplic0gfv3akZJ5qoe22OBr9cZc4cpunFjewTKdHWSlzaZJ30qQ09pC2rvleqmsrmDFYfBoBA7Y9NDjJQ6nfTbW78t+P063DwoG57J5XfbBzFQE8hmmLhW2GWtZoi7+9MhClBL64UIjJCVOjtuBGn5uEfBGTDPY0jEh+ZTKZGiFaXLV1yDwwxAvvJFOZ0xTxIZTt156MmkmAhYu9mYaUa49DWL8OxxYslOkMoYB0LXpRe1EhQvL4ahzuv992AzpGD0QH7mVrYXJszDRW9pa7o0wxG524="
+    secure: 0UqOcqpRDYF8u1IOj+0ekMhOyy1H42M39yuHtJYItlboiOaDOuJYY2Hyfk/HV7Fx8fngtu69jSiORZuSMePNOpNiZ9b4lusbMTRBydkDmLrQFQPRbmj+w+CdkhNPj/COMUV3s7g+nyeuCvbbtY2O/XdqfYUlAOxTCvcVx6p9EvNlNfV8UyPVti+ibmh8TNvnCUMA6Nxiy1FWdX+S8ITi+BzsJv4S+LprX2FJfBOZEak2kDJYdcHqCurY2Ms23oEUJRzys6w6YF51xm+a5SbIveNzwae7uFjHeIJYLz8DytGctEcv3CcngBDrX2Cxh/b18q+rsf8kQrqbiFIbq38EgMrtMXqTfoEe5v2MO8NLSMhhl8B8ntziaMBa1k0OiTjpyjPq4C3rVp6EDypRbojCNa5hkT/A42+ccpkZQ3VNcrSmMn8o7U5YDFSWREx5P4fn/eKG5nAAvMxFNb/yKWCHW7U7vmCPQFcidmdXcMR4tuLMrhQfPmCvk162Q25oB9h8yYyiX4QZyeILS2xRc+bn14V04nwHOXRF8WkaAL5TY7fCV47E+hAOqiDz2Whn4junz3DA5nllf9jhYLxDHnpw9YzAVVM9ju/VUe+YOPRiJ/flspEqQH+qY0WhvQydEqGiDIdKjO04oSxgZsr47GAhBipbsApuKvS5idHv1ItCEWM=
   bucket: pieisreal-sheets
   local-dir: release
-  upload-dir: "$TRAVIS_BUILD_NUMBER"
+  upload-dir: $TRAVIS_BUILD_NUMBER
   acl: public_read
   region: ap-southeast-2
   skip_cleanup: true

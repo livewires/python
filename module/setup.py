@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import glob
+import setuptools
 from setuptools import setup
 import re
 
