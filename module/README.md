@@ -86,9 +86,9 @@ Checking it works:
 
 Run Python and, at the `>>>` prompt, type
 
-    from livewires import beginners
-    from livewires import games
-    from livewires import colour
+    from pieisreal import beginners
+    from pieisreal import games
+    from pieisreal import color
 
 If none of these commands produce errors, you've successfully installed
 the package. You can safely delete the directory where you unzipped the
