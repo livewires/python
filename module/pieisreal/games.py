@@ -801,7 +801,7 @@ class Text(Object, ColorMixin):
         if not _have_font:
             raise GameError("We don't have pygame.font, so can't create text objects")
         self._size = size
-        self._color = colour
+        self._color = color
         self._text = text
         self._font = pygame.font.Font(None, self._size)
         self._a = 0
