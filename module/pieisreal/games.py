@@ -1093,7 +1093,6 @@ class Mover (Timer):
         self.move_by (self._dx, self._dy)
         if self._da:
             self.rotate_by (self._da)
-        self.moved ()
 
 #------------------------------------------------------------------------------
 
