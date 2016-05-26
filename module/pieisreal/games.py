@@ -519,12 +519,6 @@ class Object:
         self._a = a
         if self._a != 0:
             self._rotate ()
-        
-        # Create references for objects sides (useful when creating movable objects).
-        self._top = self._rect.top
-        self._right = self._rect.right
-        self._bottom = self._rect.bottom
-        self._left = self._rect.left
 
         self._tickable = 0
 
