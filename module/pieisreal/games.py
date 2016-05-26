@@ -124,16 +124,6 @@ class Screen:
 
         # Time when we should draw the next frame
         self._next_tick = 0
-    
-    # Allow access to private width attribute
-    @property
-    def width(self):
-        return self._width
-    
-    # Allow access to private height property
-    @property
-    def height(self):
-        return self._height
 
     def is_pressed (self, key):
         """
@@ -529,6 +519,12 @@ class Object:
         self._a = a
         if self._a != 0:
             self._rotate ()
+        
+        # Create references for objects sides (useful when creating movable objects).
+        self._top = self._rect.top
+        self._right = self._rect.right
+        self._bottom = self._rect.bottom
+        self._left = self._rect.left
 
         self._tickable = 0
 
@@ -713,6 +709,12 @@ class Object:
         objects have been made up to this point.
         """
         self._static = 1
+        
+    def update(self):
+        """Update sprite on the screen. This method is designed to be over-ridden
+        and is here as a placeholder if not required"""
+        
+        pass
 
 #------------------------------------------------------------------------------
 
@@ -741,13 +743,6 @@ class Sprite (Object):
         """
         Object.__init__ (self, screen, x, y, image, a, static=static,
                          x_offset=-image.get_width()/2, y_offset=-image.get_height()/2)
-    
-    def update(self):
-        """Update sprite on the screen. This method is designed to be over-ridden
-        and is here as a placeholder if not required"""
-        
-        pass
-    
 
 #------------------------------------------------------------------------------
 
