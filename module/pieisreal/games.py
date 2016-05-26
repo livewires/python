@@ -124,6 +124,16 @@ class Screen:
 
         # Time when we should draw the next frame
         self._next_tick = 0
+    
+    # Allow access to private width attribute
+    @property
+    def width(self):
+        return self._width
+    
+    # Allow access to private height property
+    @property
+    def height(self):
+        return self._height
 
     def is_pressed (self, key):
         """
