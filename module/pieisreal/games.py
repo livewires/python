@@ -741,6 +741,13 @@ class Sprite (Object):
         """
         Object.__init__ (self, screen, x, y, image, a, static=static,
                          x_offset=-image.get_width()/2, y_offset=-image.get_height()/2)
+    
+    def update(self):
+        """Update sprite on the screen. This method is designed to be over-ridden
+        and is here as a placeholder if not required"""
+        
+        pass
+    
 
 #------------------------------------------------------------------------------
 
@@ -1103,6 +1110,7 @@ class Mover (Timer):
         self.move_by (self._dx, self._dy)
         if self._da:
             self.rotate_by (self._da)
+        self.update()
 
 #------------------------------------------------------------------------------
 
