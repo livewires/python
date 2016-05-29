@@ -178,7 +178,7 @@ class Screen:
 
         pass
     
-    def mouse_visible(self, state):
+    def mouse_visible(self, state = True):
         """
         This method is used to hide the pointer behind a sprite,
         should it be required.
