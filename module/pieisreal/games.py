@@ -177,6 +177,16 @@ class Screen:
         """
 
         pass
+    
+    def mouse_visible(self, state):
+        """
+        This method is used to hide the pointer behind a sprite,
+        should it be required.
+        Allows for this to be done without the need to import pygame.
+        Take one logical arguement, and passes this to pygames' 
+        mouse.set_visible.
+        """
+        pygame.mouse.set_visible(state)
 
     def mouse_down(self, pos, button):
         """
