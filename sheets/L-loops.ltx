@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -104,8 +104,8 @@ simplest form looks like this:
 
 \begin{program}
 for x in 1,2,3,4,5,1000:
-  print 'Here is a number:'
-  print x
+  print('Here is a number:')
+  print(x)
 \end{program}
 
 So, you need to give a ``variable name'' (|x|), a list of things
@@ -119,8 +119,8 @@ instance, say:
 \begin{program}
 my_list = [1,2,3,4,5,1000]
 for x in my_list:
-  print "Here's a number:"
-  print x
+  print("Here's a number:")
+  print(x)
 \end{program}
 
 And, of course, |my_list| might actually get its value in some more
@@ -151,7 +151,7 @@ Incidentally, |range| isn't only for using in |for| loops. You
 can use it elsewhere too:
 
 \begin{interaction}
->>> \T{print range(5)}
+>>> \T{print(range(5))}
 [0, 1, 2, 3, 4]
 \end{interaction}
 
@@ -168,7 +168,7 @@ of loop:
 \begin{program}
 number = 1
 while number < 1000:
-  print number
+  print(number)
   number = 2*number
 \end{program}
 
@@ -249,7 +249,7 @@ The following strange-looking construction is sometimes useful.
 for n in range(10):
   if a[n] == 'aardvark': break
 else:
-  print 'No aardvark found!'
+  print('No aardvark found!')
 \end{program}
 
 At first sight, it looks like the ``else'' here is at the wrong

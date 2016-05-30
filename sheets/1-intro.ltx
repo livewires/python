@@ -77,14 +77,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/CentricWebEstate/pieisreal/}{|http://github.com/CentricWebEstate/pieisreal/|}
 
 %-------------------------------------------------------------------
 \section{First steps}
@@ -130,6 +130,29 @@ going to look at is called ``Python''. One of the good things
 about Python is that it's pretty easy for humans to understand,
 too.
 
+\section{It's all gone horribly wrong}
+
+At some point when you're using Python, something like \emph{this}
+is going to happen.
+
+\begin{interaction}
+>>> \T{3+'aardvark'}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+TypeError: unsupported operand type(s) for +: 'int' and 'str'
+>>>
+\end{interaction}
+
+This looks pretty scary. Don't be scared. It's just Python's
+way of saying you did something it didn't understand. You can
+often ignore everything except the last line (though when it 
+happens to your program the other lines can help find the root
+cause). To understand the last line, have a look at Sheet~E 
+(\emph{Errors}), which has a list of common complaints Python 
+might make at you and explanations of what they might mean.
+
+\section{First steps, Continued...}
+
 Here's how you ask the computer to tell you the sum of twelve and
 thirteen. Try it yourself. (You don't need to type in the |>>>|,
 but you do need to hit the key marked \key{Enter} after typing
@@ -150,19 +173,20 @@ answers shown too.
 >>> \T{200*300}
 60000
 >>> \T{12/4}         \C{Use |/| for division.}
-3
+3.0
 \end{interaction}
 
 Now, here's a bit of a surprise.
 
 \begin{interaction}
 >>> \T{7/3}
-2
+2.3333333333333335
 \end{interaction}
 
 You might have expected it to say |2.3333333| or $2{1\over3}$,
-but in fact the remainder just gets thrown away. There are ways of
-getting a more accurate answer; we'll find out about them later.
+but in fact the remainder gets rounded after a few decimal places. 
+There are ways of getting a more accurate answer; but that's not 
+covered here.
 
 Try experimenting some more with using Python as a calculator.
 
@@ -187,9 +211,9 @@ what's actually printed on the sheets!
 
 Incidentally, if you're still confused about the fact that
 |1+2*3-4| gives 3 and not 5, the reason is that ``multiplication
-happens before addition''. Your maths teacher at school probably
+happens before addition''. Your maths book probably
 calls this BODMAS or something similar. If you're still confused,
-don't worry. It isn't likely to matter.
+don't worry. Just ask someone to explain it a bit more for you.
 
 %-------------------------------------------------------------------
 \section{Different types of object}
@@ -205,7 +229,8 @@ try the following:
 Things between quotation marks are called ``strings''. As you
 might guess from the lines above, you can apply |+| to strings
 as well as to numbers. It ``concatenates'' strings; that is,
-puts one immediately after the other. A little more surprising:
+puts two strings together, kind of like using sticky tape.
+A little more surprising:
 
 \begin{interaction}
 >>> \T{3 * 'hello'}
@@ -229,7 +254,7 @@ Python doesn't mind.
 \end{interaction}
 
 Why would you care about that? Well, suppose you wanted a string
-containing the text |I'm sorry| ?
+containing the text |I'm sorry| ? Give it a go!
 
 Python also has ``lists'':
 
@@ -254,7 +279,7 @@ the number in every time:
 >>> \T{123456*3}
 370368
 >>> \T{123456/6}
-20576
+20576.0
 >>> \T{123456-1000}
 122456
 \end{interaction}
@@ -274,7 +299,7 @@ name, like |salary|. Here's how we do that.
 >>> \T{salary*4}
 493824
 >>> \T{salary/12}
-10288
+10288.0
 >>> \T{salary}
 123456
 \end{interaction}
@@ -308,7 +333,7 @@ in Sheet~2.)
 
 \begin{interaction}[7cm]
 >>> \T{for x in 1,2,3,4,5:}
-...   \T{print x,x*x}       \C{The prompt changes, to tell you Python is expecting more.}
+...   \T{print(x, x*x)}     \C{The prompt changes, to tell you Python is expecting more.}
 ...                         \C{Just press \key{Enter}.}
 \end{interaction}
 
@@ -318,7 +343,7 @@ well done. Notice that Python conveniently puts a space between
 the two things you've asked it to print.
 
 \begin{note}
-          The |print| command is used when you want to make the computer
+          The |print| function is used when you want to make the computer
           display things. The reason we haven't needed it before is
           that when you type in something at the prompt, and that thing 
           has an answer Python 
@@ -336,12 +361,12 @@ You can use Python for drawing pictures. Try this. The first two lines
 will probably seem rather weird; we'll explain them later.
 
 \begin{interaction}
->>> \T{from livewires import *}
+>>> \T{from pieisreal import *}
 >>> \T{begin_graphics()}
->>> \T{set_colour(Colour.red)}
+>>> \T{set_color(Color.red)}
 >>> \T{move(100,100)}
 >>> \T{draw(200,100)}
->>> \T{set_colour(Colour.blue)}
+>>> \T{set_color(Color.blue)}
 >>> \T{draw(100,200)}
 >>> \T{end_graphics()}
 \end{interaction}
@@ -350,27 +375,6 @@ After you've typed that last command, you may find that
 Python sits doing nothing until you close its graphics window.
 If so, close its graphics window! Normally the last line will 
 make Python do so itself.
-
-\section{It's all gone horribly wrong}
-
-At some point when you're using Python, something like \emph{this}
-is going to happen.
-
-\begin{interaction}
->>> \T{3+'aardvark'}
-Traceback (most recent call last):
-  File "<stdin>", line 1, in ?
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
->>>
-\end{interaction}
-
-This looks pretty scary. Don't be scared. It's just Python's
-way of saying you did something it didn't understand. You can
-often ignore everything except the last line (though when it 
-happens to your program the other lines can help find the root
-cause). To understand the last line, have a look at Sheet~E 
-(\emph{Errors}), which has a list of common complaints Python 
-might make at you and explanations of what they might mean.
 
 \section{What next?}
 We have two kinds of worksheets.
@@ -383,7 +387,7 @@ We have two kinds of worksheets.
        useful about Python.
        These sheets are lettered: Sheet~P, Sheet~L, or whatever.
        Usually the letters have something to do with what the
-       sheets are about, but that hasn't always been possible.
+       sheets are about, but not always.
 \end{enumerate}
 
 You should probably read Sheet~R (\emph{Running Python}) now,

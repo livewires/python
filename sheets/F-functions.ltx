@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -135,7 +135,7 @@ Suppose you say
 \begin{program}
 def say_boo_twice():
   boo = 'Boo!!!'
-  print boo, boo
+  print(boo, boo)
 
 boo = 'boo hoo'
 say_boo_twice()
@@ -168,7 +168,7 @@ one extra line
 def say_boo_twice():
   global boo         \C{This is the extra line}
   boo = 'Boo!!!'
-  print boo, boo
+  print(boo, boo)
 
 boo = 'boo hoo'
 say_boo_twice()
@@ -200,8 +200,8 @@ Here's how you define a function with arguments.
 
 \begin{program}
 def print_two_things(x,y):
-  print 'x is', x
-  print 'y is', y
+  print('x is', x)
+  print('y is', y)
 \end{program}
 
 You can probably guess that if you say |print_two_things(1,'boing!')|
@@ -236,7 +236,7 @@ def add(a,b):
 of the function''.) So, you could use this function like so:
 
 \begin{program}
-print '3 plus 4 is', add(3,4)
+print('3 plus 4 is', add(3,4))
 \end{program}
 
 which would, unsurprisingly, print |3 plus 4 is 7|.
@@ -249,7 +249,7 @@ some typing by using ``optional arguments''. Here's how to do that.
 
 \begin{program}
 def do_something(x, y=999):
-  print x,y
+  print(x,y)
 \end{program}
 
 You can now use this in three ways.

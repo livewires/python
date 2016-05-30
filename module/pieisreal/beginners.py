@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# LiveWires beginners' support library
+# PieIsReal beginners' support library
 #
 # This library provides a simple graphics API to allow procedural
 # programming using (in this instance) Tk to provide an output
@@ -52,12 +52,13 @@ import random
 import string
 import time
 import types
-import Tkinter
+import tkinter as Tkinter
 
 ###############################################################################
 ### Module statics ############################################################
 ###############################################################################
 
+# TODO: Confirm that this is in fact still the case
 _Windows     = sys.platform == 'win32'  # True if on Win95/98/NT
 
 _root_window    = None                  # The root window for graphics output
@@ -66,13 +67,14 @@ _canvas_xs      = None                  # Size of canvas object
 _canvas_ys      = None
 _canvas_x       = None                  # Current position on canvas
 _canvas_y       = None
-_canvas_col     = None                  # Current colour (set to black below)
+_canvas_col     = None                  # Current color (set to black below)
 _canvas_tsize   = 12
 _canvas_tserifs = 0
 
 if _Windows:
     _canvas_tfonts = ['times new roman', 'lucida console']
 else:
+    # TODO: Confirm that these fonts work on MacOSX
     _canvas_tfonts = ['times','lucidasans-24']
     pass # XXX need defaults here
 
@@ -111,15 +113,15 @@ class MovableCircle(Movable):
         return [(cl[0]+cl[2])/2, (cl[1]+cl[3])/2]
 
 ###############################################################################
-### Colour handling ###########################################################
+### Color handling ###########################################################
 ###############################################################################
 
-class Colour:
+class Color:
 
     # Basic methods
 
     def __init__(self, red=0.0, green=0.0, blue=0.0):
-        # XXX We might want to accept Colour(c), where c is a colour
+        # XXX We might want to accept Color(c), where c is a color
         # XXX Still not sure about domains of [0.0, 1.0], rather than [0,255]
         # XXX Consider also what rounding (if any) is appropriate here
         constrain  = self.__constrain
@@ -128,18 +130,18 @@ class Colour:
         self.b = constrain(255*blue)
 
     def __repr__(self):
-        return ('Colour(%.3f, %.3f, %.3f)' %
+        return ('Color(%.3f, %.3f, %.3f)' %
                 (self.r/255., self.g/255., self.b/255.))
 
     def _toTk(self):
         return '#%02x%02x%02x' % (self.r, self.g, self.b)
 
-    # Colour arithmetic methods
+    # Color arithmetic methods
 
     def __constrain(self, component):
         return max(0, min(255, int(component + 0.5)))
 
-    def __mul__(self, other):           # colour * n
+    def __mul__(self, other):           # color * n
         # XXX It might be preferable to use [0.0,1.0] representation
         #     internally, to preserve precision here, but we probably
         #     don't care very much about it
@@ -147,17 +149,17 @@ class Colour:
         red   = constrain(self.r * other)
         green = constrain(self.g * other)
         blue  = constrain(self.b * other)
-        return Colour(red/255., green/255., blue/255.)
+        return Color(red/255., green/255., blue/255.)
 
-    def __rmul__(self, other):          # n * colour
+    def __rmul__(self, other):          # n * color
         return self.__mul__(other)
 
-    def __add__(self, other):           # colour + colour
+    def __add__(self, other):           # color + colour
         constrain = self.__constrain
         red   = constrain(self.r + other.r)
         green = constrain(self.g + other.g)
         blue  = constrain(self.b + other.b)
-        return Colour(red/255., green/255., blue/255.)
+        return Color(red/255., green/255., blue/255.)
 
     # Accessors
 
@@ -165,40 +167,40 @@ class Colour:
     def green(self): return self.g
     def blue(self):  return self.b
 
-Colour.red      = Colour(1, 0, 0)
-Colour.green    = Colour(0, 1, 0)
-Colour.blue     = Colour(0, 0, 1)
-Colour.black    = Colour(0, 0, 0)
-Colour.white    = Colour(1, 1, 1)
+Color.red      = Color(1, 0, 0)
+Color.green    = Color(0, 1, 0)
+Color.blue     = Color(0, 0, 1)
+Color.black    = Color(0, 0, 0)
+Color.white    = Color(1, 1, 1)
 
-Colour.dark_red   = Colour(0.5, 0.0, 0.0)
-Colour.dark_green = Colour(0.0, 0.4, 0.0)
-Colour.dark_blue  = Colour(0.0, 0.0, 0.5)
+Color.dark_red   = Color(0.5, 0.0, 0.0)
+Color.dark_green = Color(0.0, 0.4, 0.0)
+Color.dark_blue  = Color(0.0, 0.0, 0.5)
 
-Colour.dark_grey  = Colour(0.3, 0.3, 0.3)
-Colour.grey       = Colour(0.5, 0.5, 0.5)
-Colour.light_grey = Colour(0.7, 0.7, 0.7)
+Color.dark_grey  = Color(0.3, 0.3, 0.3)
+Color.grey       = Color(0.5, 0.5, 0.5)
+Color.light_grey = Color(0.7, 0.7, 0.7)
 
-Colour.yellow     = Colour(0.9, 0.8, 0.0)
+Color.yellow     = Color(0.9, 0.8, 0.0)
 
-Colour.brown      = Colour(0.5, 0.35, 0.0)
-Colour.pink       = Colour(1.0, 0.0,  0.8)
-Colour.purple     = Colour(0.6, 0.0,  0.7)
+Color.brown      = Color(0.5, 0.35, 0.0)
+Color.pink       = Color(1.0, 0.0,  0.8)
+Color.purple     = Color(0.6, 0.0,  0.7)
 
-_canvas_col     = Colour.black
+_canvas_col     = Color.black
 
-### make_colour() #############################################################
+### make_color() #############################################################
 #
-# XXX We might just delete this, and use Colour() directly
+# XXX We might just delete this, and use Color() directly
 
-make_colour = Colour
+make_color = Color
 
-### set_colour() ##############################################################
+### set_color() ##############################################################
 
-def set_colour(c):
+def set_color(c):
     global _canvas_col
-    if not isinstance (c, Colour):
-        raise ExBadParameters, "colour must be from Colour class"
+    if not isinstance (c, Color):
+        raise ExBadParameters("color must be from Color class")
     c, _canvas_col = _canvas_col, c
     return c
 
@@ -222,7 +224,7 @@ def sleep(secs):
 #
 # Create the window in which graphics will be output.
 
-def begin_graphics(width=640, height=480, background=Colour.white, title=None):
+def begin_graphics(width=640, height=480, background=Color.white, title=None):
 
     global _root_window, _canvas, _canvas_x, _canvas_y, _canvas_xs, _canvas_ys
 
@@ -276,7 +278,8 @@ def _destroy_window(event=None):
 def end_graphics():
     global _root_window, _canvas, _mouse_enabled
     try:
-        sleep(1)
+        # Looks like we might not need this in py3k
+        #sleep(1)
         _root_window.destroy()
         #try:
         #    _root_window.mainloop()
@@ -301,7 +304,7 @@ def clear_screen(background=None):
     # Remove all drawn items
     _canvas.delete('all')
 
-    # Change background colour if required
+    # Change background color if required
     if background is not None:
         _canvas.configure(bg=background._toTk())
 
@@ -326,7 +329,7 @@ def move(x, y=None):
 
 ### plot() ####################################################################
 
-def plot(x, y=None, colour=None):
+def plot(x, y=None, color=None):
 
     global _canvas_x, _canvas_y
 
@@ -335,19 +338,19 @@ def plot(x, y=None, colour=None):
         try:        x, y = x
         except:     raise ExBadParameters('not a coordinate')
 
-    # Provide a dynamic default colour
-    if colour is None: colour = _canvas_col
+    # Provide a dynamic default color
+    if color is None: colour = _canvas_col
 
     # Draw a very short line
     y = _canvas_ys - y
-    _canvas.create_line(x, y, x+1, y, fill=colour._toTk())
+    _canvas.create_line(x, y, x+1, y, fill=color._toTk())
 
     _canvas_x, _canvas_y = x, y
     _canvas.update()
 
 ### draw() ####################################################################
 
-def draw(x, y=None, colour=None):
+def draw(x, y=None, color=None):
 
     global _canvas_x, _canvas_y
 
@@ -356,12 +359,12 @@ def draw(x, y=None, colour=None):
         try:        x, y = x
         except:     raise ExBadParameters('not a coordinate')
 
-    # Provide a dynamic default colour
-    if colour is None: colour = _canvas_col
+    # Provide a dynamic default color
+    if color is None: color = _canvas_col
 
     # Draw a line
     y = _canvas_ys - y
-    _canvas.create_line(_canvas_x, _canvas_y, x, y, fill=colour._toTk())
+    _canvas.create_line(_canvas_x, _canvas_y, x, y, fill=color._toTk())
 
     _canvas_x, _canvas_y = x, y
     _canvas.update()
@@ -376,7 +379,7 @@ def position(): return (_canvas_x, _canvas_y)
 
 ### line() ####################################################################
 
-def line(x0, y0, x1=None, y1=None, colour=None):
+def line(x0, y0, x1=None, y1=None, color=None):
 
     global _canvas_x, _canvas_y
 
@@ -387,7 +390,7 @@ def line(x0, y0, x1=None, y1=None, colour=None):
     #   line(x0, y0, x1, y1)
     # complicates life somewhat...
 
-    tt = types.TupleType
+    tt = tuple
 
     try: # catches unpacking errors
         if type(x0) is tt:
@@ -406,22 +409,22 @@ def line(x0, y0, x1=None, y1=None, colour=None):
     y0 = _canvas_ys - y0
     y1 = _canvas_ys - y1
 
-    if colour is None: colour = _canvas_col
+    if color is None: colour = _canvas_col
 
     _canvas_x, _canvas_y = x1, y1
 
     if _returning:
-      lobj = Movable(_canvas.create_line(x0, y0, x1, y1, fill=colour._toTk()),
+      lobj = Movable(_canvas.create_line(x0, y0, x1, y1, fill=color._toTk()),
                      [x0,y0,x1,y1])
       _canvas.update()
       return lobj
     else:
-      _canvas.create_line(x0, y0, x1, y1, fill=colour._toTk())
+      _canvas.create_line(x0, y0, x1, y1, fill=color._toTk())
     _canvas.update()
 
 ### box() #####################################################################
 
-def box(x0, y0, x1=None, y1=None, colour=None, filled=False):
+def box(x0, y0, x1=None, y1=None, color=None, filled=False):
 
     global _canvas_x, _canvas_y
 
@@ -446,24 +449,24 @@ def box(x0, y0, x1=None, y1=None, colour=None, filled=False):
     y0 = _canvas_ys - y0
     y1 = _canvas_ys - y1
 
-    if colour is None: colour = _canvas_col
-    colour = colour._toTk()
-    if filled: fill = colour
+    if color is None: colour = _canvas_col
+    color = colour._toTk()
+    if filled: fill = color
     else:      fill = '' # transparent
 
     if _returning:
       bobj = Movable(_canvas.create_rectangle(x0, y0, x1, y1,
-                                               outline=colour, fill=fill),
+                                               outline=color, fill=fill),
                      [x0,y0,x1,y1])
       _canvas.update()
       return bobj
     else:
-      _canvas.create_rectangle(x0, y0, x1, y1, outline=colour, fill=fill)
+      _canvas.create_rectangle(x0, y0, x1, y1, outline=color, fill=fill)
       _canvas.update()
 
 ### polygon() #################################################################
 
-def polygon(coords, colour=None, closed=0, filled=False):
+def polygon(coords, color=None, closed=0, filled=False):
 
     global _canvas_x, _canvas_y
 
@@ -488,29 +491,29 @@ def polygon(coords, colour=None, closed=0, filled=False):
     if closed: _canvas_x, _canvas_y = c[0], c[1]
     else:      _canvas_x, _canvas_y = c[-2], c[-1]
 
-    if colour is None:  colour = _canvas_col
+    if color is None:  colour = _canvas_col
 
     if closed or filled:
         # Create a polygon
-        if filled: fill = colour._toTk()
+        if filled: fill = color._toTk()
         else:      fill = '' # transparent
         if _returning:
           pobj = Movable(_canvas.create_polygon(c,
-                                                outline=colour._toTk(),
+                                                outline=color._toTk(),
                                                 fill=fill),
                          c)
           _canvas.update()
           return pobj
         else:
           _canvas.create_polygon(c,
-                                 outline=colour._toTk(),
+                                 outline=color._toTk(),
                                  fill=fill)
     else:
         # Tk can't draw open polygons, so simulate it
         x, y, c = c[0], c[1], c[2:]
         while c:
             x1, y1, c = c[0], c[1], c[2:]
-            _canvas.create_line(x, y, x1, y1, fill=colour._toTk())
+            _canvas.create_line(x, y, x1, y1, fill=color._toTk())
             x, y = x1, y1
         # Alas, this doesn't work right if _returning
         if _returning:
@@ -519,22 +522,20 @@ def polygon(coords, colour=None, closed=0, filled=False):
 
 ### circle() ##################################################################
 
-def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
+def circle(x, y, r=None, color=None, filled=False, endpoints=None):
 
     global _canvas_x, _canvas_y
 
     # Unpack a tuple argument
 
-    tt = types.TupleType
-
-    if type(x) is tt:
+    if type(x) is tuple:
         if r is not None: raise ExBadParameters('too many parameters')
         r = y                           # shift remaining argument
         x, y = x                        # and unpack tuple
 
-    if colour is None: colour = _canvas_col
-    colour = colour._toTk()
-    if filled: fill = colour
+    if color is None: colour = _canvas_col
+    color = colour._toTk()
+    if filled: fill = color
     else:      fill = ''
 
     if r is not None and r < 0: raise ExBadParameters('negative radius')
@@ -557,7 +558,7 @@ def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
 
     y = _canvas_ys - y
 
-    # We now have x,y = centre, r = radius, colour in Tk format
+    # We now have x,y = centre, r = radius, color in Tk format
     # Tk wants the corners of an enclosing rectangle.
 
     x0, x1 = x - r, x + r + 1
@@ -568,12 +569,12 @@ def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
         _canvas_x, _canvas_y = x, y
         if _returning:
           cobj = MovableCircle(_canvas.create_oval(x0, y0, x1, y1,
-                                                   outline=colour, fill=fill),
+                                                   outline=color, fill=fill),
                                [x0,y0,x1,y1])
           _canvas.update()
           return cobj
         else:
-          _canvas.create_oval(x0, y0, x1, y1, outline=colour, fill=fill)
+          _canvas.create_oval(x0, y0, x1, y1, outline=color, fill=fill)
           _canvas.update()
 
           return
@@ -607,14 +608,14 @@ def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
     _canvas_y = y + r * math.sin(e[1] * math.pi/180)
     if _returning:
       cobj = MovableCircle(_canvas.create_arc(x0, y0, x1, y1,
-                                              outline=colour, fill=fill,
+                                              outline=color, fill=fill,
                                               extent=e[1]-e[0], start=e[0],
                                               style=style),
                            [x0,y0,x1,y1])
       _canvas.update()
       return cobj
     else:
-      _canvas.create_arc(x0, y0, x1, y1, outline=colour, fill=fill,
+      _canvas.create_arc(x0, y0, x1, y1, outline=color, fill=fill,
                          extent=e[1]-e[0], start=e[0], style=style)
       _canvas.update()
 
@@ -624,9 +625,9 @@ def circle(x, y, r=None, colour=None, filled=False, endpoints=None):
 
 ### text() ####################################################################
 
-def text(t, colour=None, size=None, angle=0, serifs=None):
+def text(t, color=None, size=None, angle=0, serifs=None):
 
-    if colour is None:  colour = _canvas_col
+    if color is None:  colour = _canvas_col
     if size is None:    size   = _canvas_tsize
     if serifs is None:  serifs = _canvas_tserifs
 
@@ -636,7 +637,7 @@ def text(t, colour=None, size=None, angle=0, serifs=None):
     temp = _canvas.create_text(_canvas_x, _canvas_y,
                                text=t,
                                anchor='sw',
-                               fill=colour._toTk(),
+                               fill=color._toTk(),
                                font=(_canvas_tfonts[serifs == 0], size),
                                justify='left')
     _canvas.update()
@@ -795,8 +796,8 @@ def _clear_keys(event=None):
     _keysdown = {}
     _got_release = None
 
-def keys_pressed(d_o_e=Tkinter.tkinter.dooneevent,
-                 d_w=Tkinter.tkinter.DONT_WAIT):
+def keys_pressed(d_o_e=lambda arg: _root_window.dooneevent(arg),
+                 d_w=Tkinter._tkinter.DONT_WAIT):
     d_o_e(d_w)
     if _got_release:
       d_o_e(d_w)
@@ -831,29 +832,30 @@ random_between = random.randint
 # The name "raw_input" is a little forbidding, so we rename it.
 # We also provide some other reading functions that do useful things.
 
-read_string = raw_input
+read_string = input
 
 def read_number(prompt='Please enter a number: '):
-    numeric_types = [types.ComplexType, types.FloatType,
-                     types.IntType, types.LongType];
-    if prompt<>'' and prompt[-1] not in string.whitespace:
+    numeric_types = [int, float, complex];
+    if prompt!='' and prompt[-1] not in string.whitespace:
         prompt = prompt + ' '
     while 1:
         result = input(prompt)
-        if type(result) in numeric_types:
-            return result
-        print "But that wasn't a number!"
+        for i_type in numeric_types:
+            try:
+                return i_type(result)
+            except(ValueError):
+                pass
+        print("But that wasn't a number!")
 
 def read_yesorno(prompt='Yes or no? '):
-    if prompt<>'' and prompt[-1] not in string.whitespace:
+    if prompt!='' and prompt[-1] not in string.whitespace:
         prompt = prompt + ' '
     while 1:
-        result = raw_input(prompt)
-        try: result = string.lower(string.split(result)[0])
-        except: result=''
+        result = input(prompt)
+        result = result.split()[0].lower()
         if result=='yes' or result=='y': return 1
         if result=='no' or result=='n': return 0
-        print "Please answer yes or no."
+        print("Please answer yes or no.")
 
 ###############################################################################
 ### Rudimentary movable-object support ########################################
@@ -871,8 +873,8 @@ allow_moveables  = allow_movables
 forbid_moveables = forbid_movables
 
 def remove_from_screen(x,
-                       d_o_e=Tkinter.tkinter.dooneevent,
-                       d_w=Tkinter.tkinter.DONT_WAIT):
+                       d_o_e=lambda arg: _root_window.dooneevent(arg),
+                       d_w=Tkinter._tkinter.DONT_WAIT):
     _canvas.delete(x.id)
     d_o_e(d_w)
 
@@ -883,8 +885,8 @@ def _adjust_coords(coord_list,x,y):
     return coord_list
 
 def move_by(object, x,y=None,
-            d_o_e=Tkinter.tkinter.dooneevent,
-            d_w=Tkinter.tkinter.DONT_WAIT):
+            d_o_e=lambda arg: _root_window.dooneevent(arg),
+            d_w=Tkinter._tkinter.DONT_WAIT):
     if y is None:
         try: x,y = x
         except: raise ExBadParameters('incomprehensible coordinates')
@@ -893,8 +895,8 @@ def move_by(object, x,y=None,
     d_o_e(d_w)
 
 def move_to(object, x,y=None,
-            d_o_e=Tkinter.tkinter.dooneevent,
-            d_w=Tkinter.tkinter.DONT_WAIT):
+            d_o_e=lambda arg: _root_window.dooneevent(arg),
+            d_w=Tkinter._tkinter.DONT_WAIT):
     if y is None:
         try: x,y = x
         except: raise ExBadParameters('incomprehensible coordinates')
@@ -910,23 +912,23 @@ def move_to(object, x,y=None,
 def test():
     begin_graphics()
     try:
-        magenta = 0.75*Colour.red + 0.75*Colour.blue
-        print 'Magenta is', magenta
-        set_colour(Colour.red)
+        magenta = 0.75*Color.red + 0.75*Color.blue
+        print('Magenta is', magenta)
+        set_color(Color.red)
         move(0,0)
         draw(200,200)
-        draw((400,200), colour=Colour.green)
+        draw((400,200), color=Color.green)
         for y in xrange(200,99,-1):
-            plot(402,y,colour=Colour.blue)
-        line((400,200), 400,0, colour=Colour.red)
-        polygon(((300,300),(350,400),(400,350)), colour=Colour.green,
+            plot(402,y,color=Color.blue)
+        line((400,200), 400,0, color=Color.red)
+        polygon(((300,300),(350,400),(400,350)), color=Color.green,
                 filled=True)
-        polygon(((500,300),(550,400),(600,350)), colour=Colour.blue)
-        polygon(((510,300),(560,400),(610,350)), colour=Colour.blue, closed=1)
-        box((50,400),100,450, colour=Colour.red, filled=True)
-        circle(200,200,40,colour=Colour.red, filled=True)
-        circle(200,200,50,colour=Colour.green, endpoints=(10,45))
-        circle(200,200,50,colour=Colour.blue,
+        polygon(((500,300),(550,400),(600,350)), color=Color.blue)
+        polygon(((510,300),(560,400),(610,350)), color=Color.blue, closed=1)
+        box((50,400),100,450, color=Color.red, filled=True)
+        circle(200,200,40,color=Color.red, filled=True)
+        circle(200,200,50,color=Color.green, endpoints=(10,45))
+        circle(200,200,50,color=Color.blue,
                endpoints=((195,190), 200), filled=True)
         move(100,100)
         text('Hello world', serifs=1, size=14)
@@ -936,7 +938,7 @@ def test():
         pass
     if 1:
         end_graphics()
-        print 'Done'
+        print('Done')
 
 if __name__ == '__main__': test()
 

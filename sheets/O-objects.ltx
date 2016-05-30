@@ -67,14 +67,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal}{|http://github.com/centricwebestate/pieisreal|}
 
 %-----------------------------------------------------------------------------
 \section{Introduction}
@@ -118,7 +118,7 @@ you how Python will respond to what you type).
 \begin{interaction}
 >>> \T{class Printer:}
 ...   \T{def print_something (self, what):}
-...     \T{print "This object says", what}
+...     \T{print("This object says", what)}
 ... \C{Just press \key{Enter} here}
 \end{interaction}
 
@@ -158,7 +158,7 @@ Let's try something else:
 ...   \T{def set_print (self, what):}
 ...     \T{self.thing_we_print = what}
 ...   \T{def print_it (self):}
-...     \T{print self.thing_we_print}
+...     \T{print(self.thing_we_print)}
 ... \C{Just press \key{Enter} here}
 \end{interaction}
 
@@ -231,7 +231,7 @@ You can check this yourself, as Python doesn't stop you having a look at
 each object's |thing_we_print| directly. Try this:
 
 \begin{interaction}
->>> \T{print bprinter.thing_we_print}
+>>> \T{print(bprinter.thing_we_print)}
 \end{interaction}
 
 and you'll see you've managed to get at |bprinter|'s |thing_we_print|
@@ -382,8 +382,8 @@ Let's make another subclass of our old friend |BetterPrinter|:
 >>> \T{class YAPrinter (BetterPrinter):}
 ...   \T{def __init__ (self, what):} 
 ...     \T{self.thing_we_print = what}
-...     \T{print "An object from YAPrinter is born."}
-...     \T{print "Yippee! I'm alive!"}
+...     \T{print("An object from YAPrinter is born.")}
+...     \T{print("Yippee! I'm alive!")}
 ... \C{Just press \key{Enter} here.} 
 \end{interaction}
 
@@ -446,7 +446,7 @@ that everything has the same value as in |thing1|.  But now try this:
 
 \begin{interaction}
 >>> \T{thing1.a = 0}
->>> \T{print thing2.a}
+>>> \T{print(thing2.a)}
 \end{interaction}
 
 You might expect that Python would say |1| back to you, because that's
@@ -482,29 +482,29 @@ value (|1|) if they are all equal.
 
 \begin{interaction}
 >>> \T{thing3 = Thing(1, 2, 3)}
->>> \T{print thing1 == thing2}
+>>> \T{print(thing1 == thing2)}
 1
->>> \T{print thing1 == thing3}
+>>> \T{print(thing1 == thing3)}
 0
 >>> \T{thing3.a = 0}
->>> \T{print thing1 == thing3}
+>>> \T{print(thing1 == thing3)}
 1
 \end{interaction}
 
 You can use all the other conditions in exactly the same way, although
-only ``not equals'' (|<>| or |!=|) is of much use.
+only ``not equals'' (|!=|) is of much use.
 
 The other test you can use is Python's |is| comparison.  This checks
 to see whether two objects are in fact just different names for the
 same object.
 
 \begin{interaction}
->>> \T{print thing1 is thing2}
-1
->>> \T{print thing1 is thing3}
-0
->>> \T{print thing1 is not thing3}
-1
+>>> \T{print(thing1 is thing2)}
+True
+>>> \T{print(thing1 is thing3)}
+False
+>>> \T{print(thing1 is not thing3)}
+True
 \end{interaction}
 
 As you can imagine, it's a bit faster to test for |thing1 is thing2|

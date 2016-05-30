@@ -1,22 +1,20 @@
-# Livewires Python Course #
+# PieIsReal Python Course #
 
-[![Build Status](https://travis-ci.org/livewires/python.svg?branch=master)](https://travis-ci.org/livewires/python)
+[![Build Status](https://travis-ci.org/centricwebestate/pieisreal.svg?branch=master)](https://travis-ci.org/centricwebestate/pieisreal/)
 
-The LiveWires Python Course is intended to teach the [Python](http://www.python.org/) programming language to people who have never programmed before. It includes:
+The PieIsReal Python Course is intended to teach the [Python](http://www.python.org/) programming language to people who have never programmed before. It includes:
 
 * [worksheets](sheets/) for learning Python (by reading)
 * a [package](module/) (which you will need for the code in the worksheet to run).
 
 ## Getting the package ##
 
-You can find the package on the [downloads page](https://github.com/livewires/python/releases), or on [PyPI](https://pypi.python.org/pypi/LiveWires).
+You can find the package on the [downloads page](https://github.com/centricwebestate/pieisreal/releases), or on [PyPI](https://pypi.python.org/pypi/PieIsReal).
 
 ## Getting the sheets ##
 
-The worksheets are built by Travis CI, and a tarballs are output to the livewires-worksheet S3 bucket; a nice viewer for the contents is available [here](http://shrub.appspot.com/livewires-worksheets/?s=date:d).
+The worksheets are built by Travis CI, and a tarballs are output to the pieisreal-worksheet S3 bucket.
 
-## About the course ##
-
-On the LiveWires Scripture Union camp in 1999, we taught a computer language called Python for the first time. We've carried on using it on the holiday every summer since then.
-
-To help us teach Python to the young people on the holiday, the LiveWires team produced a set of worksheets and a Python package (the LiveWires package) to go with them. We've decided to make these available to the world at large under open source licences. “Open source” means that, subject to a few conditions, anyone can copy and modify this work. It's our way of giving something back to the Python community. (See the licence for more details.)
+## Licence ##
+PieIsReal was forked from [LiveWires/python](https://github.com/livewires/python) and is subject to the Licence and Copyright defined originally by that repository.
+As per the licence, we've kept it here showing original attribution and left all copyright notices in tact. According to the original owners, the licence is BSD compatible.

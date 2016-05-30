@@ -3,7 +3,7 @@
 %% wsheet.cls
 %%
 %% MJ White 1999
-%% Worksheet class file for LiveWires teaching materials
+%% Worksheet class file for PieIsReal teaching materials
 %%
 %% ----------------------------------------------------------------------
 
@@ -16,7 +16,7 @@
 %%          MJ White 11.05.2001 - Reworked for Adobe fonts
 
 %% IMPORTANT:
-%% If you are writing LiveWires material using this file, PLEASE DON'T 
+%% If you are writing PieIsReal material using this file, PLEASE DON'T 
 %% MODIFY IT in isolation, or it'll be impossible to manage
 %% worksheets.  If you have good ideas or good code to add, cool;
 %% but please get in touch with me and I'll try and integrate them 
@@ -30,7 +30,7 @@
 %% Redistributions of this code must retain the above copyright notice,
 %% this list of conditions and the following disclaimer.
 %% 
-%% Neither name of Scripture Union nor LiveWires nor the names of its
+%% Neither name of Scripture Union nor PieIsReal nor the names of its
 %% contributors may be used to endorse or promote products derived from
 %% this software without specific prior written permission.
 %% 
@@ -50,7 +50,7 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{wsheet}[2001/05/10 v0.2
-Live Wires worksheet document class]
+PieIsReal worksheet document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax

@@ -64,14 +64,14 @@
 % (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 % THIS DOCUMENT, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
 
-This document is part of the LiveWires Python Course. You may
+This document is part of the PieIsReal Python Course. You may
 modify and/or distribute this document as long as you comply with the
-LiveWires Documentation Licence: you should have received a copy of the
+PieIsReal Documentation Licence: you should have received a copy of the
 licence when you received this document.
 
 For the \LaTeX{} source of this sheet, and for more information on
-LiveWires and on this course, see the LiveWires web site at
-\href{http://www.livewires.org.uk/python/}{|http://www.livewires.org.uk/python/|}
+PieIsReal and on this course, see the PieIsReal web site at
+\href{http://github.com/centricwebestate/pieisreal/}{|http://github.com/centricwebestate/pieisreal/|}
 
 %--------------------------------------------------------------------------
 \section{Introduction}
@@ -163,7 +163,7 @@ Here's a simple example. Try it.
 \begin{program}
 x=1
 while x<100:
-  print 'x is', x
+  print('x is', x)
   x = x+6
 \end{program}
 
@@ -175,7 +175,7 @@ doing it. Was your guess right?
 \emph{Challenge}: Write a program that repeatedly asks you to enter
 a number, and keeps doing this until you enter the number 1234.
 You may need to know that to say ``|x| is not equal to |y|'' in
-Python, you write ``|x <> y|''.
+Python, you write ``|x != y|''.
 %--------------------------------------------------------------------------
 \section{Lots of guesses}
 So, now we know how to do something over and over using a |while| loop.
@@ -186,7 +186,7 @@ You might at first think it should go something like this:
 
 \begin{program}
 blah blah blah \C{Choose a number}
-while guess <> number:
+while guess != number:
   blah blah    \C{Ask for a guess}
   blah blah    \C{Say whether it was right or wrong}
 \end{program}
@@ -200,7 +200,7 @@ guessed, hasn't been set up when the machine first looks at the
 There are a couple of different ways to get around this. I think
 the simplest is as follows.
 
-Make the loop say, not |while guess <> number:| or whatever, but
+Make the loop say, not |while guess != number:| or whatever, but
 simply |while 1:|. Remember that PYthon treats zero as meaning
 ``false'' and any non-zero number as meaning ``true'', so a loop
 that begins |while 1:| will go on for ever -- it will never stop.
@@ -210,10 +210,10 @@ That doesn't seem like much of an improvement. But, try the following.
 \begin{program}
 while 1:
   x = random_between(1,10)
-  print x
+  print(x)
   if x == 5:
     break
-  print 'x was not 5!'
+  print('x was not 5!')
 \end{program}
 
 The only new thing here is the second-last line: |break|. If you try
@@ -250,10 +250,10 @@ answer to a question. To get that, use the function |read_yesorno()|.
 Try this:
 
 \begin{interaction}
->>> \T{print read_yesorno('Would you like another game?')}
+>>> \T{print(read_yesorno('Would you like another game?'))}
 Would you like another game? \T{yes}
 1
->>> \T{print read_yesorno('Would you like another game?')}
+>>> \T{print(read_yesorno('Would you like another game?'))}
 Would you like another game? \T{no}
 0
 \end{interaction}
@@ -275,9 +275,9 @@ or use it in something more interesting:
 
 \begin{program}
 if read_yesorno('Would you like some chocolate?'):
-  print 'Sorry, I have none.'
+  print('Sorry, I have none.')
 else:
-  print 'Very strange.'
+  print('Very strange.')
 \end{program}
 
 What we want to do is to keep on playing games, until the player

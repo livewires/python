@@ -1,6 +1,6 @@
 language: python
 python:
-- '2.7'
+- 2.7.10
 install:
 - sudo add-apt-repository -y ppa:texlive-backports/ppa
 - sudo apt-get update
@@ -9,13 +9,14 @@ script:
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
   provider: s3
-  access_key_id: AKIAJNGHJWMQEU6QAIPQ
+  access_key_id: AKIAIX73Z7Z6RWZASYWA
   secret_access_key:
-    secure: tviNwD7V1A4WRzCwnRGXTHUf6kdbEG+7X7AxnTnSEf+ar1iXl/1aplLKFccc9vwzlGy0sUVqv0wg0kmQkIMhUhdZovOD4gUnOARUZzkTHj9L0apIb2gxLyEyYHCRFiIKLT6Vto8iPbU3ALCoQAhk2oQwM+dznQb6lg+U5HpRK8U=
-  bucket: livewires-worksheets
+    secure: 0UqOcqpRDYF8u1IOj+0ekMhOyy1H42M39yuHtJYItlboiOaDOuJYY2Hyfk/HV7Fx8fngtu69jSiORZuSMePNOpNiZ9b4lusbMTRBydkDmLrQFQPRbmj+w+CdkhNPj/COMUV3s7g+nyeuCvbbtY2O/XdqfYUlAOxTCvcVx6p9EvNlNfV8UyPVti+ibmh8TNvnCUMA6Nxiy1FWdX+S8ITi+BzsJv4S+LprX2FJfBOZEak2kDJYdcHqCurY2Ms23oEUJRzys6w6YF51xm+a5SbIveNzwae7uFjHeIJYLz8DytGctEcv3CcngBDrX2Cxh/b18q+rsf8kQrqbiFIbq38EgMrtMXqTfoEe5v2MO8NLSMhhl8B8ntziaMBa1k0OiTjpyjPq4C3rVp6EDypRbojCNa5hkT/A42+ccpkZQ3VNcrSmMn8o7U5YDFSWREx5P4fn/eKG5nAAvMxFNb/yKWCHW7U7vmCPQFcidmdXcMR4tuLMrhQfPmCvk162Q25oB9h8yYyiX4QZyeILS2xRc+bn14V04nwHOXRF8WkaAL5TY7fCV47E+hAOqiDz2Whn4junz3DA5nllf9jhYLxDHnpw9YzAVVM9ju/VUe+YOPRiJ/flspEqQH+qY0WhvQydEqGiDIdKjO04oSxgZsr47GAhBipbsApuKvS5idHv1ItCEWM=
+  bucket: pieisreal-sheets
   local-dir: release
-  upload-dir: "$TRAVIS_BUILD_NUMBER"
-  acl: !ruby/string:HighLine::String public_read
+  upload-dir: $TRAVIS_BUILD_NUMBER
+  acl: public_read
+  region: ap-southeast-2
   skip_cleanup: true
   on:
-    repo: livewires/python
+    repo: CentricWebEstate/pieisreal

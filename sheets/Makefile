@@ -19,13 +19,13 @@ TARGETS = 1-intro.pdf 2-tables.pdf 3-pretty.pdf 4-highlow.pdf \
 5-robots.pdf A-lists.pdf C-conds.pdf D-dicts.pdf E-errors.pdf \
 F-functions.pdf G-graphics.pdf I-inout.pdf J-jargon.pdf L-loops.pdf \
 M-modules.pdf O-objects.pdf R-running.pdf S-strings.pdf T-time.pdf \
-U-usage.pdf V-overview.pdf W-livewires.pdf
+U-usage.pdf V-overview.pdf W-pieisreal.pdf
 
 SOURCES = 1-intro.ltx 2-tables.ltx 3-pretty.ltx 4-highlow.ltx \
 5-robots.ltx A-lists.ltx C-conds.ltx D-dicts.ltx E-errors.ltx \
 F-functions.ltx G-graphics.ltx I-inout.ltx J-jargon.ltx L-loops.ltx \
 M-modules.ltx O-objects.ltx R-running.ltx S-strings.ltx T-time.ltx \
-U-usage.ltx V-overview.ltx W-livewires.ltx
+U-usage.ltx V-overview.ltx W-pieisreal.ltx
 
 # Files which are not SOURCES in this makefile but should be included in
 # the source release archive. Note that this includes the LaTeX source
@@ -75,7 +75,7 @@ games:	force_look
 force_look:
 
 COPYING.txt: COPYING.txt.src $(SOURCES) mkcopying.py
-	echo "THE LIVEWIRES DOCUMENTATION LICENCE" > COPYING.txt
+	echo "THE PIEISREAL DOCUMENTATION LICENCE" > COPYING.txt
 	echo "" >> COPYING.txt
 	echo "COPYRIGHT NOTICE:" >> COPYING.txt
 	echo "" >> COPYING.txt
@@ -87,16 +87,16 @@ COPYING.txt: COPYING.txt.src $(SOURCES) mkcopying.py
 ../release:
 	mkdir ../release
 
-../release/livewires-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt ../release
-	tar --dereference -cvf ../release/livewires-pdfs.tar ./*.pdf games/*.pdf \
+../release/pieisreal-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt ../release
+	tar --dereference -cvf ../release/pieisreal-pdfs.tar ./*.pdf games/*.pdf \
 	$(PDFAUX)
-	gzip --force --best ../release/livewires-pdfs.tar
+	gzip --force --best ../release/pieisreal-pdfs.tar
 
-../release/livewires-ltx.tar.gz: $(SOURCES) $(AUX) ../release
-	tar --dereference -cvf ../release/livewires-ltx.tar $(SOURCES) $(AUX)
-	gzip --force --best ../release/livewires-ltx.tar
+../release/pieisreal-ltx.tar.gz: $(SOURCES) $(AUX) ../release
+	tar --dereference -cvf ../release/pieisreal-ltx.tar $(SOURCES) $(AUX)
+	gzip --force --best ../release/pieisreal-ltx.tar
 
-pdfrelease: ../release/livewires-pdfs.tar.gz
+pdfrelease: ../release/pieisreal-pdfs.tar.gz
 
-srcrelease: ../release/livewires-ltx.tar.gz
+srcrelease: ../release/pieisreal-ltx.tar.gz
 

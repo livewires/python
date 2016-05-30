@@ -150,7 +150,7 @@ Let's start with the first item on that list: choosing the numbers.
 Try asking Python this and see what it says:
 
 \begin{interaction}
->>> \T{from livewires import *} \C{This is magic; see the box below.}
+>>> \T{from pieisreal import *} \C{This is magic; see the box below.}
 >>> \T{random_between(10,15)}
 \end{interaction}
 
@@ -160,11 +160,11 @@ behaves.
 
 \begin{note}
 That first line there is important. You'll need to put it at the start
-of every program you write. It lets you use some things we've added to
-the basic Python language, to make your life easier.
+of every pieisreal program you write. It lets you use some things we've
+added to the basic Python language, to make your life easier.
 
 As well as putting it in programs you write, you should also
-type it in when you start a Python session. Otherwise Python
+type it in when you start a Python ``idle`` session. Otherwise Python
 won't understand some of the things you ask it to do.
 
 See Sheet~M (\emph{Modules}) if you want the gruesome details
@@ -187,13 +187,13 @@ This isn't much use if we can't get an answer from the
 we can. Try this and see what happens:
 
 \begin{interaction}
->>> \T{print read_number()}   \C{Do you need the \emph{print}? Think back to Sheet~1.}
+>>> \T{print(read_number())}   \C{Do you need the \emph{print}? Think back to Sheet~1.}
 \end{interaction}
 
 What about this?
 
 \begin{interaction}
->>> \T{print 2*read_number()}
+>>> \T{print(2*read_number())}
 \end{interaction}
 
 \emph{Challenge}: Make Python ask for \emph{two} numbers, add them up,
@@ -204,7 +204,7 @@ You can change what Python says when asking for a number, if you
 like. Try this:
 
 \begin{interaction}
->>> \T{print read_number('What is your favourite number?')}
+>>> \T{print(read_number('What is your favourite number?'))}
 \end{interaction}
 
 Now: Write a short program that displays a sum using two random
@@ -297,8 +297,8 @@ is controlled by the |if|. Suppose you say
 
 \begin{program}
 if 1 > 1000:
-  print 'Ouch!'
-print 'Boink!'
+  print('Ouch!')
+print('Boink!')
 \end{program}
 
 Then the computer \emph{will} print |Boink!|, because that line
@@ -359,7 +359,7 @@ or not, here's an example of how to use it. Write a little program:
 
 \begin{program}
 for x in 1,2,3,4,5,6:
-  print 'x is', x
+  print('x is', x)
 \end{program}
 
 (Do I still need to remind you that \emph{spaces at the starts of lines
@@ -387,7 +387,7 @@ next easier if you try this first.
 \begin{program}
 odd=1
 for x in 1,2,3,4,5,6:
-  print 'An odd number:', odd
+  print('An odd number:', odd)
   odd = odd+2
 \end{program}
 
@@ -413,7 +413,7 @@ right = 0
 wrong = 0
 right = right + 1
 wrong = wrong + 1
-print 'You got', right, 'questions right and', wrong, 'wrong.'
+print ('You got', right, 'questions right and', wrong, 'wrong.')
 \end{program}
 %---------------------------------------------------------------------------
 \section{Improving the program}
