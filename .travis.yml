@@ -4,7 +4,10 @@ python:
 addons:
   apt:
     packages:
-    - texlive
+    - texlive-fonts-recommended
+    - texlive-latex-extra
+    - texlive-font-utils
+    - texlive-latex-recommended
 script:
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
