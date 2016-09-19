@@ -4,9 +4,19 @@ python:
 addons:
   apt:
     packages:
-    - texlive-full
+    - texlive-latex-recommended
+    - texlive-latex-extra
+    - texlive-fonts-recommended
+    - texlive-font-utils
+    - texlive-generic-recommended
+    - psutils
+    - ps2eps
+    - dvidvi
+    - purifyeps
 script:
 - apt list --installed
+- epstopdf
+- dvips
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
   provider: releases
