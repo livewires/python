@@ -8,6 +8,7 @@ addons:
     - texlive-latex-extra
     - texlive-font-utils
     - texlive-latex-recommended
+    - texlive-generic-recommended
 script:
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
