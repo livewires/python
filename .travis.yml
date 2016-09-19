@@ -4,12 +4,7 @@ python:
 addons:
   apt:
     packages:
-    - texlive-fonts-recommended
-    - texlive-latex-extra
-    - texlive-font-utils
-    - texlive-latex-recommended
-    - texlive-generic-recommended
-    - dvipng
+    - texlive-full
 script:
 - apt list --installed
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
