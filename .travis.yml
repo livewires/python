@@ -13,6 +13,15 @@ addons:
     - ps2eps
     - dvidvi
     - purifyeps
+    - t1utils
+    - dot2tex
+    - texlive-luatex
+    - lmodern
+    - tipa
+    - prosper
+    - latex-beamer
+    - latex-xcolor
+    - pgf
 script:
 - apt list --installed
 - epstopdf
