@@ -10,6 +10,7 @@ addons:
     - texlive-latex-recommended
     - texlive-generic-recommended
 script:
+- apt list --installed
 - (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
 deploy:
   provider: releases
