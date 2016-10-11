@@ -6,7 +6,7 @@ dist: trusty
 before_install:
 - sudo apt-get install texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-font-utils texlive-generic-recommended purifyeps
 script:
-- (cd sheets; LATEX_OPTS="-interaction=nonstopmode -shell-escape" make pdfrelease)
+- (cd sheets; LATEX_OPTS="-interaction=nonstopmode" make pdfrelease)
 deploy:
   provider: releases
   api_key:

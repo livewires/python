@@ -10,7 +10,7 @@
 .dvi.ps:
 	dvips -o $@ $<
 .ltx.pdf:
-	pdflatex $(LATEX_OPTS) $< $@; pdflatex $(LATEX_OPTS) $< $@
+	pdflatex $(LATEX_OPTS) -shell-escape $< $@; pdflatex $(LATEX_OPTS) -shell-escape $< $@
 
 # If you add LaTeX source files, you'll need to change both SOURCES and
 # TARGETS. Don't include things in the games directory in SOURCES or
