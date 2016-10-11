@@ -1,6 +1,6 @@
 # Makefile for LW worksheets
 # $Id: Makefile,v 1.12 2001/10/28 21:41:51 paul Exp paul $
-# pdrelease is probably the target you want to produce a tar.gz file
+# pdrelease is probably the target you want to produce a zip file
 # all target is all the worksheets in PDF format
 
 .SUFFIXES: .ltx .dvi .ps .pdf
@@ -87,16 +87,14 @@ COPYING.txt: COPYING.txt.src $(SOURCES) mkcopying.py
 ../release:
 	mkdir ../release
 
-../release/livewires-pdfs.tar.gz: all README.md COPYING.txt CHANGES.txt ../release
-	tar --dereference -cvf ../release/livewires-pdfs.tar ./*.pdf games/*.pdf \
-	$(PDFAUX)
-	gzip --force --best ../release/livewires-pdfs.tar
+../release/livewires-pdfs.zip: all README.md COPYING.txt CHANGES.txt ../release
+	zip ../release/livewires-pdfs.zip ./*.pdf games/*.pdf $(PDFAUX)
 
 ../release/livewires-ltx.tar.gz: $(SOURCES) $(AUX) ../release
 	tar --dereference -cvf ../release/livewires-ltx.tar $(SOURCES) $(AUX)
 	gzip --force --best ../release/livewires-ltx.tar
 
-pdfrelease: ../release/livewires-pdfs.tar.gz
+pdfrelease: ../release/livewires-pdfs.zip
 
 srcrelease: ../release/livewires-ltx.tar.gz
 
