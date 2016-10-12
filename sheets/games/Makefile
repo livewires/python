@@ -8,7 +8,7 @@
 .dvi.ps:
 	dvips -o $@ $<
 .ltx.pdf:
-	pdflatex $(LATEX_OPTS) $<; pdflatex $(LATEX_OPTS) $<
+	pdflatex $(LATEX_OPTS) -shell-escape $<; pdflatex $(LATEX_OPTS) -shell-escape $<
 
 # Note: if you add to these and want your LaTeX source to go in the
 # source release archive, you'll need to add the filenames of the latex

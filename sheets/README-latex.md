@@ -41,6 +41,8 @@ What you will need to use the source:
   ask us how to get LaTeX working, as we're not experts. Pre-packaged
   versions of LaTeX are available for most operating systems.
 
+    [On OS X, you can try `brew install mactex`.]
+
 - Your life will be easier if you have a working Unix "make" utility (we
   use GNU Make). If you're using Windows, try the Cygnus utilities.
 
@@ -114,7 +116,7 @@ the output of the script and the standard licence file.
 pdfrelease:
 -----------
 
-The pdfrelease target produces a release .tar.gz file of the PDFs in the
+The pdfrelease target produces a release .zip file of the PDFs in the
 release, along with the README.txt and COPYING.txt files.
 
 srcrelease:
