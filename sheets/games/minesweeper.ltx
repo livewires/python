@@ -231,6 +231,9 @@ Now we get on to our boxes on the screen.
 \begin{program}
 class GridBox(boards.GameCell):
   def __init__(self, screen, i, j):
+    self.init_gridbox(screen, i, j)
+
+  def init_gridbox(self, screen, i, j):
     self.init_gamecell(screen, i, j)
     self.flagged = 0
     self.shown = 0
@@ -264,9 +267,9 @@ so that it can be seen.  The following code will do the trick:
 
 \begin{program}
 class Mine(boards.Container, GridBox):
-  def __init(self, board, i, j):
-    self.init_gridbox(board, i, j)
+  def __init__(self, board, i, j):
     self.init_container(['image', 'flag'])
+    self.init_gridbox(board, i, j)
 
   def reveal_mine(self):
     self.set_colour(colour.red)
