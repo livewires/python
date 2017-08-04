@@ -619,8 +619,8 @@ tx, ty = self.cell_to_coords(WIDTH/2, -1)
 self.status_message = games.Text(self, tx, ty+BOX_SIZE/2,
                                  "TETRIS", TITLE_SIZE, colour.white)
 tx, ty = self.cell_to_coords(WIDTH/2, HEIGHT)
-self.score_message = game.Text(self, tx, ty+BOX_SIZE/2,
-                               "Score: 0", SCORE_SIZE, colour.white)
+self.score_message = games.Text(self, tx, ty+BOX_SIZE/2,
+                                "Score: 0", SCORE_SIZE, colour.white)
 self.score = 0
 \end{program}
 
